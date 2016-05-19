@@ -1,0 +1,9 @@
+<div style="top:${parameters.top}px; left: ${parameters.left}px; width: ${parameters.width}px; height: ${parameters.height}px;position: absolute;">
+  <iframe name="if_smallvod" width="${parameters.width}" height="${parameters.height}" src="http://222.68.195.20:8080/ztedvservice/smallplay.jsp?contentid=${video}&width=${parameters.width}&height=${parameters.height}" frameborder="no" scrolling="no">
+  </iframe>
+  <script language="javascript">
+  <!--
+    video = 1;
+  //-->
+  </script>
+</div>

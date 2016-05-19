@@ -1,0 +1,165 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+xmlns:context="http://www.springframework.org/schema/context"
+xsi:schemaLocation="http://www.springframework.org/schema/beans
+http://www.springframework.org/schema/beans/spring-beans-3.0.xsd
+http://www.springframework.org/schema/context
+http://www.springframework.org/schema/context/spring-context-3.0.xsd">
+	
+	<bean id="propertyConfigurer" class="org.springframework.beans.factory.config.PropertyPlaceholderConfigurer">
+		<property name="locations">
+			<list>
+				<value>WEB-INF/conf/jdbc.properties</value>
+			</list>
+		</property>
+	</bean>
+	
+	<bean id="dataSource"
+		class="com.mchange.v2.c3p0.ComboPooledDataSource"
+		destroy-method="close">
+		<property name="driverClass">
+			<value>${jdbc.driverClassName}</value>
+		</property>
+		<property name="jdbcUrl">
+			<value>${jdbc.url}</value>
+		</property>
+		<property name="user">
+			<value>${jdbc.username}</value>
+		</property>
+		<property name="password">
+			<value>${jdbc.password}</value>
+		</property>
+		<property name="initialPoolSize">
+			<value>${jdbc.pool.initialSize}</value>
+		</property>
+		<property name="minPoolSize">
+			<value>${jdbc.pool.minPoolSize}</value>
+		</property>
+		<property name="maxPoolSize">
+			<value>${jdbc.pool.maxPoolSize}</value>
+		</property>
+		<property name="maxIdleTime">
+			<value>${jdbc.pool.maxIdleTime}</value>
+		</property>	
+		<property name="numHelperThreads">
+			<value>${jdbc.pool.numHelperThreads}</value>
+		</property>		
+		<property name="acquireRetryDelay">
+			<value>${jdbc.pool.acquireRetryDelay}</value>
+		</property>		
+		<property name="acquireRetryAttempts">
+			<value>${jdbc.pool.acquireRetryAttempts}</value>
+		</property>		
+		<property name="acquireIncrement">
+			<value>${jdbc.pool.acquireIncrement}</value>
+		</property>	
+		<property name="breakAfterAcquireFailure">
+			<value>${jdbc.pool.breakAfterAcquireFailure}</value>
+		</property>	
+	</bean>
+	
+	<bean id="sqlMapClient" class="org.springframework.orm.ibatis.SqlMapClientFactoryBean">
+		<property name="configLocation" value="/WEB-INF/ibatis/sqlmap-config.xml" />
+		<property name="dataSource">
+			<ref bean="dataSource" />
+		</property>
+	</bean>
+	
+	<bean id="sqlExecutor" class="chances.epg.ibtais.LimitSqlExecutor">
+		<property name="dialect">
+			<bean class="chances.epg.ibtais.MySQLDialect" />
+		</property>
+	</bean>
+
+	<bean id="baseDao" class="chances.epg.ibtais.BaseDaoiBatis" init-method="initialize">
+		<property name="dataSource">
+			<ref bean="dataSource" />
+		</property>
+		<property name="sqlMapClient">
+			<ref bean="sqlMapClient" />
+		</property>
+		<property name="sqlExecutor">
+			<ref bean="sqlExecutor" />
+		</property>		
+	</bean>
+	
+	
+	<bean id="masterDataSource"
+		class="com.mchange.v2.c3p0.ComboPooledDataSource"
+		destroy-method="close">
+		<property name="driverClass">
+			<value>${master.jdbc.driverClassName}</value>
+		</property>
+		<property name="jdbcUrl">
+			<value>${master.jdbc.url}</value>
+		</property>
+		<property name="user">
+			<value>${master.jdbc.username}</value>
+		</property>
+		<property name="password">
+			<value>${master.jdbc.password}</value>
+		</property>
+		<property name="initialPoolSize">
+			<value>${master.jdbc.pool.initialSize}</value>
+		</property>
+		<property name="minPoolSize">
+			<value>${master.jdbc.pool.minPoolSize}</value>
+		</property>
+		<property name="maxPoolSize">
+			<value>${master.jdbc.pool.maxPoolSize}</value>
+		</property>
+		<property name="maxIdleTime">
+			<value>${master.jdbc.pool.maxIdleTime}</value>
+		</property>	
+		<property name="numHelperThreads">
+			<value>${master.jdbc.pool.numHelperThreads}</value>
+		</property>		
+		<property name="acquireRetryDelay">
+			<value>${jdbc.pool.acquireRetryDelay}</value>
+		</property>		
+		<property name="acquireRetryAttempts">
+			<value>${jdbc.pool.acquireRetryAttempts}</value>
+		</property>		
+		<property name="acquireIncrement">
+			<value>${jdbc.pool.acquireIncrement}</value>
+		</property>	
+		<property name="breakAfterAcquireFailure">
+			<value>${jdbc.pool.breakAfterAcquireFailure}</value>
+		</property>	
+	</bean>
+	
+	<bean id="masterSqlMapClient" class="org.springframework.orm.ibatis.SqlMapClientFactoryBean">
+		<property name="configLocation" value="/WEB-INF/ibatis/master/sqlmap-config.xml" />
+		<property name="dataSource">
+			<ref bean="masterDataSource" />
+		</property>
+	</bean>
+	
+	<bean id="masterDao" class="chances.epg.ibtais.BaseDaoiBatis" init-method="initialize">
+		<property name="dataSource">
+			<ref bean="masterDataSource" />
+		</property>
+		<property name="sqlMapClient">
+			<ref bean="masterSqlMapClient" />
+		</property>
+		<property name="sqlExecutor">
+			<ref bean="sqlExecutor" />
+		</property>		
+	</bean>
+	
+	<bean id="contextFactoryHelper" class="sitv.epg.business.ContextFactoryHelper">
+	</bean>
+	
+	<bean id="checkLoginFilter" class="sitv.epg.web.filter.CheckLoginFilter">
+		<property name="loginRedirectUrl">
+			<value>/common/login/login.jsp</value>
+		</property>
+		<property name="loginSkipPattern">
+			<value>/login|login1|playErrorLog|playExitLog/</value>
+		</property>
+    </bean>
+    
+    <context:annotation-config/> 
+    <context:component-scan base-package="sitv.epg.business.dao"/>
+</beans>

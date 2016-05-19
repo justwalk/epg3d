@@ -1,0 +1,111 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE sqlMap      
+    PUBLIC "-//ibatis.apache.org//DTD SQL Map 2.0//EN"      
+    "http://ibatis.apache.org/dtd/sql-map-2.dtd">
+
+<sqlMap namespace="EpgSubjectPage">
+
+	<resultMap id="epgSubjectPage-result" class="sitv.epg.entity.business.EpgSubjectPage">
+		<result property="id" column="ID" />
+		<result property="subjectTitle" column="SUBJECT_TITLE" />
+		<result property="subjectCode" column="SUBJECT_CODE" />
+		<result property="pageName" column="PAGE_NAME" />
+		<result property="pageCode" column="PAGE_CODE" />
+		<result property="background" column="BACKGROUND" />
+		<result property="defaultFlag" column="DEFAULT_FLAG" />
+		<result property="highDefition" column="HIGH_DEFITION" />
+		<result property="poster" column="POSTER" />
+		<result property="still" column="STILL" />
+		<result property="icon" column="ICON" />
+	</resultMap>
+
+	<resultMap id="epgSubjectArea-result" class="sitv.epg.entity.business.EpgSubjectArea">
+		<result property="id" column="ID" />
+		<result property="pageCode" column="PAGE_CODE" />
+		<result property="location" column="LOCATION" />
+		<result property="objType" column="OBJ_TYPE" />
+		<result property="objCode" column="OBJ_CODE" />
+		<result property="defaultArea" column="DEFAULT_AREA" />
+	</resultMap>
+
+	<resultMap id="epgSubjectPage1-result" class="sitv.epg.entity.business.EpgSubjectPage">
+		<result property="id" column="ID" />
+		<result property="subjectTitle" column="SUBJECT_TITLE" />
+		<result property="subjectCode" column="SUBJECT_CODE" />
+		<result property="pageName" column="PAGE_NAME" />
+		<result property="pageCode" column="PAGE_CODE" />
+		<result property="background" column="BACKGROUND" />
+		<result property="defaultFlag" column="DEFAULT_FLAG" />
+		<result property="highDefition" column="HIGH_DEFITION" />
+		<result property="itemIcon" column="ITEM_ICON" />
+		<result property="poster" column="POSTER" />
+		<result property="still" column="STILL" />
+		<result property="icon" column="ICON" />
+	</resultMap>
+
+	<resultMap id="epgSubjectArea1-result" class="sitv.epg.entity.business.EpgSubjectArea">
+		<result property="id" column="ID" />
+		<result property="subjectTitle" column="SUBJECT_TITLE" />
+		<result property="title" column="TITLE" />
+		<result property="pageCode" column="PAGE_CODE" />
+		<result property="location" column="LOCATION" />
+		<result property="objType" column="OBJ_TYPE" />
+		<result property="objCode" column="OBJ_CODE" />
+		<result property="defaultArea" column="DEFAULT_AREA" />
+	</resultMap>
+
+	<!-- 根据subjectCode查专区首页 DEFAULT_FLAG=1 -->
+	<cacheModel id="getSubjectPageBySubjectCode_CM" type="LRU"
+		readOnly="true" serialize="false">
+		<flushInterval minutes="5" />
+		<property name="cache-size" value="200" />
+	</cacheModel>
+	<statement id="getSubjectPageBySubjectCode" resultMap="epgSubjectPage-result"
+		cacheModel="getSubjectPageBySubjectCode_CM">
+		<![CDATA[		   
+            select * from EPG_SUBJECT_PAGE where SUBJECT_CODE = #subjectCode# and DEFAULT_FLAG=1
+        ]]>
+	</statement>
+
+	<!-- 根据subjectCode查专题编排 -->
+	<cacheModel id="getSubjectPicBySubjectCode_CM" type="LRU"
+		readOnly="true" serialize="false">
+		<flushInterval minutes="5" />
+		<property name="cache-size" value="200" />
+	</cacheModel>
+	<statement id="getSubjectPicBySubjectCode" resultMap="epgSubjectPage1-result"
+		cacheModel="getSubjectPicBySubjectCode_CM">
+		<![CDATA[		   
+            select a.*, b.item_icon from EPG_SUBJECT_PAGE a ,EPG_CATEGORY_ITEM b where a.SUBJECT_CODE = #subjectCode# and a.subject_code = b.item_code
+        ]]>
+	</statement>
+
+	<!-- 根据subjectCode查专区数据 -->
+	<cacheModel id="getSubjectPageAndAreaBySubjectCode_CM" type="LRU"
+		readOnly="true" serialize="false">
+		<flushInterval minutes="5" />
+		<property name="cache-size" value="200" />
+	</cacheModel>
+	<statement id="getSubjectPageAndAreaBySubjectCode" resultMap="epgSubjectArea1-result"
+		cacheModel="getSubjectPageAndAreaBySubjectCode_CM">
+		<![CDATA[		   
+            select * from (select a.subject_title,b.*,c.title from EPG_SUBJECT_PAGE a 
+            left join EPG_SUBJECT_REGION b on a.page_code = b.page_code 
+            left join CONTENT_WITH_PIC c on b.obj_code = c.content_code 
+            where a.subject_code = #subjectCode#) where obj_type = 'vod' or obj_type = 'series'
+        ]]>
+	</statement>
+
+	<!-- 根据subjectCode和pageCode查专区某页 -->
+	<cacheModel id="getSubjectPageBySubjectCodeAndPageCode_CM"
+		type="LRU" readOnly="true" serialize="false">
+		<flushInterval minutes="5" />
+		<property name="cache-size" value="1000" />
+	</cacheModel>
+	<statement id="getSubjectPageBySubjectCodeAndPageCode"
+		resultMap="epgSubjectPage-result" cacheModel="getSubjectPageBySubjectCodeAndPageCode_CM">
+		<![CDATA[		   
+            select * from EPG_SUBJECT_PAGE where PAGE_CODE=#pageCode#
+        ]]>
+	</statement>
+</sqlMap>

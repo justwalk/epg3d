@@ -1,0 +1,2 @@
+<head>
+#if ($parameters.title) <title>$parameters.title</title> #end

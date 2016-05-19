@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="GBK"?>
+<TemplatePackage author="" desc="" label="">
+    
+     <template name="gamefyIndex" type="index" desc="游戏风云首页" template_path="gamefyIndex.jsp" preview_path="preview/gamefyIndex.jpg">
+	        <param name="menuCategoryCode" type="category" default_value="" desc="菜单分类">
+        </param>
+	         <param name="subMenuCategoryCode" type="category" default_value="" desc="二级菜单分类">
+        </param>
+	         <param name="newsCategoryCode" type="category" default_value="" desc="最新资讯即每日游报栏目">
+        </param>
+	         <param name="gamesCategoryCode" type="category" default_value="" desc="赛事回看栏目">
+        </param>
+	         <param name="hotPicRecommand" type="category" default_value="" desc="右上方图片推荐">
+        </param>
+	         <param name="subjectPicRecommand" type="category" default_value="" desc="右下方图片推荐">
+        </param>
+	         <param name="bgImg" type="image" default_value="" desc="背景大图">
+        </param>
+	  	</template>
+     <template name="gamefyList" type="list" desc="游戏风云列表页模版" template_path="gamefyList.jsp" preview_path="preview/gamefyList.jpg">
+	        <param name="menuCategoryCode" type="category" default_value="" desc="菜单分类">
+        </param>
+	         <param name="subMenuCategoryCode" type="category" default_value="" desc="二级菜单分类">
+        </param>
+	         <param name="thisCategoryCode" type="category" default_value="" desc="当前栏目内容">
+        </param>
+	         <param name="orderFlag" type="string" default_value="" desc="按顺序判断一级菜单（0-4）">
+        </param>
+	         <param name="bgImg" type="image" default_value="" desc="背景大图">
+        </param>
+	  	</template>
+  </TemplatePackage>

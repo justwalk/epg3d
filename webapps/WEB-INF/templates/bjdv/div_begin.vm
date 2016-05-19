@@ -1,0 +1,4 @@
+<div 	id="${parameters.id}" name="${parameters.name}" 
+		style="position:absolute;left:${parameters.left}px;
+		top:${parameters.top}px;width:${parameters.width}px;
+		height:${parameters.height}px; #if($parameters.style) ${parameters.style} #end" >

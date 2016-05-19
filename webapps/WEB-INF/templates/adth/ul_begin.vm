@@ -1,0 +1,2 @@
+<div style='position:absolute; left:${parameters.left}px;top:${parameters.top}px;width:${parameters.width}px;height:${parameters.height}px;'> 
+<ul type="${parameters.type}" #if($parameters.style) style='${parameters.style}'#end #if($parameters.classname) class='${parameters.classname}'#end>

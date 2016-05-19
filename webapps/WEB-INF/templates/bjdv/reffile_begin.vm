@@ -1,0 +1,2 @@
+#if ($parameters.type == 'css') <LINK href="${parameters.filename}" rel="stylesheet" type="text/css">  #end
+#if ($parameters.type == 'js') <script src="${parameters.filename}" ></script> #end

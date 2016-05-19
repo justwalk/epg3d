@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="GBK"?>
+<TemplatePackage author="" desc="" label="">
+    <template name="index_entertainment" type="index" desc="标清娱乐首页模板" template_path="index_entertainment.jsp" preview_path="preview/index_entertainment.jpg">
+	        <param name="menuCategoryCode" type="category" default_value="" desc="菜单栏目">
+        </param>
+	         <param name="leftBigImgCategoryCode" type="category" default_value="" desc="左侧大图推荐">
+        </param>
+	         <param name="hotCategoryCode" type="category" default_value="" desc="最热排行榜">
+        </param>
+	         <param name="rightDownCategoryCode" type="category" default_value="" desc="右下推荐">
+        </param>
+	         <param name="bgImg" type="image" default_value="" desc="背景大图">
+        </param>
+	         <param name="centerCategoryCode" type="category" default_value="" desc="中间推荐">
+        </param>
+	         <param name="gossipCategoryCode" type="category" default_value="" desc="八卦爆料台">
+        </param>
+	  	</template>
+     <template name="list_gossip" type="list" desc="娱乐看吧八卦列表模板" template_path="list_gossip.jsp" preview_path="preview/list_gossip.jpg">
+	        <param name="bgImg" type="image" default_value="" desc="背景大图">
+        </param>
+	         <param name="categoryCode" type="category" default_value="" desc="八卦栏目分类">
+        </param>
+	         <param name="rightCategoryCode" type="category" default_value="" desc="右侧推荐">
+        </param>
+	         <param name="menuCategoryCode" type="category" default_value="" desc="导航栏目 ">
+        </param>
+	  	</template>
+     <template name="list_HK_ND_HW" type="list" desc="娱乐看吧港台、内地、海外列表模板" template_path="list_HK_ND_HW.jsp" preview_path="preview/list_HK_ND_HW.jpg">
+	        <param name="menuCategoryCode" type="category" default_value="" desc="导航栏目">
+        </param>
+	         <param name="bgImg" type="image" default_value="" desc="背景图片">
+        </param>
+	         <param name="mainCategoryCode" type="category" default_value="" desc="栏目内容">
+        </param>
+	  	</template>
+     <template name="list_music" type="list" desc="娱乐看吧音乐二级列表模版" template_path="list_music.jsp" preview_path="preview/list_music.jpg">
+	        <param name="menuCategoryCode" type="category" default_value="" desc="导航菜单">
+        </param>
+	         <param name="bgImg" type="image" default_value="" desc="背景图">
+        </param>
+	         <param name="leftCategoryCode" type="category" default_value="" desc="左边栏目内容">
+        </param>
+	  	</template>
+     <template name="list_ND_Next" type="list" desc="娱乐内地三级列表页" template_path="list_ND_Next.jsp" preview_path="preview/list_ND_Next.jpg">
+	        <param name="menuCategoryCode" type="category" default_value="" desc="导航">
+        </param>
+	         <param name="bgImg" type="image" default_value="" desc="背景图">
+        </param>
+	  	</template>
+     <template name="list_HW_Next" type="list" desc="娱乐海外三级列表页" template_path="list_HW_Next.jsp" preview_path="preview/list_HW_Next.jpg">
+	        <param name="bgImg" type="image" default_value="" desc="背景图">
+        </param>
+	         <param name="menuCategoryCode" type="category" default_value="" desc="导航">
+        </param>
+	  	</template>
+     <template name="list_HK_Next" type="list" desc="娱乐港台三级列表页" template_path="list_HK_Next.jsp" preview_path="preview/list_HK_Next.jpg">
+	        <param name="menuCategoryCode" type="category" default_value="" desc="导航">
+        </param>
+	         <param name="bgImg" type="image" default_value="" desc="背景图">
+        </param>
+	  	</template>
+  </TemplatePackage>

@@ -1,0 +1,19 @@
+#if ($parameters.output)
+	#foreach($txt in $parameters.texts)
+		#if (! $parameters.includeInTable) <div #if($parameters.id) id="$parameters.id" #end align="${parameters.align}"  style="position:absolute;left:${txt.left}px;top:${txt.top}px;width:${txt.width}px;height:${txt.height}px"> #end
+			#if (${parameters.enterFocusId})
+				#if (${parameters.enterFocusId} == ${parameters.id})
+					#if ($parameters.href)		<a href="$parameters.href" id="${parameters.id}_a" #if($parameters.pageop) pageop="$parameters.pageop" #end #if($parameters.onfocus) onfocus="$parameters.onfocus" #end #if($parameters.onblur) onblur="$parameters.onblur" #end #if($parameters.keyop) keyop="$parameters.keyop" #end #if($parameters.backstep>0) backstep="$parameters.backstep" #end > <script>document.getElementById("${parameters.id}_a").focus();</script>  #end
+				#else
+					#if ($parameters.href)		<a href="$parameters.href" id="${parameters.id}_a" #if($parameters.pageop) pageop="$parameters.pageop" #end #if($parameters.onfocus) onfocus="$parameters.onfocus" #end #if($parameters.onblur) onblur="$parameters.onblur" #end #if($parameters.keyop) keyop="$parameters.keyop" #end #if($parameters.backstep>0) backstep="$parameters.backstep" #end >   #end				
+				#end
+			#else
+					#if ($parameters.href)		<a href="$parameters.href" id="${parameters.id}_a" #if($parameters.pageop) pageop="$parameters.pageop" #end #if($parameters.onfocus) onfocus="$parameters.onfocus" #end #if($parameters.onblur) onblur="$parameters.onblur" #end #if($parameters.keyop) keyop="$parameters.keyop" #end #if($parameters.backstep>0) backstep="$parameters.backstep" #end  >   #end				
+			#end
+				<span #if($parameters.id) id="${parameters.id}_span" #end style="color:$parameters.color;font-size:${parameters.fontSize};#if ($parameters.fontFamily) font-family:$parameters.fontFamily #end"  #if($parameters.classname) class="${parameters.classname}"#end>
+					${txt.content}
+				</span>
+			#if ($parameters.href)		</a>	#end	
+		#if (! $parameters.includeInTable) </div> #end
+	#end
+#end

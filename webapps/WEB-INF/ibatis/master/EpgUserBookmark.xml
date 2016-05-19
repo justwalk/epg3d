@@ -1,0 +1,69 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE sqlMap      
+    PUBLIC "-//ibatis.apache.org//DTD SQL Map 2.0//EN"      
+    "http://ibatis.apache.org/dtd/sql-map-2.dtd">
+<sqlMap namespace="MasterEpgUserBookmark">	
+  <resultMap id="EpgUserBookmark-result" class="sitv.epg.entity.user.EpgUserBookmark">
+  	<result property="id" column="ID" />
+  	<result property="userId" column="USER_ID" />
+  	<result property="contentName" column="CONTENT_NAME" />
+  	<result property="contentType" column="CONTENT_TYPE" />
+  	<result property="contentCode" column="CONTENT_CODE" />
+  	<result property="contentElapsed" column="CONTENT_ELAPSED"/>
+  	<result property="markTime" column="MARK_TIME" />
+  	<result property="bizCode" column="BIZ_CODE" />
+  	<result property="categoryCode" column="CATEGORY_CODE" />
+  </resultMap>
+  <resultMap id="EpgMarkNum-result" class="sitv.epg.entity.user.EpgMarkNum">
+  	<result property="num" column="NUM" />  	
+  </resultMap>
+ 
+	<!-- 取得用户取书签项 -->
+	<statement id="getSevrialBookmarkByUserId" resultMap="EpgUserBookmark-result">
+		<![CDATA[		   
+           select * from EPG_USER_BOOKMARK where USER_ID=#USER_ID# order by MARK_TIME desc
+            ]]>
+	</statement>
+	
+	<!-- 用户是否可以保存该节目书签 -->
+	<statement id="userCouldMark" resultMap="EpgUserBookmark-result">
+		<![CDATA[		   
+        	SELECT * FROM EPG_USER_BOOKMARK WHERE USER_ID=#USER_ID# AND CONTENT_CODE=#CONTENT_CODE#
+        ]]>
+	</statement>
+	
+	<!-- 添加用户书签  -->
+	<statement id="addUserBookmark" resultMap="EpgUserBookmark-result">
+		<![CDATA[		   
+           INSERT INTO EPG_USER_BOOKMARK (USER_ID, CONTENT_NAME, CONTENT_TYPE, CONTENT_CODE, CONTENT_ELAPSED, MARK_TIME,BIZ_CODE,CATEGORY_CODE) VALUES (#USER_ID#, #CONTENT_NAME#, #CONTENT_TYPE#, #CONTENT_CODE#, #CONTENT_ELAPSED#, #MARK_TIME#, #BIZ_CODE#,#CATEGORY_CODE#)
+  		]]>
+	</statement>
+	
+	<!-- 更新用户书签  -->
+	<statement id="updateUserBookmark" resultMap="EpgUserBookmark-result">
+		<![CDATA[		   
+           UPDATE EPG_USER_BOOKMARK SET CONTENT_NAME=#CONTENT_NAME#,CONTENT_ELAPSED=#CONTENT_ELAPSED#,MARK_TIME=#MARK_TIME#,BIZ_CODE=#BIZ_CODE#,CATEGORY_CODE=#CATEGORY_CODE# WHERE ID=#ID#
+  		]]>
+	</statement>	
+		
+		<!-- 用户是否可以保存该节目书签 -->
+	<statement id="getBookmarkById" resultMap="EpgUserBookmark-result">
+		<![CDATA[		   
+        	SELECT * FROM EPG_USER_BOOKMARK WHERE ID=#ID#
+        ]]>
+	</statement>
+	
+	<!-- 删除用户书签 -->
+	<statement id="delUserBookmarkById" resultMap="EpgUserBookmark-result">
+		<![CDATA[		
+			DELETE FROM EPG_USER_BOOKMARK WHERE  ID=#ID#
+     	]]>
+	</statement>
+	
+	<!-- 查询书签数目  -->
+	<statement id="getMarkNum" resultMap="EpgMarkNum-result">
+		<![CDATA[		
+			SELECT COUNT(*) as NUM  FROM EPG_USER_BOOKMARK WHERE USER_ID=#USER_ID#
+     	]]>
+	</statement>
+</sqlMap>

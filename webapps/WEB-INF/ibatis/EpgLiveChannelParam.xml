@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE sqlMap      
+    PUBLIC "-//ibatis.apache.org//DTD SQL Map 2.0//EN"      
+    "http://ibatis.apache.org/dtd/sql-map-2.dtd">
+
+<sqlMap namespace="EpgLiveChannelParam">
+	<resultMap id="channelParam-result" class="sitv.epg.entity.content.EpgLiveChannelParam">
+		<result property="channelId" column="CHANNEL_ID" />
+		<result property="channelCode" column="CHANNEL_CODE" />
+		<result property="channelNumber" column="CHANNEL_NUMBER" />
+		<result property="networkId" column="NETWORK_ID" />
+		<result property="casystemId" column="CASYSTEM_ID" />
+		<result property="ecmpId" column="ECM_PID" />
+		<result property="videopId" column="VIDEO_PID" />
+		<result property="videoType" column="VIDEO_TYPE" />
+		<result property="audiopId" column="AUDIO_PID" />
+		<result property="audioType" column="AUDIO_TYPE" />
+		<result property="pcrpId" column="PCR_PID" />
+		<result property="freq" column="FREQ" />
+		<result property="sym" column="SYM" />
+		<result property="modId" column="MOD" />
+		<result property="serviceId" column="SERVICE_ID" />
+		<result property="transportId" column="TRANSPORT_ID" />
+	</resultMap>
+
+	<cacheModel id="queryLiveChannelParamsByChannelCode_CM"
+		type="LRU" readOnly="true" serialize="false">
+		<flushInterval minutes="5" />
+		<property name="cache-size" value="2000" />
+	</cacheModel>
+	<statement id="queryLiveChannelParamsByChannelCode"
+		resultMap="channelParam-result" cacheModel="queryLiveChannelParamsByChannelCode_CM">
+		<![CDATA[
+            select * from EPG_CHANNEL_PARAM where CHANNEL_CODE = #channelCode# order by NETWORK_ID ASC,CASYSTEM_ID ASC
+        ]]>
+	</statement>
+</sqlMap>

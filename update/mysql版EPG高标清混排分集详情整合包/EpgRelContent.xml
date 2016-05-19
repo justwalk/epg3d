@@ -1,0 +1,79 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE sqlMap      
+    PUBLIC "-//ibatis.apache.org//DTD SQL Map 2.0//EN"      
+    "http://ibatis.apache.org/dtd/sql-map-2.dtd">
+
+<sqlMap namespace="EpgRelContent">	
+  	<resultMap id="relContent-result" class="sitv.epg.entity.content.EpgRelContent">
+		<result property="id" column="ID" />
+		<result property="relName" column="REL_NAME" />
+		<result property="relCode" column="REL_CODE" />
+		<result property="contentCode" column="CONTENT_CODE" />
+		<result property="videoType" column="VIDEO_TYPE" />
+		<result property="bodyType" column="BODY_TYPE" />
+		<result property="audioType" column="AUDIO_TYPE" />
+		<result property="status" column="STATUS" />
+		<result property="type" column="TYPE" />
+	</resultMap>
+	
+	<!-- 按照relCode查RelContent -->
+	<cacheModel id="queryRelContentByRelCode_CM" type ="LRU" readOnly="true" serialize="false">  
+    	<flushInterval minutes="5"/> 
+    	<property name="cache-size" value="100000" />    
+	</cacheModel> 
+	<statement id="queryRelContentByRelCode" resultMap="relContent-result" cacheModel="queryRelContentByRelCode_CM">
+		<![CDATA[
+            select * from EPG_REL_CONTENT where REL_CODE = #relCode# and STATUS = 0 
+        ]]>
+	</statement>
+	
+	<!-- 按照relCode和body_type查RelContent -->
+	<cacheModel id="queryRelContentByRelCodeAndBodyType_CM" type ="LRU" readOnly="true" serialize="false">  
+    	<flushInterval minutes="5"/> 
+    	<property name="cache-size" value="100000" />    
+	</cacheModel> 
+	<statement id="queryRelContentByRelCodeAndBodyType" resultMap="relContent-result" cacheModel="queryRelContentByRelCodeAndBodyType_CM">
+		<![CDATA[
+           select * from EPG_REL_CONTENT where REL_CODE = #relCode# and BODY_TYPE = #bodyType# and STATUS = 0 
+        ]]>
+	</statement>
+	
+	<!-- 按照relCode和type查RelContent -->
+	<!--<cacheModel id="queryRelContentByRelCodeAndType_CM" type ="LRU" readOnly="true" serialize="false">  
+    	<flushInterval minutes="5"/> 
+    	<property name="cache-size" value="100000" />    
+	</cacheModel> 
+	<statement id="queryRelContentByRelCodeAndType" resultMap="relContent-result" cacheModel="queryRelContentByRelCodeAndType_CM">
+		<![CDATA[
+           select * from EPG_REL_CONTENT where REL_CODE = #relCode# and TYPE = #type# and STATUS = 0 
+        ]]>
+	</statement>-->
+	
+	<!-- 查RelContent条件自定义 -->
+	<cacheModel id="queryRelContentByRelCodeAndType_CM" type ="LRU" readOnly="true" serialize="false">  
+    	<flushInterval minutes="5"/> 
+    	<property name="cache-size" value="100000" />    
+	</cacheModel> 
+	<select id="queryRelContentByRelCodeAndType" resultMap="relContent-result" cacheModel="queryRelContentByRelCodeAndType_CM">
+		select * from EPG_REL_CONTENT 
+		<dynamic prepend="WHERE">
+              STATUS = 0 
+       		 <isNotNull property="relCode">
+       			and REL_CODE=#relCode#
+       	     </isNotNull>       	    
+       	     <isNotNull property="videoType">
+       	     	and VIDEO_TYPE = #videoType#
+       	     </isNotNull>
+       	     <isNotNull property="bodyType">
+       			and BODY_TYPE = #bodyType#
+       	     </isNotNull>       	     
+       	     <isNotNull property="sudioType">
+       			and AUDIO_TYPE = #sudioType#
+       	     </isNotNull>
+       	     <isNotNull property="type">
+       			and TYPE = #type#
+       	     </isNotNull>
+		</dynamic>
+	</select>
+	
+</sqlMap>

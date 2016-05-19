@@ -1,0 +1,17 @@
+#if ($parameters.event=='EVENT_PAGEDOWN') <script> keyValue.add("EVENT_PAGEDOWN","${parameters.onevent}");  </script> #end
+#if ($parameters.event=='EVENT_RETURN') <script> keyValue.add("EVENT_RETURN","${parameters.onevent}");  </script> #end
+#if ($parameters.event=='EVENT_LEFT') <script> keyValue.add("EVENT_LEFT","${parameters.onevent}");  </script> #end
+#if ($parameters.event=='EVENT_UP') <script> keyValue.add("EVENT_UP","${parameters.onevent}");  </script> #end
+#if ($parameters.event=='EVENT_RIGHT') <script> keyValue.add("EVENT_RIGHT","${parameters.onevent}");  <s/cript> #end
+#if ($parameters.event=='EVENT_DOWN') <script> keyValue.add("EVENT_DOWN","${parameters.onevent}");  </script> #end
+#if ($parameters.event=='EVENT_OK') <script> keyValue.add("EVENT_OK","${parameters.onevent}");  </script> #end
+#if ($parameters.event=='EVENT_NUM0') <script> keyValue.add("EVENT_NUM0","${parameters.onevent}");  </script> #end
+#if ($parameters.event=='EVENT_NUM1') <script> keyValue.add("EVENT_NUM1","${parameters.onevent}");  </script> #end
+#if ($parameters.event=='EVENT_NUM2') <script> keyValue.add("EVENT_NUM2","${parameters.onevent}");  </script> #end
+#if ($parameters.event=='EVENT_NUM3') <script> keyValue.add("EVENT_NUM3","${parameters.onevent}");  </script> #end
+#if ($parameters.event=='EVENT_NUM4') <script> keyValue.add("EVENT_NUM4","${parameters.onevent}");  </script> #end
+#if ($parameters.event=='EVENT_NUM5') <script> keyValue.add("EVENT_NUM5","${parameters.onevent}");  </script> #end
+#if ($parameters.event=='EVENT_NUM6') <script> keyValue.add("EVENT_NUM6","${parameters.onevent}");  </script> #end
+#if ($parameters.event=='EVENT_NUM7') <script> keyValue.add("EVENT_NUM7","${parameters.onevent}");  </script> #end
+#if ($parameters.event=='EVENT_NUM8') <script> keyValue.add("EVENT_NUM8","${parameters.onevent}");  </script> #end
+#if ($parameters.event=='EVENT_NUM9') <script> keyValue.add("EVENT_NUM9","${parameters.onevent}");  </script> #end

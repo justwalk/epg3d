@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE sqlMap      
+    PUBLIC "-//ibatis.apache.org//DTD SQL Map 2.0//EN"      
+    "http://ibatis.apache.org/dtd/sql-map-2.dtd">
+
+<sqlMap namespace="EpgSubjectArea">
+	<resultMap id="epgSubjectArea-result" class="sitv.epg.entity.business.EpgSubjectArea">
+		<result property="id" column="ID" />
+		<result property="pageCode" column="PAGE_CODE" />
+		<result property="location" column="LOCATION" />
+		<result property="objType" column="OBJ_TYPE" />
+		<result property="objCode" column="OBJ_CODE" />
+		<result property="defaultArea" column="DEFAULT_AREA" />
+	</resultMap>
+	<!-- 根据专题pageCode查询记录 -->
+	<cacheModel id="getSubjectAreaByPageCode_CM" type="LRU"
+		readOnly="true" serialize="false">
+		<flushInterval minutes="5" />
+		<property name="cache-size" value="2000" />
+	</cacheModel>
+	<select id="getSubjectAreaByPageCode" resultMap="epgSubjectArea-result"
+		cacheModel="getSubjectAreaByPageCode_CM">
+		select a.* from EPG_SUBJECT_REGION a where a.page_code =#pageCode# order by
+		DEFAULT_AREA desc,id asc
+     
+	</select>
+</sqlMap>

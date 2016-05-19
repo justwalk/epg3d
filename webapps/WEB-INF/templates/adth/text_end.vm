@@ -1,0 +1,23 @@
+#if (! ${parameters.keyop}) 
+#if (${parameters.enterFocusId})
+	#if (${parameters.enterFocusId} == ${parameters.id})
+		#if ($parameters.output)
+			#foreach($txt in $parameters.texts)
+				#if ($parameters.href) <a id="a${parameters.id}" #if ($parameters.href=='#historyback') href="javascript:back();" #else href="$parameters.href" #end #if($parameters.hotkey) keyop="${parameters.hotkey}" #end #if(!$parameters.historyenabled) historydisabled #end setfocus="" #if($parameters.pageop) pageop="$parameters.pageop" #end #if($parameters.visitedcolor) visitedcolor="$parameters.visitedcolor" #end #if($parameters.linkcolor) linkcolor="$parameters.linkcolor" #end #if($parameters.keyop) keyop="$parameters.keyop" #end #if($parameters.backstep>0) backstep="$parameters.backstep" #end> #end #if($parameters.color) <font color="$parameters.color" >${txt.content}</font> #end #if(! $parameters.color) ${txt.content} #end #if ($parameters.href) </a>	#end	
+			#end
+		#end
+	#else
+		#if ($parameters.output)
+			#foreach($txt in $parameters.texts)
+				#if ($parameters.href) <a #if ($parameters.href=='#historyback') href="javascript:back();" #else href="$parameters.href" #end #if($parameters.hotkey) keyop="${parameters.hotkey}" #end #if(!$parameters.historyenabled) historydisabled #end #if($parameters.pageop) pageop="$parameters.pageop" #end #if($parameters.visitedcolor) visitedcolor="$parameters.visitedcolor" #end #if($parameters.linkcolor) linkcolor="$parameters.linkcolor" #end #if($parameters.keyop) keyop="$parameters.keyop" #end #if($parameters.backstep>0) backstep="$parameters.backstep" #end> #end #if($parameters.color) <font color="$parameters.color" >${txt.content}</font> #end #if(! $parameters.color) ${txt.content} #end 	#if ($parameters.href) </a>	#end	
+			#end
+		#end	
+	#end
+#else
+		#if ($parameters.output)
+			#foreach($txt in $parameters.texts)
+				#if ($parameters.href) <a #if ($parameters.href=='#historyback') href="javascript:back();" #else href="$parameters.href" #end #if($parameters.hotkey) keyop="${parameters.hotkey}" #end #if(!$parameters.historyenabled) historydisabled #end #if($parameters.defaultfocus) id="_defaultFocusId" setFocus="" #end #if($parameters.pageop) pageop="$parameters.pageop" #end #if($parameters.visitedcolor) visitedcolor="$parameters.visitedcolor" #end #if($parameters.linkcolor) linkcolor="$parameters.linkcolor" #end #if($parameters.keyop) keyop="$parameters.keyop" #end #if($parameters.backstep>0) backstep="$parameters.backstep" #end> #end #if($parameters.color) <font color="$parameters.color" >${txt.content}</font> #end #if(! $parameters.color) ${txt.content} #end 	#if ($parameters.href) </a>	#end	
+			#end
+		#end
+#end
+#end

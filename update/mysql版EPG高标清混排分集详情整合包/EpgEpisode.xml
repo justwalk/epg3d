@@ -1,0 +1,80 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE sqlMap      
+    PUBLIC "-//ibatis.apache.org//DTD SQL Map 2.0//EN"      
+    "http://ibatis.apache.org/dtd/sql-map-2.dtd">
+
+<sqlMap namespace="EpgEpisode">
+	<resultMap id="episodeContentCode-result" class="sitv.epg.entity.content.EpgEpisode">
+		<result property="contentCode" column="CONTENT_CODE" />
+	</resultMap>
+	<resultMap id="episode-result" class="sitv.epg.entity.content.EpgEpisode">
+		<result property="contentId" column="CONTENT_ID" />
+		<result property="contentCode" column="CONTENT_CODE" />
+		<result property="seriesCode" column="SERIES_CODE" />
+		<result property="seriesId" column="SERIES_ID" />
+		<result property="episodeIndex" column="EPISODE_INDEX" />
+		<result property="suggestedPrice" column="SUGGESTED_PRICE" />
+		<!-- 剧集分集详情 20140311 wangkai -->
+		<result property="title" column="TITLE"/>
+	</resultMap>
+
+	<cacheModel id="queryEpisodeByCode_CM" type="LRU" readOnly="true"
+		serialize="false">
+		<flushInterval minutes="5" />
+		<property name="cache-size" value="5000" />
+	</cacheModel>
+	<!-- 剧集分集详情 20140318 wangkai add column 'TITLE' -->
+	<statement id="queryEpisodeByCode" resultMap="episode-result"
+		cacheModel="queryEpisodeByCode_CM">
+		<![CDATA[
+			select e.CONTENT_ID,e.CONTENT_CODE,e.SERIES_CODE,e.SERIES_ID,e.EPISODE_INDEX, b.SUGGESTED_PRICE, e.TITLE
+			from EPG_CONTENT_EPISODE e,EPG_CONTENT_PROGRAM b 
+			where e.content_id = b.content_id 
+			and e.SERIES_CODE = #seriesCode# 
+			and b.enable_status = 1 
+			and (now() > e.EXCUTE_TIME or  e.EXCUTE_TIME is NULL) 
+			and e.STATUS = 1 
+			order by e.EPISODE_INDEX asc
+        ]]>
+	</statement>
+	<cacheModel id="querySeriesCodeByEpisodeCode_CM" type="LRU"
+		readOnly="true" serialize="false">
+		<flushInterval minutes="5" />
+		<property name="cache-size" value="5000" />
+	</cacheModel>
+	<!-- 剧集分集详情 20140318 wangkai add column 'TITLE' -->
+	<statement id="querySeriesCodeByEpisodeCode" resultMap="episode-result"
+		cacheModel="querySeriesCodeByEpisodeCode_CM">
+		<![CDATA[
+            select CONTENT_ID,CONTENT_CODE,SERIES_CODE,SERIES_ID,EPISODE_INDEX,0 as suggested_price,TITLE 
+            from EPG_CONTENT_EPISODE where CONTENT_CODE = #contentCode# 
+        ]]>
+	</statement>
+	<cacheModel id="queryContentCodeBySeriesCodeAndEpisodeIndex_CM"
+		type="LRU" readOnly="true" serialize="false">
+		<flushInterval minutes="5" />
+		<property name="cache-size" value="5000" />
+	</cacheModel>
+	<!-- 剧集分集详情 20140318 wangkai add column 'TITLE' -->
+	<statement id="queryContentCodeBySeriesCodeAndEpisodeIndex"
+		resultMap="episode-result" cacheModel="queryContentCodeBySeriesCodeAndEpisodeIndex_CM">
+		<![CDATA[
+            select CONTENT_ID,CONTENT_CODE,SERIES_CODE,SERIES_ID,EPISODE_INDEX,0 as suggested_price,TITLE
+            from EPG_CONTENT_EPISODE where SERIES_CODE = #seriesCode# and EPISODE_INDEX = #episodeIndex#
+        ]]>
+	</statement>
+	
+	<cacheModel id="queryEpisodeContentCodeByCode_CM" type ="LRU" readOnly="true" serialize="false">  
+    	<flushInterval minutes="5"/> 
+    	<property name="cache-size" value="5000" />    
+	</cacheModel> 
+	<statement id="queryEpisodeContentCodeByCode" resultMap="episodeContentCode-result" cacheModel="queryEpisodeContentCodeByCode_CM">
+		<![CDATA[
+            select CONTENT_CODE
+			from EPG_CONTENT_EPISODE
+			where SERIES_CODE = #seriesCode#
+			order by EPISODE_INDEX asc
+        ]]>
+	</statement>
+
+</sqlMap>

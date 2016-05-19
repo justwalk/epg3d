@@ -1,0 +1,105 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE sqlMap      
+    PUBLIC "-//ibatis.apache.org//DTD SQL Map 2.0//EN"      
+    "http://ibatis.apache.org/dtd/sql-map-2.dtd">
+
+<sqlMap namespace="EpgContentVote">
+
+	<resultMap id="EpgContentVoteWithProgram-result" class="sitv.epg.entity.user.EpgContentVote">
+		<result property="id" column="ID" />
+		<result property="title" column="TITLE" />
+		<result property="contentType" column="CONTENT_TYPE" />
+		<result property="contentCode" column="CONTENT_CODE" />
+		<result property="goodCount" column="GOOD_COUNT" />
+		<result property="badCount" column="BAD_COUNT" />
+		<result property="score" column="SCORE" />
+	</resultMap>
+	<resultMap id="EpgContentVote-result" class="sitv.epg.entity.user.EpgContentVote">
+		<result property="id" column="ID" />
+		<result property="contentType" column="CONTENT_TYPE" />
+		<result property="contentCode" column="CONTENT_CODE" />
+		<result property="goodCount" column="GOOD_COUNT" />
+		<result property="badCount" column="BAD_COUNT" />
+		<result property="score" column="SCORE" />
+	</resultMap>
+	<resultMap id="EpgVoteRecord-result" class="sitv.epg.entity.user.EpgVoteRecord">
+		<result property="id" column="ID" />
+		<result property="userMac" column="USER_MAC" />
+		<result property="contentType" column="CONTENT_TYPE" />
+		<result property="contentCode" column="CONTENT_CODE" />
+		<result property="voteMethod" column="VOTE_METHOD" />
+		<result property="voteVal" column="VOTE_VAL" />
+		<result property="voteTime" column="VOTE_TIME" />
+	</resultMap>
+	<resultMap id="EpgVoteNum-result" class="sitv.epg.entity.user.EpgVoteNum">
+		<result property="num" column="NUM" />
+	</resultMap>
+
+
+
+	<!-- 新增内容投票顶记录 -->
+	<statement id="addContentVoteGood" resultMap="EpgContentVote-result">
+		<![CDATA[		   
+           INSERT INTO EPG_CONTENT_VOTE (ID, CONTENT_TYPE, CONTENT_CODE, GOOD_COUNT) VALUES (EPG_CONTENT_VOTE_ID_SEQ.NEXTVAL, #CONTENT_TYPE#, #CONTENT_CODE#,1)
+            ]]>
+	</statement>
+
+	<!-- 新增内容投票踩记录 -->
+	<statement id="addContentVoteBad" resultMap="EpgContentVote-result">
+		<![CDATA[		   
+           INSERT INTO EPG_CONTENT_VOTE (ID, CONTENT_TYPE, CONTENT_CODE, BAD_COUNT) VALUES (EPG_CONTENT_VOTE_ID_SEQ.NEXTVAL, #CONTENT_TYPE#, #CONTENT_CODE#,1)
+            ]]>
+	</statement>
+
+	<!-- 更新内容投票顶记录 -->
+	<statement id="updateContentVoteGood" resultMap="EpgContentVote-result">
+		<![CDATA[		   
+           UPDATE EPG_CONTENT_VOTE SET GOOD_COUNT = GOOD_COUNT + 1 WHERE CONTENT_TYPE=#CONTENT_TYPE# AND CONTENT_CODE=#CONTENT_CODE#
+            ]]>
+	</statement>
+
+	<!-- 更新内容投票踩记录 -->
+	<statement id="updateContentVoteBad" resultMap="EpgContentVote-result">
+		<![CDATA[		   
+           UPDATE EPG_CONTENT_VOTE SET BAD_COUNT = BAD_COUNT + 1 WHERE CONTENT_TYPE=#CONTENT_TYPE# AND CONTENT_CODE=#CONTENT_CODE#
+            ]]>
+	</statement>
+
+
+	<!-- 添加用户投票记录 -->
+	<statement id="addVoteRecord" resultMap="EpgVoteRecord-result">
+		<![CDATA[		   
+           INSERT INTO EPG_VOTE_RECORD (ID, USER_MAC, CONTENT_TYPE, CONTENT_CODE, VOTE_METHOD, VOTE_VAL, VOTE_TIME) VALUES (EPG_VOTE_RECORD_ID_SEQ.NEXTVAL, #USER_MAC#, #CONTENT_TYPE#, #CONTENT_CODE#,#VOTE_METHOD#, #VOTE_VAL#, #VOTE_TIME#)
+            ]]>
+	</statement>
+
+	<!-- 节目是否已投过票 -->
+	<statement id="contentHasVote" resultMap="EpgContentVote-result">
+		<![CDATA[		   
+        	SELECT * FROM EPG_CONTENT_VOTE WHERE CONTENT_TYPE=#CONTENT_TYPE# AND CONTENT_CODE=#CONTENT_CODE#
+        ]]>
+	</statement>
+
+
+	<!-- 查询用户一段时间内投票数目  -->
+	<statement id="getVoteNum" resultMap="EpgVoteNum-result">
+		<![CDATA[		
+			SELECT COUNT(*) as NUM FROM EPG_VOTE_RECORD WHERE USER_MAC = #USER_MAC# AND VOTE_METHOD = #VOTE_METHOD# AND VOTE_TIME >= DATE_FORMAT(#BEGIN_TIME#,'%Y-%m-%d %H:%i:%S') AND VOTE_TIME <= DATE_FORMAT(#END_TIME#,'%Y-%m-%d %H:%i:%S')
+     	]]>
+	</statement>
+
+	<!-- 查询节目投票排行  -->
+	<statement id="getContentVoteRank" resultMap="EpgContentVoteWithProgram-result">
+		<![CDATA[		
+			SELECT A.*,B.TITLE FROM EPG_CONTENT_VOTE A,EPG_CONTENT_PROGRAM B WHERE A.CONTENT_CODE=B.CONTENT_CODE ORDER BY A.GOOD_COUNT DESC
+     	]]>
+	</statement>
+
+	<!-- 查询内容投票 -->
+	<statement id="getEpgContentVote" resultMap="EpgContentVote-result">
+		<![CDATA[		   
+           SELECT * FROM EPG_CONTENT_VOTE WHERE CONTENT_TYPE=#CONTENT_TYPE# AND CONTENT_CODE=#CONTENT_CODE#
+            ]]>
+	</statement>
+
+</sqlMap>

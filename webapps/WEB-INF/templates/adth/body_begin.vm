@@ -1,0 +1,1 @@
+<body  leftmargin="0" topmargin="0" rightmargin="0" bottommargin="0" marginwidth="0" marginheight="0"  #if($parameters.bgcolor && "" != $parameters.bgcolor) bgcolor='${parameters.bgcolor}'#end #if ($parameters.usemap) usemap='${parameters.usemap}' #end >

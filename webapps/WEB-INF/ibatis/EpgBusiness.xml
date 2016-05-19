@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE sqlMap      
+    PUBLIC "-//ibatis.apache.org//DTD SQL Map 2.0//EN"      
+    "http://ibatis.apache.org/dtd/sql-map-2.dtd">
+
+<sqlMap namespace="EpgBusiness">
+	<resultMap id="epgBusiness-result" class="sitv.epg.entity.business.EpgBusiness">
+		<result property="id" column="ID" />
+		<result property="name" column="NAME" />
+		<result property="title" column="TITLE" />
+		<result property="code" column="CODE" />
+		<result property="subTitle" column="SUB_TITLE" />
+		<result property="type" column="TYPE" />
+		<result property="status" column="STATUS" />
+		<result property="validTime" column="VALID_TIME" />
+		<result property="expireTime" column="EXPIRE_TIME" />
+		<result property="businessIcon" column="BUSINESS_ICON" />
+		<result property="description" column="DESCRIPTION" />
+	</resultMap>
+	<!-- 根据code查询看吧 -->
+
+	<cacheModel id="getBusinessByCode_CM" type="LRU" readOnly="true"
+		serialize="false">
+		<flushInterval minutes="5" />
+		<property name="cache-size" value="100" />
+	</cacheModel>
+
+	<statement id="getBusinessByCode" resultMap="epgBusiness-result"
+		cacheModel="getBusinessByCode_CM">
+		<![CDATA[		   
+            select * from EPG_BUSINESS where CODE = #bizCode#
+        ]]>
+	</statement>
+
+
+
+	<!-- 根据id查询看吧  -->
+
+	<cacheModel id="getBusinessById_CM" type="LRU" readOnly="true"
+		serialize="false">
+		<flushInterval minutes="5" />
+		<property name="cache-size" value="100" />
+	</cacheModel>
+	<statement id="getBusinessById" resultMap="epgBusiness-result"
+		cacheModel="getBusinessById_CM">
+		<![CDATA[		   
+            select * from EPG_BUSINESS where ID = #bizId#    
+        ]]>
+	</statement>
+</sqlMap>

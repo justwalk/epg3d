@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE sqlMap      
+    PUBLIC "-//ibatis.apache.org//DTD SQL Map 2.0//EN"      
+    "http://ibatis.apache.org/dtd/sql-map-2.dtd">
+
+<sqlMap namespace="EpgPosition">
+	<resultMap id="EpgPosition-result" class="sitv.epg.entity.business.EpgPosition">
+		<result property="id" column="ID" />
+		<result property="code" column="CODE" />
+		<result property="type" column="TYPE" />
+		<result property="adCode" column="AD_CODE" />
+		<result property="validTime" column="VALID_TIME" />
+		<result property="expireTime" column="EXPIRE_TIME" />
+		<result property="weight" column="WEIGHT" />
+		<result property="objType" column="OBJ_TYPE" />
+		<result property="objValue" column="OBJ_VALUE" />
+		<result property="linkObjType" column="LINK_OBJ_TYPE" />
+		<result property="linkObjValue" column="LINK_OBJ_VALUE" />
+		<result property="defaultFlag" column="DEFAULT_FLAG" />
+	</resultMap>
+
+	<!-- 在生效时间内 根据CODE查找推荐位 -->
+	<cacheModel id="getValidPositionByCode_CM" type="LRU"
+		readOnly="true" serialize="false">
+		<flushInterval minutes="5" />
+		<property name="cache-size" value="1000" />
+	</cacheModel>
+	<statement id="getValidPositionByCode" resultMap="EpgPosition-result"
+		cacheModel="getValidPositionByCode_CM">
+		<![CDATA[		   
+           select * from EPG_POSITION where CODE=#code# and ((now()> VALID_TIME and now() < EXPIRE_TIME) or default_flag=1) order by default_flag ASC 
+            ]]>
+	</statement>
+
+	<!-- 上校时间内无推荐位 根据CODE查找flag=1推荐位 -->
+	<cacheModel id="getExpirePositionByCode_CM" type="LRU"
+		readOnly="true" serialize="false">
+		<flushInterval minutes="5" />
+		<property name="cache-size" value="1000" />
+	</cacheModel>
+	<statement id="getExpirePositionByCode" resultMap="EpgPosition-result"
+		cacheModel="getExpirePositionByCode_CM">
+		<![CDATA[		   
+           select * from EPG_POSITION where CODE=#code# and default_flag = 1
+            ]]>
+	</statement>
+
+	<!-- 根据ID获取推荐位信息 -->
+	<cacheModel id="getPositionById_CM" type="LRU" readOnly="true"
+		serialize="false">
+		<flushInterval minutes="5" />
+		<property name="cache-size" value="1000" />
+	</cacheModel>
+	<statement id="getPositionById" resultMap="EpgPosition-result"
+		cacheModel="getPositionById_CM">
+		<![CDATA[		   
+           select * from EPG_POSITION where ID=#id#
+            ]]>
+	</statement>
+
+</sqlMap>

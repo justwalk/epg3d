@@ -1,0 +1,119 @@
+<?xml version="1.0" encoding="GBK"?>
+<TemplatePackage author="" desc="" label="">
+    <template name="NBAItem" type="list" desc="NBA二级列表模板" template_path="NBAItem.jsp" preview_path="NBAItem.jsp">
+	        <param name="backgroundImg" type="image" default_value="" desc="背景大图">
+        </param>
+	         <param name="menuCategoryCode" type="category" default_value="" desc="菜单导航分类">
+        </param>
+	         <param name="newsCategoryCode" type="category" default_value="" desc="新闻栏目分类">
+        </param>
+	         <param name="competitionCategoryCode" type="category" default_value="" desc="赛事栏目分类">
+        </param>
+	         <param name="hotDownCategoryCode" type="category" default_value="" desc="底部滚动条分类">
+        </param>
+	         <param name="targetCategoryCode" type="category" default_value="" desc="首页二级对应的目标栏目">
+        </param>
+	  	</template>
+     <template name="NBAInfomationSubjectList" type="list" desc="NAB咨询下的“专题”列表页面" template_path="NBAInfomationSubjectList.jsp" preview_path="NBAInfomationSubjectList.jsp">
+	        <param name="menuCategoryCode" type="category" default_value="" desc="导航">
+        </param>
+	         <param name="infomationCategoryCode" type="category" default_value="" desc="咨询下面的二级导航分类">
+        </param>
+	         <param name="hotDownCategoryCode" type="category" default_value="" desc="跑马灯">
+        </param>
+	         <param name="bgImg" type="image" default_value="" desc="背景图片">
+        </param>
+	  	</template>
+     <template name="NBAStar" type="list" desc="NBA球星一级列表模板" template_path="NBAStar.jsp" preview_path="NBAStar.jsp">
+	        <param name="backgroundImg" type="image" default_value="" desc="背景大图">
+        </param>
+	         <param name="starCategoryCode" type="category" default_value="" desc="球星栏目分类">
+        </param>
+	         <param name="hotDownCategoryCode" type="category" default_value="" desc="底部滚动条分类">
+        </param>
+	         <param name="menuCategoryCode" type="category" default_value="" desc="菜单导航分类">
+        </param>
+	  	</template>
+     <template name="NBAInfomationList" type="list" desc="NBA咨询页面" template_path="NBAInfomationList.jsp" preview_path="NBAInfomationList.jsp">
+	        <param name="bgImg" type="image" default_value="" desc="背景图片">
+        </param>
+	         <param name="infomationCategoryCode" type="category" default_value="" desc="NBA咨询二级菜单">
+        </param>
+	         <param name="menuCategoryCode" type="category" default_value="" desc="NBA一级菜单">
+        </param>
+	         <param name="hotDownCategoryCode" type="category" default_value="" desc="跑马灯">
+        </param>
+	  	</template>
+     <template name="NBATeam" type="list" desc="NBA球队一级列表模板" template_path="NBATeam.jsp" preview_path="NBATeam.jsp">
+	        <param name="menuCategoryCode" type="category" default_value="" desc="菜单导航分类">
+        </param>
+	         <param name="backgroundImg" type="image" default_value="" desc="背景大图">
+        </param>
+	         <param name="teamCategoryCode" type="category" default_value="" desc="球队栏目分类">
+        </param>
+	         <param name="hotDownCategoryCode" type="category" default_value="" desc="底部滚动条分类">
+        </param>
+	  	</template>
+     <template name="NBAList" type="list" desc="1280版NBA首页列表页模版" template_path="NBAList.jsp" preview_path="preview/NBAList.jpg">
+	        <param name="newestCategoryCode" type="category" default_value="" desc="最新赛事">
+        </param>
+	         <param name="focusCategoryCode" type="category" default_value="" desc="焦点新闻">
+        </param>
+	         <param name="rightUpCategoryCode" type="category" default_value="" desc="右上推荐图">
+        </param>
+	         <param name="rightDownCategoryCode" type="category" default_value="" desc="右下推荐图">
+        </param>
+	         <param name="bgImg" type="image" default_value="" desc="背景图">
+        </param>
+	         <param name="hotDownCategoryCode" type="category" default_value="" desc="跑马灯内容">
+        </param>
+	         <param name="menuCategoryCode" type="category" default_value="" desc="导航菜单">
+        </param>
+	         <param name="secondCategoryCode" type="category" default_value="" desc="二级菜单">
+        </param>
+	  	</template>
+     <template name="NBAIndex" type="index" desc="1280版NBA看吧首页模版" template_path="NBAIndex.jsp" preview_path="preview/NBAIndex.jpg">
+	        <param name="rightDownCategoryCode" type="category" default_value="" desc="右下推荐图">
+        </param>
+	         <param name="rightUpCategoryCode" type="category" default_value="" desc="右上推荐图">
+        </param>
+	         <param name="bgImg" type="image" default_value="" desc="背景图">
+        </param>
+	         <param name="hotDownCategoryCode" type="category" default_value="" desc="跑马灯内容">
+        </param>
+	         <param name="newestCategoryCode" type="category" default_value="" desc="最新赛事">
+        </param>
+	         <param name="menuCategoryCode" type="category" default_value="" desc="导航菜单">
+        </param>
+	         <param name="secondCategoryCode" type="category" default_value="" desc="二级菜单">
+        </param>
+	         <param name="focusCategoryCode" type="category" default_value="" desc="焦点新闻">
+        </param>
+	  	</template>
+     <template name="NBAInfomationOrderList" type="list" desc="NBA咨询下的“排行”页面" template_path="NBAInfomationOrderList.jsp" preview_path="NBAInfomationOrderList.jsp">
+	        <param name="infomationCategoryCode" type="category" default_value="" desc="NAB咨询二级菜单">
+        </param>
+	         <param name="menuCategoryCode" type="category" default_value="" desc="NBA一级菜单">
+        </param>
+	         <param name="hotDownCategoryCode" type="category" default_value="" desc="跑马灯">
+        </param>
+	         <param name="bgImg" type="image" default_value="" desc="背景图片">
+        </param>
+	  	</template>
+     <template name="NBAEvents" type="list" desc="1280版NBA赛事列表页模版" template_path="NBAEvents.jsp" preview_path="preview/NBAEvents.jpg">
+	        <param name="secondCategoryCode" type="category" default_value="" desc="二级菜单内容">
+        </param>
+	         <param name="contentCategoryCode" type="category" default_value="" desc="内容部分">
+        </param>
+	         <param name="rightUpCategoryCode" type="category" default_value="" desc="右上推荐图">
+        </param>
+	         <param name="rightDownCategoryCode" type="category" default_value="" desc="右下推荐图">
+        </param>
+	         <param name="menuCategoryCode" type="category" default_value="" desc="导航菜单">
+        </param>
+	         <param name="hotDownCategoryCode" type="category" default_value="" desc="跑马灯内容">
+        </param>
+	         <param name="bgImg" type="image" default_value="" desc="背景图">
+        </param>
+	  	</template>
+  </TemplatePackage>

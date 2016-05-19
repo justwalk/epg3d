@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE sqlMap      
+    PUBLIC "-//ibatis.apache.org//DTD SQL Map 2.0//EN"      
+    "http://ibatis.apache.org/dtd/sql-map-2.dtd">
+
+
+<sqlMap namespace="EpgCustomer">
+  
+  <resultMap id="EpgCustomer-result" class="sitv.epg.entity.customer.EpgCustomer">
+  	<result property="id" column="ID" />
+  	<result property="gendar" column="GENDAR" />
+  	<result property="code" column="CUSTOMER_CODE" />
+  	<result property="accountId" column="ACCOUNT_ID" />
+  	<result property="birthday" column="BIRTHDAY" />
+  	<result property="phoneNumber" column="PHONENUMBER" />
+	<result property="status" column="CUSTOMER_STATUS" />
+	<result property="icon" column="ICON" />
+	<result property="bigIcon" column="BIG_ICON" />
+	<result property="createTime" column="CREATE_TIME" />
+	<result property="updateTime" column="UPDATE_TIME" />
+	<result property="reserve1" column="RESERVE1" />
+	<result property="reserve2" column="RESERVE2" />
+	<result property="reserve3" column="RESERVE3" />
+  </resultMap>
+  
+	<insert id="insertCustomer" parameterClass="sitv.epg.entity.customer.EpgCustomer">
+		<![CDATA[  
+		INSERT INTO EPG_CUSTOMER(GENDAR,CUSTOMER_CODE,ACCOUNT_ID,BIRTHDAY,PHONENUMBER,CUSTOMER_STATUS,ICON,BIG_ICON,CREATE_TIME) VALUES (#gendar#,#code#,#accountId#,#birthday#,#phoneNumber#,#status#,#icon#,#bigIcon#,#createTime#) 
+	   	]]>
+	</insert>
+	
+	<update id="updateCustomer" parameterClass="sitv.epg.entity.customer.EpgCustomer">
+		<![CDATA[ 
+		UPDATE 	EPG_CUSTOMER SET GENDAR=#gendar#,BIRTHDAY=#birthday#,PHONENUMBER=#phoneNumber#,ICON=#icon#,UPDATE_TIME=#updateTime# WHERE ID=#id#
+			]]>
+	</update>
+
+
+
+</sqlMap>

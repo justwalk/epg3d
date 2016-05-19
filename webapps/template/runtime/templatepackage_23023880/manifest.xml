@@ -1,0 +1,97 @@
+<?xml version="1.0" encoding="GBK"?>
+<TemplatePackage author="" desc="" label="">
+     <template name="index_news" type="index" desc="新闻看吧首页模板" template_path="index_news.jsp" preview_path="preview/index_news.jpg">
+	        <param name="menuCategoryCode" type="category" default_value="" desc="菜单栏目">
+        </param>
+	         <param name="newsFocusCagegoryCode" type="category" default_value="" desc="焦点新闻">
+        </param>
+	         <param name="newsCategoryCode" type="category" default_value="" desc="左侧内容">
+        </param>
+	         <param name="fixTopicCategoryCode" type="category" default_value="" desc="右上固定栏目">
+        </param>
+        	 <param name="recommendTopicCategoryCode" type="category" default_value="" desc="右下推荐栏目">
+        </param>
+			 <param name="fixTopicImgCategoryCode" type="category" default_value="" desc="右上固定栏目的图片">
+        </param>
+	         <param name="bgImg" type="image" default_value="" desc="背景大图">
+        </param>
+	</template>
+	
+	<template name="list_news" type="list" desc="新闻看吧首页列表模板" template_path="list_news.jsp" preview_path="preview/index_news.jpg">
+	        <param name="menuCategoryCode" type="category" default_value="" desc="菜单栏目">
+        </param>
+	         <param name="newsFocusCagegoryCode" type="category" default_value="" desc="焦点新闻">
+        </param>
+	         <param name="newsCategoryCode" type="category" default_value="" desc="左侧内容(不绑定则取栏目内容)">
+        </param>
+	         <param name="fixTopicCategoryCode" type="category" default_value="" desc="右上固定栏目">
+        </param>
+        	 <param name="recommendTopicCategoryCode" type="category" default_value="" desc="右下推荐栏目">
+        </param>
+        	 <param name="fixTopicImgCategoryCode" type="category" default_value="" desc="右上固定栏目的图片">
+        </param>
+	         <param name="bgImg" type="image" default_value="" desc="背景大图">
+        </param>
+	</template>
+	
+	<template name="list_classifyNews" type="list" desc="分类新闻页面表模板" template_path="list_classifyNews.jsp" preview_path="preview/list_classifyNews.jpg">
+	        <param name="menuCategoryCode" type="category" default_value="" desc="菜单栏目">
+        </param>
+	         <param name="newsCategoryCode" type="category" default_value="" desc="左侧内容(不绑定则取栏目内容)">
+        </param>
+	         <param name="fixTopicCategoryCode" type="category" default_value="" desc="右上固定栏目">
+        </param>
+       		 <param name="fixTopicImgCategoryCode" type="category" default_value="" desc="右上固定栏目的图片">
+        </param>
+        	 <param name="recommendTopicCategoryCode" type="category" default_value="" desc="右下推荐栏目">
+        </param>
+	         <param name="bgImg" type="image" default_value="" desc="背景大图">
+        </param>
+	</template>
+	
+	
+	<template name="list_hotTopic" type="list" desc="热点栏目页面列表模板" template_path="list_hotTopic.jsp" preview_path="preview/list_hotTopic.jpg">
+	         <param name="newsCategoryCode" type="category" default_value="" desc="左侧内容(不绑定则取栏目内容)">
+        </param>
+        	 <param name="titleCategoryCode" type="category" default_value="" desc="标题栏目">
+        </param>
+	         <param name="rightUpCategoryCode" type="category" default_value="" desc="右上栏目">
+        </param>
+        	 <param name="rightDownCategoryCode" type="category" default_value="" desc="右下栏目">
+        </param>
+	         <param name="bgImg" type="image" default_value="" desc="背景大图">
+        </param>
+	</template>
+	
+	<template name="list_commentTopic" type="list" desc="评论栏目页面列表模板" template_path="list_commentTopic.jsp" preview_path="preview/list_commentTopic.jpg">
+	        <param name="menuCategoryCode" type="category" default_value="" desc="菜单栏目">
+        </param>
+	         <param name="commentCategoryCode" type="category" default_value="" desc="评论内容栏目">
+        </param>
+	         <param name="bgImg" type="image" default_value="" desc="背景大图">
+        </param>
+	</template>
+	
+	<!--
+		*********************************************************************************************************
+		*****当栏目满足一下规则时newsCategoryCode、rightUpCategoryCode、rightDownCategoryCode三个模板参数可以不绑定	*****
+		*****  ——评论栏目		   	(父栏目)																		*****
+		*****    ——评论栏目内容	(第一个子栏目 其中是新闻内容)													*****
+		*****    ——评论栏目右上图  (第二个子栏目)																	*****
+		*****    ——评论栏目右下图  (第三个子栏目)																	*****
+		*****如栏目结构不按如此建立则需要一个个页面绑定所要显示的内容													*****
+		******************************            by cc   *******************************************************
+	-->
+	<template name="list_commentInfo" type="list" desc="具体评论栏目页面" template_path="list_commentInfo.jsp" preview_path="preview/list_commentInfo.jpg">
+	        <param name="menuCategoryCode" type="category" default_value="" desc="菜单栏目">
+        </param>
+	         <param name="newsCategoryCode" type="category" default_value="" desc="左侧内容(不绑定则取栏目内容)">
+        </param>
+	         <param name="rightUpCategoryCode" type="category" default_value="" desc="右上栏目(不绑定则取栏目内容)">
+        </param>
+        	 <param name="rightDownCategoryCode" type="category" default_value="" desc="右下栏目(不绑定则取栏目内容)">
+        </param>
+	         <param name="bgImg" type="image" default_value="" desc="背景大图">
+        </param>
+	</template>
+ </TemplatePackage>

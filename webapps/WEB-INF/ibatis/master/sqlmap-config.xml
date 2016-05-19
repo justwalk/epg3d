@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE sqlMapConfig PUBLIC "-//iBATIS.com//DTD SQL Map Config 2.0//EN" "http://www.ibatis.com/dtd/sql-map-config-2.dtd">
+<sqlMapConfig>
+ <settings cacheModelsEnabled="true" enhancementEnabled="true"  
+        statementCachingEnabled="true" maxSessions="512" maxTransactions="128"  
+        maxRequests="1024" /> 
+	<sqlMap url="file:///C:/projects/sitv/EPG_3D/webapps/WEB-INF/ibatis/master/EpgUserCollection.xml" />
+	<sqlMap url="file:///C:/projects/sitv/EPG_3D/webapps/WEB-INF/ibatis/master/EpgSubscriber.xml" />
+	<sqlMap url="file:///C:/projects/sitv/EPG_3D/webapps/WEB-INF/ibatis/master/EpgSubscriberPpv.xml" />
+	<sqlMap url="file:///C:/projects/sitv/EPG_3D/webapps/WEB-INF/ibatis/master/EpgUserVote.xml" />
+	<sqlMap url="file:///C:/projects/sitv/EPG_3D/webapps/WEB-INF/ibatis/master/EpgUserSeriesmark.xml" />
+	<sqlMap url="file:///C:/projects/sitv/EPG_3D/webapps/WEB-INF/ibatis/master/EpgCustomer.xml" />
+	<sqlMap url="file:///C:/projects/sitv/EPG_3D/webapps/WEB-INF/ibatis/master/EpgUserHistory.xml" />
+</sqlMapConfig>

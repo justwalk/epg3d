@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="GBK"?>
+<TemplatePackage author="" desc="" label="">
+    <template name="exclusiveIndex" type="index" desc="独家首页模板" template_path="exclusiveIndex" preview_path="preview/exclusiveIndex.jpg">
+	        <param name="menuLeftCategoryCode" type="category" default_value="" desc="左侧导航">
+        </param>
+	         <param name="rightCategoryCode" type="category" default_value="" desc="右侧内容">
+        </param>
+	         <param name="centerCategoryCode" type="category" default_value="" desc="中间内容">
+        </param>
+	         <param name="leftCategoryCode" type="category" default_value="" desc="左侧内容">
+        </param>
+	         <param name="menuCategoryCode" type="category" default_value="" desc="菜单内容">
+        </param>
+	  	</template>
+     <template name="videoMagazine" type="list" desc="视频杂志列表页模板" template_path="videoMagazine" preview_path="preview/videoMagazine.jpg">
+	        <param name="rightCategoryCode" type="category" default_value="" desc="内容部分">
+        </param>
+	         <param name="menuCategoryCode" type="category" default_value="" desc="菜单内容">
+        </param>
+	  	</template>
+     <template name="planningAlbum" type="list" desc="专题策划列表页模板" template_path="planningAlbum" preview_path="preview/planningAlbum.jpg">
+	        <param name="rightCategoryCode" type="category" default_value="" desc="内容部分">
+        </param>
+	  	</template>
+  </TemplatePackage>

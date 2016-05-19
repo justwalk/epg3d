@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE sqlMapConfig PUBLIC "-//iBATIS.com//DTD SQL Map Config 2.0//EN" "http://www.ibatis.com/dtd/sql-map-config-2.dtd">
+<sqlMapConfig>
+ <settings cacheModelsEnabled="true" enhancementEnabled="true"  
+        statementCachingEnabled="true" maxSessions="512" maxTransactions="128"  
+        maxRequests="1024" /> 
+	<sqlMap url="file:///C:/projects/sitv/EPG_3D/webapps/WEB-INF/ibatis/EpgBusiness.xml" />	
+	<sqlMap url="file:///C:/projects/sitv/EPG_3D/webapps/WEB-INF/ibatis/EpgPosition.xml" />	
+	<sqlMap url="file:///C:/projects/sitv/EPG_3D/webapps/WEB-INF/ibatis/EpgSubjectArea.xml" />	
+	<sqlMap url="file:///C:/projects/sitv/EPG_3D/webapps/WEB-INF/ibatis/EpgSubjectPage.xml" />	
+	<sqlMap url="file:///C:/projects/sitv/EPG_3D/webapps/WEB-INF/ibatis/EpgTemplateBind.xml" />
+	<sqlMap url="file:///C:/projects/sitv/EPG_3D/webapps/WEB-INF/ibatis/EpgContentMedia.xml" />	
+	<sqlMap url="file:///C:/projects/sitv/EPG_3D/webapps/WEB-INF/ibatis/EpgEpisode.xml" />
+	<sqlMap url="file:///C:/projects/sitv/EPG_3D/webapps/WEB-INF/ibatis/EpgLiveChannelParam.xml" /> 
+	<sqlMap url="file:///C:/projects/sitv/EPG_3D/webapps/WEB-INF/ibatis/EpgProgram.xml" />
+	<sqlMap url="file:///C:/projects/sitv/EPG_3D/webapps/WEB-INF/ibatis/EpgSchedule.xml" />
+	<sqlMap url="file:///C:/projects/sitv/EPG_3D/webapps/WEB-INF/ibatis/EpgSeries.xml" />
+	<sqlMap url="file:///C:/projects/sitv/EPG_3D/webapps/WEB-INF/ibatis/EpgCategory.xml" />
+	<sqlMap url="file:///C:/projects/sitv/EPG_3D/webapps/WEB-INF/ibatis/EpgCategoryItem.xml" />
+	<sqlMap url="file:///C:/projects/sitv/EPG_3D/webapps/WEB-INF/ibatis/EpgContentLabel.xml" />
+	<sqlMap url="file:///C:/projects/sitv/EPG_3D/webapps/WEB-INF/ibatis/EpgContentMark.xml" />
+	<sqlMap url="file:///C:/projects/sitv/EPG_3D/webapps/WEB-INF/ibatis/EpgUserCollection.xml" />
+	<sqlMap url="file:///C:/projects/sitv/EPG_3D/webapps/WEB-INF/ibatis/EpgHostProFile.xml" />
+	<sqlMap url="file:///C:/projects/sitv/EPG_3D/webapps/WEB-INF/ibatis/EpgSubscriber.xml" />
+	<sqlMap url="file:///C:/projects/sitv/EPG_3D/webapps/WEB-INF/ibatis/EpgContentOffering.xml" />
+	<sqlMap url="file:///C:/projects/sitv/EPG_3D/webapps/WEB-INF/ibatis/EpgSubscriberPpv.xml" />
+	<sqlMap url="file:///C:/projects/sitv/EPG_3D/webapps/WEB-INF/ibatis/EpgUserVote.xml" />
+	<sqlMap url="file:///C:/projects/sitv/EPG_3D/webapps/WEB-INF/ibatis/EpgLiveChannel.xml" />
+	<sqlMap url="file:///C:/projects/sitv/EPG_3D/webapps/WEB-INF/ibatis/EpgUserSeriesmark.xml" />
+	<sqlMap url="file:///C:/projects/sitv/EPG_3D/webapps/WEB-INF/ibatis/EpgCustomer.xml" />
+	<sqlMap url="file:///C:/projects/sitv/EPG_3D/webapps/WEB-INF/ibatis/EpgUserHistory.xml" />
+	<sqlMap url="file:///C:/projects/sitv/EPG_3D/webapps/WEB-INF/ibatis/EpgRelContent.xml" />
+	<sqlMap url="file:///C:/projects/sitv/EPG_3D/webapps/WEB-INF/ibatis/EpgUserBookmark.xml" />
+</sqlMapConfig>

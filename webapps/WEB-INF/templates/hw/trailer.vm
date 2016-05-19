@@ -1,0 +1,13 @@
+<div id="smallvod" style="top:${parameters.top}px; left: ${parameters.left}px; width: ${parameters.width}px; height: ${parameters.height}px;position: absolute;">
+  <script language="javascript">
+  <!--
+    var epgdomain = Authentication.CTCGetConfig("EPGDomain");
+    var last = epgdomain.lastIndexOf("/");
+    var host = epgdomain.substr(0, last);
+    document.write("<iframe name='if_smallscreen' width='${parameters.width}' height='${parameters.height}' src='");
+    document.write(host);
+    document.write("/MediaService/SmallScreen?ContentID=${video}&Left=${parameters.left}&Top=${parameters.top}&Width=${parameters.width}&Height=${parameters.height}'");
+    document.write(" frameborder='no' scrolling='no'></iframe>");
+  //-->
+  </script>
+</div>

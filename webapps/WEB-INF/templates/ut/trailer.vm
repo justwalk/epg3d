@@ -1,0 +1,9 @@
+<script src="http://222.68.195.50/info/utsmallplay.php?position_x=${parameters.left}&position_y=${parameters.top}&window_width=${parameters.width}&window_height=${parameters.height}&media_code=${video}">
+</script>
+<script language="javascript">
+<!--
+  function video_play(){
+    play_trailer();
+  }
+//-->
+</script> 

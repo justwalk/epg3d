@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE sqlMap      
+    PUBLIC "-//ibatis.apache.org//DTD SQL Map 2.0//EN"      
+    "http://ibatis.apache.org/dtd/sql-map-2.dtd">
+
+<sqlMap namespace="EpgSeries">
+	<resultMap id="series-result" class="sitv.epg.entity.content.EpgSeries">
+		<result property="contentId" column="CONTENT_ID" />
+		<result property="contentCode" column="CONTENT_CODE" />
+		<result property="title" column="TITLE" />
+		<result property="titleBrief" column="TITLE_BRIEF" />
+		<result property="poster" column="POSTER" />
+		<result property="still" column="STILL" />
+		<result property="icon" column="ICON" />
+		<result property="actors" column="ACTORS" />
+		<result property="director" column="DIRECTOR" />
+		<result property="summaryMedium" column="SUMMARY_MEDIUM" />
+		<result property="level" column="PROGRAM_LEVEL" />
+		<result property="episodeNumber" column="EPISODE_NUMBER" />
+		<result property="writer" column="WRITER" />
+		<result property="reserve1" column="RESERVE1" />
+		<result property="year" column="YEAR" />
+		<result property="countryOfOrigin" column="COUNTRY_OF_ORIGIN" />
+		<result property="dub" column="VOD_DUB" />
+		<result property="caption" column="VOD_CAPTION" />
+		<result property="tags" column="TAGS" />
+		<result property="mainFolder" column="MAIN_FOLDER"/>
+		<result property="hdType" column="HD_TYPE"/>
+		<!-- 高标清混排 20140311 wangkai -->
+		<result property="relCode" column="REL_CODE"/>
+	</resultMap>
+
+	<cacheModel id="querySeriesByCode_CM" type="LRU" readOnly="true"
+		serialize="false">
+		<flushInterval minutes="5" />
+		<property name="cache-size" value="5000" />
+	</cacheModel>
+	<statement id="querySeriesByCode" resultMap="series-result"
+		cacheModel="querySeriesByCode_CM">
+		<![CDATA[
+            select CONTENT_ID,CONTENT_CODE,TITLE,TITLE_BRIEF,POSTER,STILL,ICON,ACTORS,DIRECTOR,SUMMARY_MEDIUM,
+            PROGRAM_LEVEL,EPISODE_NUMBER,WRITER,RESERVE1,YEAR,COUNTRY_OF_ORIGIN,VOD_DUB,VOD_CAPTION,TAGS,MAIN_FOLDER,HD_TYPE,REL_CODE from EPG_CONTENT_SERIES where CONTENT_CODE = #contentCode#
+        ]]>
+	</statement>
+</sqlMap>

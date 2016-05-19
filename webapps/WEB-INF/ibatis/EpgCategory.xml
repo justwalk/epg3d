@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE sqlMap      
+    PUBLIC "-//ibatis.apache.org//DTD SQL Map 2.0//EN"      
+    "http://ibatis.apache.org/dtd/sql-map-2.dtd">
+	<!-- 
+
+ -->
+<sqlMap namespace="EpgCategory">
+
+	<resultMap id="epgCategory-result" class="sitv.epg.entity.edit.EpgCategory">
+		<result property="id" column="ID" />
+		<result property="name" column="NAME" />
+		<result property="title" column="TITLE" />
+		<result property="code" column="CODE" />
+		<result property="activeStatus" column="ACTIVE_STATUS" />
+		<result property="chindIndex" column="CHILD_INDEX" />
+		<result property="parentCategoryCode" column="PARENT_CODE" />
+		<result property="locationString" column="LOCATE_STRING" />
+		<result property="categoryIcon" column="CATEGORY_ICON" />
+		<result property="backgroud" column="BACKGROUND" />
+		<result property="description" column="DESCRIPTION" />
+		<result property="serviceType" column="SERVICE_TYPES" />
+	</resultMap>
+	<!-- 根据code查询分类 cachemodel="getCategoryByCode_cacheModel" -->
+
+	<cacheModel id="getCategoryByCode_CM" type="LRU" readOnly="true"
+		serialize="false">
+		<flushInterval minutes="5" />
+		<property name="cache-size" value="1000" />
+	</cacheModel>
+
+	<statement id="getCategoryByCode" resultMap="epgCategory-result"
+		cacheModel="getCategoryByCode_CM">
+		<![CDATA[		   
+            select * from EPG_CATEGORY where code = #categoryCode#  
+        ]]>
+	</statement>
+	<!-- 根据id查询分类  cachemodel="getCategoryById_cacheModel" -->
+	<cacheModel id="getCategoryById_CM" type="LRU" readOnly="true"
+		serialize="false">
+		<flushInterval minutes="5" />
+		<property name="cache-size" value="1000" />
+	</cacheModel>
+	<statement id="getCategoryById" resultMap="epgCategory-result"
+		cacheModel="getCategoryById_CM">
+		<![CDATA[		   
+            select * from EPG_CATEGORY where id = #categoryId#  
+        ]]>
+	</statement>
+</sqlMap>

@@ -1,0 +1,238 @@
+﻿<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE sqlMap      
+    PUBLIC "-//ibatis.apache.org//DTD SQL Map 2.0//EN"      
+    "http://ibatis.apache.org/dtd/sql-map-2.dtd">
+
+<sqlMap namespace="EpgProgram">
+	<resultMap id="programDetail-result" class="sitv.epg.entity.content.EpgDetailProgram">
+		<result property="contentId" column="CONTENT_ID" />
+		<result property="contentCode" column="CONTENT_CODE" />
+		<result property="title" column="TITLE" />
+		<result property="titleBrief" column="TITLE_BRIEF" />
+		<result property="enableStatus" column="ENABLE_STATUS" />
+		<result property="countryOfOrigin" column="COUNTRY_OF_ORIGIN" />
+		<result property="year" column="YEAR" />
+		<result property="director" column="DIRECTOR" />
+		<result property="actors" column="ACTORS" />
+		<result property="summaryMedium" column="SUMMARY_MEDIUM" />
+		<result property="summaryShort" column="SUMMARY_SHORT" />
+		<result property="keyword" column="KEY_WORD" />
+		<result property="remark" column="REMARK" />
+		<result property="level" column="PROGRAM_LEVEL" />
+		<result property="createDate" column="CREATION_DATE" />
+		<result property="poster" column="POSTER" />
+		<result property="still" column="STILL" />
+		<result property="icon" column="ICON" />
+		<result property="episodeNumber" column="EPISODE_NUMBER" />
+		<result property="runTime" column="RUN_TIME" />
+		<result property="displayRunTime" column="DISPLAY_RUN_TIME" />
+		<result property="contentType" column="CONTENT_TYPE" />
+		<result property="programType" column="PROGRAM_TYPE" />
+		<result property="suggestedPrice" column="SUGGESTED_PRICE" />
+		<result property="reserve1" column="RESERVE1" />
+		<result property="dub" column="VOD_DUB" />
+		<result property="caption" column="VOD_CAPTION" />
+		<result property="tags" column="TAGS" />
+		<result property="mainFolder" column="MAIN_FOLDER"/>
+		<result property="hdType" column="HD_TYPE" />
+		<!--  高标清混排 20140311 wangkai -->
+		<result property="relCode" column="REL_CODE" />
+	</resultMap>
+
+	<resultMap id="playableProgram-result" class="sitv.epg.entity.content.EpgPlayableContent">
+		<result property="contentId" column="CONTENT_ID" />
+		<result property="contentCode" column="CONTENT_CODE" />
+		<result property="title" column="TITLE" />
+		<result property="titleBrief" column="TITLE_BRIEF" />
+		<result property="poster" column="POSTER" />
+		<result property="still" column="STILL" />
+		<result property="icon" column="ICON" />
+		<result property="actors" column="ACTORS" />
+		<result property="director" column="DIRECTOR" />
+		<result property="provider" column="PROVIDER" />
+		<result property="summaryMedium" column="SUMMARY_MEDIUM" />
+		<result property="level" column="PROGRAM_LEVEL" />
+		<result property="displayRunTime" column="DISPLAY_RUN_TIME" />
+		<result property="runTime" column="RUN_TIME" />
+		<result property="product" column="PRODUCT" />
+		<result property="suggestedPrice" column="SUGGESTED_PRICE" />
+		<result property="offeringId" column="OFFERING_ID" />
+		<result property="serviceType" column="SERVICE_TYPE" />
+		<result property="serviceName" column="SERVICE_NAME" />
+		<result property="serviceCode" column="SERVICE_CODE" />
+		<result property="fileName" column="FILE_NAME" />
+		<result property="format" column="FORMAT" />
+		<result property="birate" column="BITRATE" />
+		<result property="hd" column="HIGN_DEFITION" />
+		<result property="type" column="TYPE" />
+		<result property="audioType" column="AUDIO_TYPE" />
+		<result property="maximumViewingLength" column="MAXIMUM_VIEWING_LENGTH" />
+		<result property="programType" column="PROGRAM_TYPE" />
+		<result property="assetId" column="ASSET_ID" />
+		<result property="providerId" column="PROVIDER_ID" />
+		<result property="dub" column="VOD_DUB" />
+		<result property="caption" column="VOD_CAPTION" />
+		<result property="packageAssetId" column="ASSETID"/>
+	</resultMap>
+
+
+	<resultMap id="serachProgram-result" class="sitv.epg.entity.content.SearchEpgProgram">
+		<result property="title" column="TITLE" />
+		<result property="contentId" column="CONTENT_ID" />
+		<result property="contentCode" column="CONTENT_CODE" />
+		<result property="contentType" column="CONTENT_TYPE" />
+		<result property="enableStatus" column="ENABLE_STATUS" />
+		<result property="countAll" column="count_all" />
+		<result property="countMovie" column="count_movie" />
+		<result property="countEpisode" column="count_episode" />
+	</resultMap>
+
+	<!-- 按照contentCode to get program -->
+	<cacheModel id="queryProgramDetailByCode_CM" type="LRU"
+		readOnly="true" serialize="false">
+		<flushInterval minutes="5" />
+		<property name="cache-size" value="100000" />
+	</cacheModel>
+	<statement id="queryProgramDetailByCode" resultMap="programDetail-result"
+		cacheModel="queryProgramDetailByCode_CM">
+		<![CDATA[
+            select * from CONTENT_WITH_PIC where CONTENT_CODE = #contentCode#
+        ]]>
+	</statement>
+
+
+	<!-- 按照contentCode to get program -->
+	<cacheModel id="queryPlayableProgramCode_CM" type="LRU"
+		readOnly="true" serialize="false">
+		<flushInterval minutes="5" />
+		<property name="cache-size" value="100000" />
+	</cacheModel>
+	<statement id="queryPlayableProgramCode" resultMap="playableProgram-result"
+		cacheModel="queryPlayableProgramCode_CM">
+		<![CDATA[
+           select a.CONTENT_ID,a.CONTENT_CODE,a.title,a.title_brief,a.poster,a.still,a.icon,a.ACTORS,a.director,a.provider,
+a.SUMMARY_MEDIUM,a.PROGRAM_LEVEL,a.DISPLAY_RUN_TIME,a.RUN_TIME,a.product, a.suggested_price,a.offering_id,
+a.service_type,a.service_code,a.service_name, b.FILE_NAME,b.format,b.BITRATE,ifnull(b.HIGN_DEFITION,0) as HIGN_DEFITION,b.TYPE,b.audio_type,a.MAXIMUM_VIEWING_LENGTH,a.TYPE as PROGRAM_TYPE,a.PROVIDER_ID,b.ASSET_ID,a.VOD_DUB,a.VOD_CAPTION,a.ASSETID
+from EPG_CONTENT_PROGRAM a left join EPG_CONTENT_MEDIA b on a.content_code = b.content_code
+ where a.content_code = #contentCode#
+        ]]>
+	</statement>
+
+	<!-- 按照seriesCode、episodeIndex to get program -->
+	<cacheModel id="queryPlayableProgramCodeBySeriesCodeAndEpisodeIndex_CM"
+		type="LRU" readOnly="true" serialize="false">
+		<flushInterval minutes="5" />
+		<property name="cache-size" value="100000" />
+	</cacheModel>
+	<statement id="queryPlayableProgramCodeBySeriesCodeAndEpisodeIndex"
+		resultMap="playableProgram-result" cacheModel="queryPlayableProgramCodeBySeriesCodeAndEpisodeIndex_CM">
+		<![CDATA[
+           select a.CONTENT_ID,a.CONTENT_CODE,a.title,a.title_brief,a.poster,a.still,a.icon,a.ACTORS,a.director,a.provider,
+a.SUMMARY_MEDIUM,a.PROGRAM_LEVEL,a.DISPLAY_RUN_TIME,a.RUN_TIME,a.product, a.suggested_price,a.offering_id,
+a.service_type,a.service_code,a.service_name, b.FILE_NAME,b.format,b.BITRATE,ifnull(b.HIGN_DEFITION,0) as HIGN_DEFITION,b.TYPE,b.audio_type,a.MAXIMUM_VIEWING_LENGTH,a.TYPE as PROGRAM_TYPE,a.PROVIDER_ID,b.ASSET_ID,a.VOD_DUB,a.VOD_CAPTION,a.ASSETID  
+from EPG_CONTENT_PROGRAM a, EPG_CONTENT_MEDIA b,EPG_CONTENT_EPISODE c where a.content_code = b.content_code and a.content_code = c.content_code and c.series_code = #seriesCode# and c.episode_index = #episodeIndex#
+        ]]>
+	</statement>
+
+
+
+	<!-- 按照serviceType and contentCode to get program -->
+	<cacheModel id="queryPlayableProgramCodeByServiceTypeAndContentCode_CM"
+		type="LRU" readOnly="true" serialize="false">
+		<flushInterval minutes="5" />
+		<property name="cache-size" value="100000" />
+	</cacheModel>
+	<statement id="queryPlayableProgramCodeByServiceTypeAndContentCode"
+		resultMap="playableProgram-result" cacheModel="queryPlayableProgramCodeByServiceTypeAndContentCode_CM">
+		<![CDATA[
+           select a.CONTENT_ID,a.CONTENT_CODE,a.title,a.title_brief,a.poster,a.still,a.icon,a.ACTORS,a.director,a.provider,
+a.SUMMARY_MEDIUM,a.PROGRAM_LEVEL,a.DISPLAY_RUN_TIME,a.RUN_TIME,a.product, a.suggested_price,a.offering_id,
+a.service_type,a.service_code,a.service_name, b.FILE_NAME,b.format,b.BITRATE,nvl(b.HIGN_DEFITION,0) as HIGN_DEFITION,b.TYPE,b.audio_type,a.MAXIMUM_VIEWING_LENGTH,a.TYPE,a.PROVIDER_ID,b.ASSET_ID,a.VOD_DUB,a.VOD_CAPTION,a.ASSETID
+from EPG_CONTENT_PROGRAM a left join EPG_CONTENT_MEDIA b on a.content_code = b.content_code
+ where a.content_code = #contentCode# and a.service_type = #serviceType#
+        ]]>
+	</statement>
+
+	<!-- 按照offering to get program -->
+	<cacheModel id="queryPlayableProgramCodeByOfferingId_CM"
+		type="LRU" readOnly="true" serialize="false">
+		<flushInterval minutes="5" />
+		<property name="cache-size" value="100000" />
+	</cacheModel>
+	<statement id="queryPlayableProgramCodeByOfferingId"
+		resultMap="playableProgram-result" cacheModel="queryPlayableProgramCodeByOfferingId_CM">
+		<![CDATA[
+           select a.CONTENT_ID,a.CONTENT_CODE,a.title,a.title_brief,a.poster,a.still,a.icon,a.ACTORS,a.director,a.provider,
+a.SUMMARY_MEDIUM,a.PROGRAM_LEVEL,a.DISPLAY_RUN_TIME,a.RUN_TIME,a.product, a.suggested_price,a.offering_id,
+a.service_type,a.service_code,a.service_name, b.FILE_NAME,b.format,b.BITRATE,ifnull(b.HIGN_DEFITION,0) as HIGN_DEFITION,b.TYPE,b.audio_type,a.MAXIMUM_VIEWING_LENGTH,a.TYPE,a.PROVIDER_ID,b.ASSET_ID,a.VOD_DUB,a.VOD_CAPTION
+from EPG_CONTENT_PROGRAM a left join EPG_CONTENT_MEDIA b on a.content_code = b.content_code
+ where a.offering_id = #offeringId#
+        ]]>
+	</statement>
+
+
+	<!-- 按照contentCode to get program -->
+	<cacheModel id="queryProgramDetailByInitals_CM" type="LRU"
+		readOnly="true" serialize="false">
+		<flushInterval minutes="5" />
+		<property name="cache-size" value="100000" />
+	</cacheModel>
+	<statement id="queryProgramDetailByInitals" resultMap="serachProgram-result"
+		cacheModel="queryProgramDetailByInitals_CM">
+        <!-- 
+			<![CDATA[
+	             select a.TITLE,a.CONTENT_ID,a.CONTENT_CODE,a.CONTENT_TYPE,a.ENABLE_STATUS
+	             from CONTENT_WITH_PIC a, EPG_CATEGORY_ITEM b 
+	             where a.PROGRAM_TYPE!='episode' 
+	             and a.TITLE_TYPE!='RTV' 
+	             and a.ENABLE_STATUS=1 
+	             and b.STATUS=0 
+	             and b.ITEM_CODE=a.CONTENT_CODE 
+	             and (a.TITLE like concat('%',#initals#,'%') or 
+	             	  	UPPER(a.SEARCH_NAME) like concat('%',#initals#,'%')) 
+	         	 and a.MAIN_FOLDER like #mainFolder#
+	         	 group by a.TITLE,a.CONTENT_ID,a.CONTENT_CODE,a.CONTENT_TYPE,a.ENABLE_STATUS
+	        ]]>
+        -->
+        <![CDATA[
+             select distinct a.*,temp_all.count_all,temp_movie.count_movie,temp_episode.count_episode 
+			from (select a.TITLE,a.CONTENT_ID,a.CONTENT_CODE,a.CONTENT_TYPE,a.ENABLE_STATUS
+			from CONTENT_WITH_PIC a
+			join EPG_CATEGORY_ITEM b on a.CONTENT_CODE = b.ITEM_CODE
+			where a.PROGRAM_TYPE!='episode' 
+			   and a.MAIN_FOLDER like #mainFolder#
+			   and a.TITLE_TYPE!='RTV' and a.ENABLE_STATUS=1 
+			   and (a.product!='MOD' or a.product is null) 
+			   and (a.TITLE like #initals# or UPPER(a.SEARCH_NAME) like #initals#)
+			   and b.STATUS=0) as a
+			join (select count(distinct a.content_code) as count_all
+			from CONTENT_WITH_PIC a
+			join EPG_CATEGORY_ITEM b on a.CONTENT_CODE = b.ITEM_CODE
+			where a.PROGRAM_TYPE!='episode' 
+			   and a.MAIN_FOLDER like '%%'
+			   and a.TITLE_TYPE!='RTV' and a.ENABLE_STATUS=1 
+			   and (a.product!='MOD' or a.product is null) 
+			   and (a.TITLE like #initals# or UPPER(a.SEARCH_NAME) like #initals#)
+			   and b.STATUS=0) temp_all on 1=1
+			join (select count(distinct a.content_code) as count_movie
+			from CONTENT_WITH_PIC a
+			join EPG_CATEGORY_ITEM b on a.CONTENT_CODE = b.ITEM_CODE
+			where a.PROGRAM_TYPE!='episode' 
+			   and a.MAIN_FOLDER like '%电影%'
+			   and a.TITLE_TYPE!='RTV' and a.ENABLE_STATUS=1 
+			   and (a.product!='MOD' or a.product is null) 
+			   and (a.TITLE like #initals# or UPPER(a.SEARCH_NAME) like #initals#)
+			   and b.STATUS=0) temp_movie on 1=1
+			join (select count(distinct a.content_code) as count_episode
+			from CONTENT_WITH_PIC a
+			join EPG_CATEGORY_ITEM b on a.CONTENT_CODE = b.ITEM_CODE
+			where a.PROGRAM_TYPE!='episode' 
+			   and a.MAIN_FOLDER like '%电视剧%'
+			   and a.TITLE_TYPE!='RTV' and a.ENABLE_STATUS=1 
+			   and (a.product!='MOD' or a.product is null) 
+			   and (a.TITLE like #initals# or UPPER(a.SEARCH_NAME) like #initals#)
+			   and b.STATUS=0) temp_episode on 1=1
+        ]]>
+	</statement>
+
+</sqlMap>

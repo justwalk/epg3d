@@ -1,0 +1,10 @@
+<td #if (${parameters.bgcolor}) bgcolor="${parameters.bgcolor}" #end 
+#if (${parameters.align}) align="${parameters.align}" #end 
+#if (${parameters.valign}) valign="${parameters.valign}"  #end  
+#if (${parameters.border}>0) border="${parameters.border}"  #end  
+#if($parameters.background && "" != $parameters.background) background="$parameters.background" #end   
+#if (${parameters.colspan}>0) colspan="${parameters.colspan}"  #end 
+#if (${parameters.height}>0) height="${parameters.height}"  #end  
+#if (${parameters.width}>0) width="${parameters.width}"  #end 
+#if($parameters.style) style="${parameters.style}" #end >
+ 

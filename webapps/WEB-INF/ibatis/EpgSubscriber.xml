@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE sqlMap      
+    PUBLIC "-//ibatis.apache.org//DTD SQL Map 2.0//EN"      
+    "http://ibatis.apache.org/dtd/sql-map-2.dtd">
+
+<sqlMap namespace="EpgSubscriber">
+	<resultMap id="EpgSubscriber-result" class="sitv.epg.entity.user.EpgSubscriber">
+		<result property="id" column="ID" />
+		<result property="userAccount" column="USER_ACCOUNT" />
+		<result property="macAddress" column="MAC_ADDRESS" />
+		<result property="ossUserId" column="OSS_USER_ID" />
+		<result property="userName" column="USER_NAME" />
+		<result property="address" column="ADDRESS" />
+		<result property="zipCode" column="ZIP_CODE" />
+		<result property="phoneNumber" column="PHONE_NUMBER" />
+		<result property="email" column="EMAIL" />
+		<result property="group" column="USER_GROUP" />
+		<result property="exploreName" column="EXPLORE_NAME" />
+		<result property="exploreVersion" column="EXPLORE_VERSION" />
+		<result property="networkId" column="NETWORK_ID" />
+		<result property="stbModel" column="STB_MODEL" />
+		<result property="stbType" column="STB_TYPE" />
+		<result property="rtspd" column="RTSPD" />
+		<result property="protocolType" column="PROTOCOL_TYPE" />
+	</resultMap>
+
+
+
+	<!-- 按自定义用户帐号查询订户,返回一个订户 -->
+	<statement id="getSubscriberByAccount" resultMap="EpgSubscriber-result">
+		<![CDATA[		   
+           select * from EPG_SUBSCRIBER where USER_ACCOUNT=#userAccount# 
+            ]]>
+	</statement>
+
+	<!-- 按mac地址查询订户,返回一个订户 -->
+	<statement id="getSubscriberByMacAddress" resultMap="EpgSubscriber-result">
+		<![CDATA[		   
+        	SELECT * FROM EPG_SUBSCRIBER WHERE MAC_ADDRESS=#macAddress# 
+        ]]>
+	</statement>
+
+	<!-- 按ocn userId 查询订户,可能有多个 -->
+	<statement id="getSubscriberByOSSUserId" resultMap="EpgSubscriber-result">
+		<![CDATA[		   
+        	SELECT * FROM EPG_SUBSCRIBER WHERE OSS_USER_ID=#ossUserId# 
+        ]]>
+	</statement>
+
+	<!-- 保存订户  -->
+	<!--
+		<statement id="saveSubscriber" resultMap="EpgSubscriber-result">
+		<![CDATA[ INSERT INTO EPG_SUBSCRIBER (ID, USER_ACCOUNT, MAC_ADDRESS,
+		OSS_USER_ID, USER_NAME, ADDRESS,ZIP_CODE,PHONE_NUMBER,EMAIL,
+		USER_GROUP,EXPLORE_NAME,EXPLORE_VERSION,NETWORK_ID,STB_MODEL,STB_TYPE,RTSPD,PROTOCOL_TYPE)
+		VALUES (EPG_SUBSCRIBER_SEQ.NEXTVAL, #USER_ACCOUNT#, #MAC_ADDRESS#,
+		#OSS_USER_ID#,
+		#USER_NAME#,#ADDRESS#,#ZIP_CODE#,#PHONE_NUMBER#,#EMAIL#,
+		#USER_GROUP#,#EXPLORE_NAME#,#EXPLORE_VERSION#,#NETWORK_ID#,#STB_MODEL#,#STB_TYPE#,#RTSPD#,#PROTOCOL_TYPE#)
+		]]> </statement>
+	-->
+</sqlMap>

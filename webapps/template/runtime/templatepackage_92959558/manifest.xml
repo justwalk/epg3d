@@ -1,0 +1,75 @@
+<?xml version="1.0" encoding="GBK"?>
+<TemplatePackage author="" desc="" label="">
+    <template name="largeIndex" type="index" desc="1280版大片首页模版" template_path="largeIndex.jsp" preview_path="preview/largeIndex.jsp.jpg">
+	        <param name="rightDownCategoryCode" type="category" default_value="" desc="右下特别企划">
+        </param>
+	         <param name="rushImgCategoryCode" type="category" default_value="" desc="抢先看图片推荐">
+        </param>
+	         <param name="rushContentCategoryCode" type="category" default_value="" desc="抢先看文字推荐">
+        </param>
+	         <param name="menuCategoryCode" type="category" default_value="" desc="菜单导航">
+        </param>
+	         <param name="leftImgCategoryCode" type="category" default_value="" desc="左侧强档好莱坞大图">
+        </param>
+	         <param name="leftContentCategoryCode" type="category" default_value="" desc="左侧强档好莱坞文字">
+        </param>
+	         <param name="middleImgCategoryCode" type="category" default_value="" desc="中间首映华语档大图">
+        </param>
+	         <param name="middleContentCategoryCode" type="category" default_value="" desc="中间首映华语档文字">
+        </param>
+	         <param name="rightUpCategoryCode" type="category" default_value="" desc="右上特别企划">
+        </param>
+	         <param name="rightUpTxtCategoryCode" type="category" default_value="" desc="右上特别企划文字">
+        </param>
+	         <param name="rightDownTxtCategoryCode" type="category" default_value="" desc="右下特别企划文字">
+        </param>
+	  	</template>
+     <template name="hollyWood_list" type="list" desc="1280强档好莱坞列表风格模板" template_path="hollyWood_list.jsp" preview_path="hollyWood_list.jsp">
+	        <param name="navigationCategoryCode" type="category" default_value="" desc="菜单导航分类">
+        </param>
+	         <param name="programCategoryCode" type="category" default_value="" desc="内容栏目分类">
+        </param>
+	         <param name="backCode" type="category" default_value="" desc="返回到大片首页栏目">
+        </param>
+	  	</template>
+     <template name="specialPlanning" type="list" desc="1280大片看吧特别企划列表页模版" template_path="specialPlanning.jsp" preview_path="preview/specialPlanning.jpg">
+	        <param name="contentCategoryCode" type="category" default_value="" desc="内容栏目分类">
+        </param>
+	  	</template>
+     <template name="premiereChina" type="index" desc="1280首映华语档首页模板" template_path="premiereChina.jsp" preview_path="premiereChina.jsp">
+	        <param name="contentCategoryCode" type="category" default_value="" desc="内容栏目分类">
+        </param>
+	         <param name="recCategoryCode" type="category" default_value="" desc="推荐栏目分类">
+        </param>
+	         <param name="backCode" type="category" default_value="" desc="返回到大片首页栏目">
+        </param>
+	  	</template>
+     <template name="HYD_vodDetail" type="detail" desc="1280首映华语档单剧集详情页" template_path="HYD_vodDetail.jsp" preview_path="HYD_vodDetail.jsp">
+	 	</template>
+     <template name="hollyWood_index" type="index" desc="1280强档好莱坞首页模板" template_path="hollyWood_index.jsp" preview_path="hollyWood_index.jsp">
+	        <param name="backCode" type="category" default_value="" desc="返回到大片首页栏目">
+        </param>
+	         <param name="navigationCategoryCode" type="category" default_value="" desc="菜单导航分类">
+        </param>
+	         <param name="specialReportPartTwo" type="category" default_value="" desc="特别企划栏目二">
+        </param>
+	         <param name="specialReportPartThree" type="category" default_value="" desc="特别企划栏目三">
+        </param>
+	         <param name="specialReportPartFour" type="category" default_value="" desc="特别企划栏目四">
+        </param>
+	         <param name="recommendCategoryCode" type="category" default_value="" desc="首页中间推荐栏目分类">
+        </param>
+	         <param name="brandCategoryCode" type="category" default_value="" desc="品牌专区栏目分类">
+        </param>
+	         <param name="specialReportPartOne" type="category" default_value="" desc="特别企划栏目一">
+        </param>
+	  	</template>
+     <template name="HLW_vodDetail" type="detail" desc="1280强档好莱坞单剧集详情页模板" template_path="HLW_vodDetail.jsp" preview_path="HLW_vodDetail.jsp">
+	 	</template>
+     <template name="large_vodDetail" type="detail" desc="大片单集详情页模版" template_path="large_vodDetail.jsp" preview_path="preview/large_vodDetail.jpg">
+	 	</template>
+     <template name="brandList" type="list" desc="1280强档好莱坞品牌专区列表模板" template_path="brandList.jsp" preview_path="brandList.jsp">
+	        <param name="brandCategoryCode" type="category" default_value="" desc="brandCategoryCode">
+        </param>
+	  	</template>
+  </TemplatePackage>

@@ -1,0 +1,23 @@
+<script language="javascript">
+	
+	function focusToSomeLink(linkId){
+		for (var i = 0; i < document.links.length; i++) {
+			if (linkId==document.links[i].id){
+				if (document.links[i].type == undefined){
+					document.links[i].setTabIndex(0);
+				}else{
+					document.links[i].focus();
+				}
+			}
+		}
+	}
+	#if ($parameters.focusId)
+		focusToSomeLink('a$parameters.focusId');
+	#else
+		var _df = document.getElementById('_defaultFocusId');
+		if (_df!=null && typeof(_df)!='undefined'){
+			focusToSomeLink('_defaultFocusId');
+		}
+	#end
+</script>
+</body>

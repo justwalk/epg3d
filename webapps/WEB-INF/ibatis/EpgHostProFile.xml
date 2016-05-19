@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE sqlMap      
+    PUBLIC "-//ibatis.apache.org//DTD SQL Map 2.0//EN"      
+    "http://ibatis.apache.org/dtd/sql-map-2.dtd">
+	<!-- 
+
+ -->
+<sqlMap namespace="EpgHostProFile">
+	<resultMap id="epgHostProFile-result" class="sitv.epg.entity.business.EpgHostProFile">
+		<result property="id" column="ID" />
+		<result property="groupId" column="GROUP_ID" />
+		<result property="hostCode" column="HOST_CODE" />
+		<result property="hostName" column="HOST_NAME" />
+		<result property="hostIp" column="HOST_IP" />
+		<result property="name" column="NAME" />
+		<result property="value" column="VALUE" />
+		<result property="status" column="STATUS" />
+	</resultMap>
+	<!-- 根据host_name查询得到主机播放配置各种参数  -->
+
+	<cacheModel id="getPlayerParam_CM" type="LRU" readOnly="true"
+		serialize="false">
+		<flushInterval minutes="5" />
+		<property name="cache-size" value="1000" />
+	</cacheModel>
+
+	<statement id="getPlayerParamByHostName" resultMap="epgHostProFile-result"
+		cacheModel="getPlayerParam_CM">
+		<![CDATA[		   
+            select * from EPG_HOST_PROFILE where HOST_NAME = #hostName#  
+        ]]>
+	</statement>
+	<statement id="getPlayerParamByHostCode" resultMap="epgHostProFile-result"
+		cacheModel="getPlayerParam_CM">
+		<![CDATA[		   
+            select * from EPG_HOST_PROFILE where HOST_CODE = #hostCode#  
+        ]]>
+	</statement>
+</sqlMap>

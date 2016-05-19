@@ -1,0 +1,2 @@
+本升级包仅在NavigatorFactory和PlayUrlGenerator中包含NoAuthPlay生成链接逻辑，不包括升级大片的主程序
+update - version2.sql为不含新增HD_TYPE字段、包含新增专辑poster、still、icon

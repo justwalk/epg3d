@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="GBK"?>
+<TemplatePackage author="" desc="" label="">
+    <template name="sd_cinemaIndex" type="index" desc="观影团首页模板" template_path="sd_cinemaIndex.jsp" preview_path="preview/sd_cinemaIndex.jpg">
+	        <param name="menuCategoryCode" type="category" default_value="" desc="导航菜单">
+        </param>
+	         <param name="centerOneCategoryCode" type="category" default_value="" desc="中间推荐1">
+        </param>
+	         <param name="centerTwoCategoryCode" type="category" default_value="" desc="中间推荐2">
+        </param>
+	         <param name="centerThreeCategoryCode" type="category" default_value="" desc="中间推荐3">
+        </param>
+	         <param name="downCategoryCode" type="category" default_value="" desc="人气最高">
+        </param>
+	         <param name="leftCategoryCode" type="category" default_value="" desc="票房排行">
+        </param>
+	         <param name="centerOneCharCategory" type="category" default_value="" desc="中间1文字推荐">
+        </param>
+	         <param name="centerTwoCharCategory" type="category" default_value="" desc="中间2文字推荐">
+        </param>
+	         <param name="centerThreeCharCategory" type="category" default_value="" desc="中间3文字推荐">
+        </param>
+	  	</template>
+     <template name="sd_cinemaList1" type="list" desc="观影团欧美、港台、内地、即将下线列表模板" template_path="sd_cinemaList1.jsp" preview_path="preview/sd_cinemaList1.jpg">
+	        <param name="menuCategoryCode" type="category" default_value="" desc="导航栏目">
+        </param>
+	         <param name="leftRecommend" type="category" default_value="" desc="左侧推荐栏目">
+        </param>
+	         <param name="trailerCategoryCode" type="category" default_value="" desc="预告片栏目">
+        </param>
+	         <param name="programCategoryCode" type="category" default_value="" desc="内容栏目">
+        </param>
+	         <param name="backgroundImg" type="image" default_value="" desc="背景大图">
+        </param>
+	  	</template>
+     <template name="sd_cinemaList_yk" type="list" desc="观影团影库列表模板" template_path="sd_cinemaList_yk.jsp" preview_path="preview/sd_cinemaList_yk.jpg">
+	        <param name="menuCategoryCode" type="category" default_value="" desc="导航栏目">
+        </param>
+	         <param name="leftRecommend" type="category" default_value="" desc="左侧推荐">
+        </param>
+	         <param name="categoryCode" type="category" default_value="" desc="二级栏目">
+        </param>
+	  	</template>
+     <template name="sd_cinemaList_dj" type="list" desc="观影团独家列表模板" template_path="sd_cinemaList_dj.jsp" preview_path="preview/sd_cinemaList_dj.jpg">
+	        <param name="contentCategoryCode" type="category" default_value="" desc="内容栏目">
+        </param>
+	         <param name="leftCategoryCode" type="category" default_value="" desc="左侧栏目">
+        </param>
+	         <param name="menuCategoryCode" type="category" default_value="" desc="导航栏目">
+        </param>
+	  	</template>
+     <template name="sd_cinemaList_dj_list" type="list" desc="观影团独家列表模板" template_path="sd_cinemaList_dj_list.jsp" preview_path="preview/sd_cinemaList_dj_list.jpg">
+	        <param name="menuCategoryCode" type="category" default_value="" desc="导航栏目">
+        </param>
+	         <param name="leftCategoryCode" type="category" default_value="" desc="左侧栏目">
+        </param>
+	  	</template>
+  </TemplatePackage>

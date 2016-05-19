@@ -1,0 +1,3 @@
+<button type="${parameters.type}" #if($parameters.src) srcimg="${$parameters.src}"  #end coords="${parameters.left},${parameters.top},${parameters.width+parameters.left},${parameters.height+parameters.top} " >
+		#if($parameters.text)  $parameters.text #end 	
+</button>

@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="GBK"?>
+<TemplatePackage author="" desc="" label="">
+    <template name="hotRecommend" type="index" desc="海外剧场看吧首页模板" template_path="hotRecommend.jsp" preview_path="preview/hotRecommend.jpg">
+	        <param name="watchingFocus" type="category" default_value="" desc="看点推荐">
+        </param>
+	         <param name="koreaLeftUpRecommend" type="category" default_value="" desc="韩剧左上推荐">
+        </param>
+	         <param name="koreaRightRecommend" type="category" default_value="" desc="韩剧右侧推荐">
+        </param>
+	         <param name="europeLeftUpRecommend" type="category" default_value="" desc="欧美左上推荐">
+        </param>
+	         <param name="europeRightRecommend" type="category" default_value="" desc="欧美右侧及左下推荐">
+        </param>
+	         <param name="backgroundImg" type="image" default_value="" desc="背景大图">
+        </param>
+	         <param name="menuCode" type="category" default_value="" desc="导航栏目">
+        </param>
+	  	</template>
+     <template name="koreaPremiere" type="list" desc="海外剧场看吧韩剧首映列表页模板" template_path="koreaPremiere.jsp" preview_path="preview/koreaPremiere.jpg">
+	        <param name="trailerRecommend" type="category" default_value="" desc="预告片推荐">
+        </param>
+	         <param name="leftRecommend" type="category" default_value="" desc="左侧推荐">
+        </param>
+	         <param name="programCategoryCode" type="category" default_value="" desc="内容栏目分类">
+        </param>
+	         <param name="backgroundImg" type="image" default_value="" desc="背景大图">
+        </param>
+	  	</template>
+     <template name="europeCausus" type="list" desc="海外剧场看吧欧美热剧列表页模板" template_path="europeCausus.jsp" preview_path="preview/europeCausus.jpg">
+	        <param name="programCategoryCode" type="category" default_value="" desc="内容栏目分类">
+        </param>
+	         <param name="backgroundImg" type="image" default_value="" desc="背景大图">
+        </param>
+	         <param name="leftRecommend" type="category" default_value="" desc="左侧推荐">
+        </param>
+	  	</template>
+     <template name="koreaPremiereIndex" type="index" desc="韩迷俱乐部首页模板" template_path="koreaPremiereIndex.jsp" preview_path="preview/koreaPremiereIndex.jpg">
+	        <param name="programCategoryCode" type="category" default_value="" desc="内容栏目分类">
+        </param>
+	         <param name="leftRecommend" type="category" default_value="" desc="左侧推荐">
+        </param>
+	         <param name="trailerRecommend" type="category" default_value="" desc="预告片推荐">
+        </param>
+	         <param name="backgroundImg" type="image" default_value="" desc="背景大图">
+        </param>
+	  	</template>
+  </TemplatePackage>

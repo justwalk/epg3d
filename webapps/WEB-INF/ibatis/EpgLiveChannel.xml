@@ -1,0 +1,80 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE sqlMap      
+    PUBLIC "-//ibatis.apache.org//DTD SQL Map 2.0//EN"      
+    "http://ibatis.apache.org/dtd/sql-map-2.dtd">
+
+<sqlMap namespace="EpgLiveChannel">
+	<resultMap id="channel-result" class="sitv.epg.entity.content.EpgLiveChannel">
+		<result property="contentId" column="CONTENT_ID" />
+		<result property="contentCode" column="CONTENT_CODE" />
+		<result property="title" column="TITLE" />
+		<result property="titleBrief" column="TITLE_BRIEF" />
+		<result property="createDate" column="CREATION_DATE" />
+		<result property="channelNum" column="CHANNEL_NUM" />
+		<result property="liveCode" column="LIVE_CODE" />
+		<result property="playUrl" column="PLAY_URL" />
+
+	</resultMap>
+
+	<cacheModel id="queryChannelByCode_CM" type="LRU" readOnly="true"
+		serialize="false">
+		<flushInterval minutes="5" />
+		<property name="cache-size" value="500" />
+	</cacheModel>
+	<statement id="queryChannelByCode" resultMap="channel-result"
+		cacheModel="queryChannelByCode_CM">
+		<![CDATA[
+            select * from EPG_CONTENT_CHANNEL where CONTENT_CODE = #channelCode#
+        ]]>
+	</statement>
+
+	<cacheModel id="queryChannelByCategoryCode_CM" type="LRU"
+		readOnly="true" serialize="false">
+		<flushInterval minutes="5" />
+		<property name="cache-size" value="2000" />
+	</cacheModel>
+	<statement id="queryChannelByCategoryCode" resultMap="channel-result"
+		cacheModel="queryChannelByCategoryCode_CM">
+		<![CDATA[
+            select b.* from EPG_CATEGORY_ITEM a right join EPG_CONTENT_CHANNEL b on a.item_code = b.content_code where a.status = 0 and  a.category_code = #categoryCode# order by item_order 
+        ]]>
+	</statement>
+
+	<cacheModel id="queryChannelByChannelCode_CM" type="LRU"
+		readOnly="true" serialize="false">
+		<flushInterval minutes="5" />
+		<property name="cache-size" value="500" />
+	</cacheModel>
+	<statement id="queryChannelByChannelCode" resultMap="channel-result"
+		cacheModel="queryChannelByChannelCode_CM">
+		<![CDATA[
+            select * from EPG_CONTENT_CHANNEL where CONTENT_CODE = #channelCode#
+        ]]>
+	</statement>
+
+	<cacheModel id="queryChannelByChannelNum_CM" type="LRU"
+		readOnly="true" serialize="false">
+		<flushInterval minutes="5" />
+		<property name="cache-size" value="500" />
+	</cacheModel>
+	<statement id="queryChannelByChannelNum" resultMap="channel-result"
+		cacheModel="queryChannelByChannelNum_CM">
+		<![CDATA[
+            select * from EPG_CONTENT_CHANNEL where CHANNEL_NUM= #channelNum#
+        ]]>
+	</statement>
+
+	<cacheModel id="queryChannelOrderByChannelNum_CM" type="LRU"
+		readOnly="true" serialize="false">
+		<flushInterval minutes="5" />
+		<property name="cache-size" value="500" />
+	</cacheModel>
+	<statement id="queryChannelOrderByChannelNum" resultMap="channel-result"
+		cacheModel="queryChannelOrderByChannelNum_CM">
+		<![CDATA[
+            select * from EPG_CONTENT_CHANNEL order by channel_num
+        ]]>
+	</statement>
+
+
+</sqlMap>

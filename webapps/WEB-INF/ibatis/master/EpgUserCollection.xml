@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE sqlMap      
+    PUBLIC "-//ibatis.apache.org//DTD SQL Map 2.0//EN"      
+    "http://ibatis.apache.org/dtd/sql-map-2.dtd">
+
+<sqlMap namespace="MasterEpgUserCollection">
+	<resultMap id="EpgUserCollection-result" class="sitv.epg.entity.user.EpgUserCollection">
+		<result property="id" column="ID" />
+		<result property="userId" column="USER_ID" />
+		<result property="contentName" column="CONTENT_NAME" />
+		<result property="contentType" column="CONTENT_TYPE" />
+		<result property="contentCode" column="CONTENT_CODE" />
+		<result property="collectTime" column="COLLECT_TIME" />
+		<result property="bizCode" column="BIZ_CODE" />
+		<result property="categoryCode" column="CATEGORY_CODE" />
+	</resultMap>
+	<resultMap id="EpgCollectionNum-result" class="sitv.epg.entity.user.EpgCollectionNum">
+		<result property="num" column="NUM" />
+	</resultMap>
+
+
+	<!-- 取得用户取收藏项 -->
+	<statement id="getSevrialCollectionByUserId" resultMap="EpgUserCollection-result">
+		<![CDATA[		   
+           select * from EPG_USER_COLLECTION where user_id=#user_id# order by COLLECT_TIME desc
+            ]]>
+	</statement>
+
+	<!-- 用户是否可以收藏节目 -->
+	<statement id="userCouldCollect" resultMap="EpgUserCollection-result">
+		<![CDATA[		   
+        	SELECT * FROM EPG_USER_COLLECTION WHERE USER_ID=#USER_ID# AND CONTENT_CODE=#CONTENT_CODE#
+        ]]>
+	</statement>
+
+	<!-- 添加用户收藏  -->
+	<statement id="addUserCollection" resultMap="EpgUserCollection-result">
+		<![CDATA[		   
+           INSERT INTO EPG_USER_COLLECTION (USER_ID, CONTENT_NAME, CONTENT_TYPE, CONTENT_CODE, COLLECT_TIME,BIZ_CODE,CATEGORY_CODE,STILL) VALUES (#USER_ID#, #CONTENT_NAME#, #CONTENT_TYPE#, #CONTENT_CODE#,#COLLECT_TIME#, #BIZ_CODE#, #CATEGORY_CODE#, #STILL#)
+  		]]>
+	</statement>
+
+	<!-- 用户是否可以收藏节目 -->
+	<statement id="getCollectionById" resultMap="EpgUserCollection-result">
+		<![CDATA[		   
+        	SELECT * FROM EPG_USER_COLLECTION WHERE ID=#ID#
+        ]]>
+	</statement>
+
+	<!-- 删除用户收藏  -->
+	<statement id="delUserCollectionByContentCode" resultMap="EpgUserCollection-result">
+		<![CDATA[		
+			DELETE FROM EPG_USER_COLLECTION WHERE  ID=#ID#
+     	]]>
+	</statement>
+
+	<!-- 查询收藏数目  -->
+	<statement id="getCollectionNum" resultMap="EpgCollectionNum-result">
+		<![CDATA[		
+			SELECT COUNT(*) as NUM  FROM EPG_USER_COLLECTION WHERE USER_ID=#USER_ID#
+     	]]>
+	</statement>
+
+</sqlMap>

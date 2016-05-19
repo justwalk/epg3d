@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE sqlMap      
+    PUBLIC "-//ibatis.apache.org//DTD SQL Map 2.0//EN"      
+    "http://ibatis.apache.org/dtd/sql-map-2.dtd">
+
+<sqlMap namespace="EpgSchedule">
+
+	<resultMap id="epgSchedule-result" class="sitv.epg.entity.content.EpgSchedule">
+		<result property="id" column="ID" />
+		<!-- <result property="channelId" column="CHANNEL_ID" /> -->
+		<result property="channelCode" column="CHANNEL_CODE" />
+		<!--<result property="contentId" column="CONTENT_ID" /> -->
+		<result property="contentCode" column="CONTENT_CODE" />
+		<result property="name" column="NAME" />
+		<result property="code" column="CODE" />
+		<result property="startTime" column="BEGIN_TIME" />
+		<result property="endTime" column="END_TIME" />
+	</resultMap>
+
+	<resultMap id="epgChannle-result" class="sitv.epg.entity.content.EpgLiveChannel">
+		<result property="channelCode" column="CONTENT_CODE" />
+		<result property="serviceName" column="SERVICE_NAME" />
+	</resultMap>
+
+
+	<!-- 频道下按页取节目单  -->
+	<cacheModel id="getScheduleByPage_CM" type="LRU" readOnly="true"
+		serialize="false">
+		<flushInterval minutes="5" />
+		<property name="cache-size" value="10000" />
+	</cacheModel>
+
+	<statement id="getScheduleByPage" resultMap="epgSchedule-result"
+		cacheModel="getScheduleByPage_CM">
+		<![CDATA[		   
+			select * from EPG_CONTENT_SCHEDULE where CHANNEL_CODE = #channelCode# 
+			and BEGIN_TIME >= DATE_FORMAT(#cStartDataTime#,'%Y-%m-%d %H:%i:%S') 
+			and BEGIN_TIME <= DATE_FORMAT(#cEndDataTime#,'%Y-%m-%d %H:%i:%S')
+			and BEGIN_TIME < END_TIME  order by BEGIN_TIME
+        ]]>
+	</statement>
+
+	<cacheModel id="getChannelByPage_CM" type="LRU" readOnly="true"
+		serialize="false">
+		<flushInterval minutes="5" />
+		<property name="cache-size" value="10000" />
+	</cacheModel>
+
+	<statement id="getChannleByCode" resultMap="epgChannle-result"
+		cacheModel="getChannelByPage_CM">
+		<![CDATA[		   
+            select * from EPG_CONTENT_CHANNEL where CONTENT_CODE = #channelCode# 
+        ]]>
+	</statement>
+
+
+
+</sqlMap>

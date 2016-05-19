@@ -1,0 +1,11 @@
+#if (${parameters.enterFocusId})
+	#if (${parameters.enterFocusId} == ${parameters.id})
+<area id="${parameters.id}"  shape="rect" coords="$parameters.coords"  href="${parameters.href}"  #if($parameters.onclick) onclick="$parameters.onclick" #end #if($parameters.pageop) pageop="$parameters.pageop" #end #if($parameters.keyop) keyop="$parameters.keyop" #end #if($parameters.backstep>0) backstep="$parameters.backstep" #end />
+	<script>document.getElementById("${parameters.id}").focus();</script>
+	#else
+<area id="${parameters.id}"  shape="rect" coords="$parameters.coords"  href="${parameters.href}"  #if($parameters.onclick) onclick="$parameters.onclick" #end #if($parameters.pageop) pageop="$parameters.pageop" #end #if($parameters.keyop) keyop="$parameters.keyop" #end #if($parameters.backstep>0) backstep="$parameters.backstep" #end  />
+	#end
+#else
+<area id="${parameters.id}"  shape="rect" coords="$parameters.coords"  href="${parameters.href}"  #if($parameters.onclick) onclick="$parameters.onclick" #end #if($parameters.pageop) pageop="$parameters.pageop" #end #if($parameters.keyop) keyop="$parameters.keyop" #end #if($parameters.backstep>0) backstep="$parameters.backstep" #end  />
+#if($parameters.defaultfocus) <script>document.getElementById("${parameters.id}").focus();</script>  #end
+#end

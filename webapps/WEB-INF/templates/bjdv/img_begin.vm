@@ -1,0 +1,57 @@
+<div #if($parameters.id) id="${parameters.id}_div" #end align="${parameters.align}" style="position:absolute; left:${parameters.left}px;top:${parameters.top}px;width:${parameters.divWidth}px;height:${parameters.divHeight}px;">
+#set($HREF=$parameters.href) #if (${parameters.enterFocusId})
+	#if (${parameters.enterFocusId} == ${parameters.id})
+		#if($HREF) <a id="${parameters.id}_a" href="$HREF" 
+			#if($parameters.onfocus) onfocus="${parameters.onfocus}" #end 
+			#if($parameters.onblur) onblur="${parameters.onblur}" #end 
+			#if($parameters.onclick) onclick="${parameters.onclick}" #end  
+			#if($parameters.hotkey) keyop="${parameters.hotkey}" #end 
+			#if(!$parameters.historyenabled) historydisabled #end setfocus="" 
+			#if($parameters.pageop) pageop="$parameters.pageop" #end 
+			#if($parameters.keyop) keyop="$parameters.keyop" #end 
+			#if($parameters.backstep>0) backstep="$parameters.backstep" #end>
+		#end  
+		<img id="${parameters.id}_img" 
+		#if($parameters.style) style="${parameters.style}"#end 
+		#if($parameters.src && "" != $parameters.src) src="${parameters.src}" #end
+		border="0" width="${parameters.width}" height="${parameters.height}" 
+		#if ($parameters.usemap) usemap="#${parameters.usemap}" #end/>
+		#if($HREF)</a>#end
+	#else
+		#if($HREF) <a id="${parameters.id}_a" href="$HREF" 
+			#if($parameters.onfocus) onfocus="${parameters.onfocus}" #end 
+			#if($parameters.onblur) onblur="${parameters.onblur}" #end 
+			#if($parameters.onclick) onclick="${parameters.onclick}" #end  
+			#if($parameters.hotkey) keyop="${parameters.hotkey}" #end 
+			#if(!$parameters.historyenabled) historydisabled #end  
+			#if($parameters.pageop) pageop="$parameters.pageop" #end 
+			#if($parameters.keyop) keyop="$parameters.keyop" #end 
+			#if($parameters.backstep>0) backstep="$parameters.backstep" #end>
+		#end  
+		<img id="${parameters.id}_img" 
+		#if($parameters.style) style="${parameters.style}"#end 
+		#if($parameters.src && "" != $parameters.src) src="${parameters.src}" #end
+		border="0" width="${parameters.width}" height="${parameters.height}" 
+		#if ($parameters.usemap) usemap="#${parameters.usemap}" #end/>
+		#if($HREF)</a>#end
+	#end
+#else
+	#if($HREF) <a id="${parameters.id}_a" href="$HREF" 
+		#if($parameters.onfocus) onfocus="${parameters.onfocus}" #end 
+		#if($parameters.onblur) onblur="${parameters.onblur}" #end 
+		#if($parameters.onclick) onclick="${parameters.onclick}" #end  
+		#if($parameters.hotkey) keyop="${parameters.hotkey}" #end 
+		#if(!$parameters.historyenabled) historydisabled #end 
+		#if($parameters.defaultfocus) setfocus="" #end 
+		#if($parameters.pageop) pageop="$parameters.pageop" #end 
+		#if($parameters.keyop) keyop="$parameters.keyop" #end 
+		#if($parameters.backstep>0) backstep="$parameters.backstep" #end>
+	#end  
+	<img id="${parameters.id}_img" 
+	#if($parameters.style) style="${parameters.style}"#end 
+	#if($parameters.src && "" != $parameters.src) src="${parameters.src}" #end 
+	border="0" width="${parameters.width}" height="${parameters.height}" 
+	#if ($parameters.usemap) usemap="#${parameters.usemap}" #end/>
+	#if($HREF)</a>#end
+#end
+</div>

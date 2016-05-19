@@ -1,0 +1,2 @@
+</tr>
+<tr id="${parameters.id}" name="${parameters.name}" #if (${parameters.bgcolor}) bgcolor="${parameters.bgcolor}"  #end  #if (${parameters.align}) align="${parameters.align}"  #end  #if (${parameters.valign}) valign="${parameters.valign}"  #end  #if($parameters.style) style='${parameters.style}'#end #if($parameters.classname) class='${parameters.classname}'#end>

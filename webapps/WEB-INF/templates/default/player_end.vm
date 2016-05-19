@@ -1,0 +1,29 @@
+<vod index="$parameters.mediaCode" id="$parameters.mediaCode" ServiceName="$value('ServiceName')" ServiceType="$value('ServiceType')" Preview="$value('Preview')" backstep="$value('backstep')"> 
+	<vodpara name="passthru_ip" value="$value('passthru_ip')" /> 
+	<vodpara name="mod_app_ip" value="$value('mod_app_ip')" /> 
+	<vodpara name="srm_ip" value="$value('srm_ip')" /> 
+	<vodpara name="poster_server_ip" value="$value('poster_server_ip')" /> 
+	<vodpara name="lsc_comm_proxy_ip" value="$value('lsc_comm_proxy_ip')" /> 
+	<vodpara name="session_gateway_ip" value="$value('session_gateway_ip')" /> 
+
+	<vodpara name="freq1" value="$value('freq1')" />
+	<vodpara name="sym_rate1" value="$value('sym_rate1')" />
+	<vodpara name="qam_mode1" value="$value('qam_mode1')" />
+	<vodpara name="freq2" value="$value('freq2')" />
+	<vodpara name="sym_rate2" value="$value('sym_rate2')" />
+	<vodpara name="qam_mode2" value="$value('qam_mode2')" />
+	
+	#if  ($value('ApplicationType')) <vodpara name="ApplicationType" value="$value('ApplicationType')" /> #end
+	#if  ($value('run_time')) <vodpara name="run_time" value="$value('run_time')" />
+	#if  ($value('content_name')) <vodpara name="content_name" value="$value('content_name')" />
+	#if  ($value('ServiceCode')) <vodpara name="ServiceCode" value="$value('ServiceCode')" />
+	#if  ($value('category')) <vodpara name="category" value="$value('category')" />
+	#if  ($value('provider')) <vodpara name="provider" value="$value('provider')" />
+	#if  ($value('protocol_type')) <vodpara name="protocol_type" value="$value('protocol_type')" />
+	#if  ($value('rtsp')) <vodpara name="rtsp" value="$value('rtsp')" />
+	#if  ($value('rtsp_vendor')) <vodpara name="rtsp_vendor" value="$value('rtsp_vendor')" />
+	#if  ($value('streamTransMode')) <vodpara name="streamTransMode" value="$value('streamTransMode')" />
+　　#if  ($value('purchaseType')) <vodpara name="purchaseType" value="$value('purchaseType')" />
+　　#if  ($value('playNPT')) <vodpara name="playNPT" value="$value('playNPT')" />
+			
+</vod>

@@ -1,0 +1,163 @@
+<?xml version="1.0" encoding="GBK"?>
+<TemplatePackage author="" desc="" label="">
+    <template name="list_animationCastle2" type="list" desc="动画城堡看吧首页列表独家模版" template_path="list_animationCastle2.jsp" preview_path="preview/list_animationCastle2.jpg">
+	        <param name="menuCategoryCode" type="category" default_value="" desc="菜单栏目">
+        </param>
+	         <param name="returnindexCategoryCode" type="category" default_value="" desc="返回首页结果">
+        </param>
+	         <param name="categoryCode" type="category" default_value="" desc="栏目内容">
+        </param>
+	         <param name="bgImg" type="image" default_value="" desc="背景大图">
+        </param>
+	  	</template>
+     <template name="list_rainbow" type="list" desc="彩虹岛列表模版即品牌专区" template_path="list_rainbow.jsp" preview_path="preview/list_rainbow.jpg">
+	        <param name="returnCategoryCode" type="category" default_value="" desc="返回彩虹岛首页">
+        </param>
+	         <param name="bgImg" type="image" default_value="" desc="背景大图">
+        </param>
+	         <param name="contentCategoryCode" type="category" default_value="" desc="栏目内容">
+        </param>
+	  	</template>
+     <template name="rainbow_series_detail" type="detail" desc="彩虹岛多集详细页面模板" template_path="rainbow_series_detail.jsp" preview_path="preview/rainbow_series_detail.jpg">
+	 	</template>
+     <template name="index_rainbow" type="index" desc="彩虹岛首页模板" template_path="index_rainbow.jsp" preview_path="preview/index_rainbow.jpg">
+	        <param name="recommendCategoryCode" type="category" default_value="" desc="底部节目推荐">
+        </param>
+	         <param name="upCategoryCode" type="category" default_value="" desc="品牌专区">
+        </param>
+	         <param name="downCategoryCode" type="category" default_value="" desc="底部菜单分类">
+        </param>
+	         <param name="menuCategoryCode" type="category" default_value="" desc="菜单分类">
+        </param>
+	  	</template>
+     <template name="index_superBigChallenge" type="index" desc="彩虹岛超级大挑战模板" template_path="index_superBigChallenge.jsp" preview_path="preview/index_superBigChallenge.jpg">
+	        <param name="twoToSevenStarCategoryCode" type="category" default_value="" desc="2至7岁游戏宫">
+        </param>
+	         <param name="sevenToTwelveStarCategoryCode" type="category" default_value="" desc="7至12岁游戏宫">
+        </param>
+	         <param name="returnCategoryCode" type="category" default_value="" desc="返回彩虹岛首页导航">
+        </param>
+	         <param name="twoToSevenCategoryCode" type="category" default_value="" desc="2至7岁题目推荐">
+        </param>
+	         <param name="sevenToTwelveCategoryCode" type="category" default_value="" desc="7至12岁题目推荐">
+        </param>
+	  	</template>
+     <template name="index_nursery" type="index" desc="彩虹岛彩虹幼儿园首页模板" template_path="index_nursery.jsp" preview_path="preview/index_nursery.jpg">
+	        <param name="menuCategoryCode" type="category" default_value="" desc="菜单栏目">
+        </param>
+	         <param name="returnindexCategoryCode" type="category" default_value="" desc="返回彩虹岛首页导航">
+        </param>
+	         <param name="contentMenuCategoryCode" type="category" default_value="" desc="内容栏目">
+        </param>
+	         <param name="bgImg" type="image" default_value="" desc="背景大图">
+        </param>
+	  	</template>
+     <template name="list_nursery" type="list" desc="彩虹岛彩虹幼儿园列表模板" template_path="list_nursery.jsp" preview_path="preview/list_nursery.jpg">
+	        <param name="menuCategoryCode" type="category" default_value="" desc="菜单栏目">
+        </param>
+	         <param name="contentCategoryCode" type="category" default_value="" desc="内容栏目">
+        </param>
+	         <param name="bgImg" type="image" default_value="" desc="背景大图">
+        </param>
+	  	</template>
+     <template name="index_animationCastle" type="index" desc="动画城堡看吧首页模版" template_path="index_animationCastle.jsp" preview_path="preview/index_animationCastle.jpg">
+	        <param name="menuCategoryCode" type="category" default_value="" desc="菜单栏目">
+        </param>
+	         <param name="returnindexCategoryCode" type="category" default_value="" desc="返回首页结果">
+        </param>
+	         <param name="categoryCode" type="category" default_value="" desc="栏目内容">
+        </param>
+	         <param name="bgImg" type="image" default_value="" desc="背景大图">
+        </param>
+	  	</template>
+     <template name="list_animationCastle" type="list" desc="动画城堡看吧首页列表模版" template_path="list_animationCastle.jsp" preview_path="preview/list_animationCastle.jpg">
+	        <param name="menuCategoryCode" type="category" default_value="" desc="菜单栏目">
+        </param>
+	         <param name="returnindexCategoryCode" type="category" default_value="" desc="返回首页结果">
+        </param>
+	         <param name="categoryCode" type="category" default_value="" desc="栏目内容">
+        </param>
+	         <param name="bgImg" type="image" default_value="" desc="背景大图">
+        </param>
+	  	</template>
+     <template name="index_babySeeWorld" type="index" desc="彩虹乐园宝贝看世界模板" template_path="index_babySeeWorld.jsp" preview_path="preview/index_babySeeWorld.jpg">
+	        <param name="menuCategoryCode" type="category" default_value="" desc="菜单栏目">
+        </param>
+	         <param name="categoryCode" type="category" default_value="" desc="栏目内容">
+        </param>
+	         <param name="bgImg" type="image" default_value="" desc="背景大图">
+        </param>
+	  	</template>
+     <template name="index_tiggerCome" type="index" desc="彩虹乐园巧虎来啦首页模版" template_path="index_tiggerCome.jsp" preview_path="preview/index_tiggerCome.jpg">
+	        <param name="contentCategoryCode" type="category" default_value="" desc="栏目内容">
+        </param>
+	         <param name="bgImg" type="image" default_value="" desc="背景大图">
+        </param>
+	         <param name="returnCategoryCode" type="category" default_value="" desc="返回彩虹岛首页">
+        </param>
+	  	</template>
+     <template name="list_parentAndChild " type="list" desc="亲子乐园看吧列表模版" template_path="list_parentAndChild.jsp" preview_path="preview/list_parentAndChild.jpg">
+	        <param name="menuCategoryCode" type="category" default_value="" desc="菜单栏目">
+        </param>
+	         <param name="returnindexCategoryCode" type="category" default_value="" desc="返回首页结果">
+        </param>
+	         <param name="categoryCode" type="category" default_value="" desc="栏目内容">
+        </param>
+	         <param name="bgImg" type="image" default_value="" desc="背景大图">
+        </param>
+	  	</template>
+     <template name="index_parentAndChild" type="index" desc="亲子乐园看吧首页模版" template_path="index_parentAndChild.jsp" preview_path="preview/index_parentAndChild.jpg">
+	        <param name="categoryCode" type="category" default_value="" desc="栏目内容">
+        </param>
+	         <param name="bgImg" type="image" default_value="" desc="背景大图">
+        </param>
+	         <param name="menuCategoryCode" type="category" default_value="" desc="菜单栏目">
+        </param>
+	         <param name="returnindexCategoryCode" type="category" default_value="" desc="返回首页结果">
+        </param>
+	  	</template>
+     <template name="magicAcademy" type="index" desc="魔法学院首页模版" template_path="magicAcademy.jsp" preview_path="preview/magicAcademy.jpg">
+	        <param name="lessonCategoryCode" type="string" default_value="" desc="课程判断(1-3)7为道德">
+        </param>
+	         <param name="gradeCategoryCode" type="string" default_value="" desc="判断年级参数(1-6)7为道德">
+        </param>
+	         <param name="bgImg" type="image" default_value="" desc="背景图">
+        </param>
+	         <param name="menuCategoryCode" type="category" default_value="" desc="获取导航菜单">
+        </param>
+	         <param name="returnindexCategoryCode" type="category" default_value="" desc="返回彩虹岛首页">
+        </param>
+	  	</template>
+     <template name="magicAcademyList" type="list" desc="魔法学院列表模版" template_path="magicAcademyList.jsp" preview_path="preview/magicAcademyList.jpg">
+	        <param name="lessonCategoryCode" type="string" default_value="" desc="判断课程参数(1-3)7为道德">
+        </param>
+	         <param name="gradeCategoryCode" type="string" default_value="" desc="判断年级参数(1-6)7为道德">
+        </param>
+	         <param name="returnindexCategoryCode" type="category" default_value="" desc="返回彩虹岛首页">
+        </param>
+	         <param name="menuCategoryCode" type="category" default_value="" desc="获取导航菜单">
+        </param>
+	         <param name="bgImg" type="image" default_value="" desc="背景图">
+        </param>
+	  	</template>
+     <template name="index_islandHostShow" type="index" desc="岛主秀场首页模版" template_path="index_islandHostShow.jsp" preview_path="preview/index_islandHostShow.jpg">
+	        <param name="newsCategoryCode" type="category" default_value="" desc="岛主秀场消息推荐栏目">
+        </param>
+	         <param name="smallImg1" type="image" default_value="" desc="头像选择一">
+        </param>
+	         <param name="smallImg2" type="image" default_value="" desc="头像选择二">
+        </param>
+	         <param name="smallImg3" type="image" default_value="" desc="头像选择三">
+        </param>
+	         <param name="smallImg4" type="image" default_value="" desc="头像选择四">
+        </param>
+	         <param name="smallImg5" type="image" default_value="" desc="头像选择五">
+        </param>
+	         <param name="smallImg6" type="image" default_value="" desc="头像选择六">
+        </param>
+	         <param name="returnindexCategoryCode" type="category" default_value="" desc="返回彩虹岛首页">
+        </param>
+	         <param name="bgImg" type="image" default_value="" desc="背景图">
+        </param>
+	  	</template>
+  </TemplatePackage>

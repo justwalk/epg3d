@@ -1,0 +1,179 @@
+<?xml version="1.0" encoding="GBK"?>
+<TemplatePackage author="" desc="" label="">
+    <template name="history" type="index" desc="历史记录" template_path="history.jsp" preview_path="preview/history.jpg">
+	 	</template>
+     <template name="index" type="index" desc="首页模板" template_path="index.jsp" preview_path="preview/index.jpg">
+	        <param name="centerCategoryCode" type="category" default_value="" desc="中间推荐">
+        </param>
+	         <param name="rightUpCategoryCode" type="category" default_value="" desc="右上推荐">
+        </param>
+	         <param name="rightDownCategoryCode" type="category" default_value="" desc="右下推荐">
+        </param>
+	         <param name="leftCategoryCode" type="category" default_value="" desc="左侧文字推荐">
+        </param>
+	         <param name="sdMenuCategoryCode" type="category" default_value="" desc="主题菜单栏目">
+        </param>
+	         <param name="hdMenuCategoryCode" type="category" default_value="" desc="基础菜单栏目">
+        </param>
+	         <param name="leftPicCategoryItems" type="category" default_value="" desc="左侧大图分类">
+        </param>
+	  	</template>
+     <template name="exploreList" type="list" desc="标清探索看吧列表页模板" template_path="exploreList.jsp" preview_path="preview/exploreList.jpg">
+	        <param name="backgroundImg" type="image" default_value="" desc="背景大图">
+        </param>
+	         <param name="leftPicCategoryCode" type="category" default_value="" desc="左侧推荐图">
+        </param>
+	         <param name="rightCategoryCode" type="category" default_value="" desc="右侧内容">
+        </param>
+	         <param name="leftCategoryCode" type="category" default_value="" desc="左侧推荐">
+        </param>
+	         <param name="middleMenuCategoryCode" type="category" default_value="" desc="菜单内容">
+        </param>
+	  	</template>
+     <template name="exploreIndex" type="index" desc="标清探索看吧首页模板" template_path="exploreIndex.jsp" preview_path="preview/exploreIndex.jpg">
+	        <param name="backgroundImg" type="image" default_value="" desc="背景大图">
+        </param>
+	         <param name="leftPicCategoryCode" type="category" default_value="" desc="左侧推荐图">
+        </param>
+	         <param name="rightCategoryCode" type="category" default_value="" desc="右侧内容">
+        </param>
+	         <param name="leftCategoryCode" type="category" default_value="" desc="左侧推荐">
+        </param>
+	         <param name="middleMenuCategoryCode" type="category" default_value="" desc="菜单">
+        </param>
+	  	</template>
+     <template name="legalSystemList" type="list" desc="法治列表模板" template_path="legalSystemList.jsp" preview_path="preivew/legalSystemList.jpg">
+	        <param name="menuCategoryCode" type="category" default_value="" desc="菜单栏目">
+        </param>
+	         <param name="leftPicCategoryCode" type="category" default_value="" desc="左侧大图推荐">
+        </param>
+	         <param name="leftCategoryCode" type="category" default_value="" desc="左侧文字推荐">
+        </param>
+	         <param name="backgroundImg" type="image" default_value="" desc="背景大图">
+        </param>
+	  	</template>
+     <template name="vod_detail" type="detail" desc="单集详情模板" template_path="vod_detail.jsp" preview_path="preview/vod_detail.jpg">
+	 	</template>
+     <template name="lifeIndex" type="index" desc="标清生活看吧首页模板" template_path="lifeIndex.jsp" preview_path="preview/lifeIndex.jpg">
+	        <param name="leftPicCategoryCode" type="category" default_value="" desc="左侧推荐图">
+        </param>
+	         <param name="leftCategoryCode" type="category" default_value="" desc="左侧推荐">
+        </param>
+	         <param name="rightCategoryCode" type="category" default_value="" desc="右侧内容">
+        </param>
+	         <param name="menuCategoryCode" type="category" default_value="" desc="菜单内容">
+        </param>
+	         <param name="backgroundImg" type="image" default_value="" desc="背景大图">
+        </param>
+	  	</template>
+     <template name="lifeList" type="list" desc="标清生活看吧列表页模板" template_path="lifeList.jsp" preview_path="preview/lifeList.jpg">
+	        <param name="leftPicCategoryCode" type="category" default_value="" desc="左侧推荐图">
+        </param>
+	         <param name="leftCategoryCode" type="category" default_value="" desc="左侧推荐">
+        </param>
+	         <param name="menuCategoryCode" type="category" default_value="" desc="菜单内容">
+        </param>
+	         <param name="backgroundImg" type="image" default_value="" desc="背景大图">
+        </param>
+	  	</template>
+     <template name="collect" type="index" desc="收藏模板" template_path="collect.jsp" preview_path="preview/collect.jpg">
+	 	</template>
+     <template name="search" type="index" desc="搜索模板" template_path="search.jsp" preview_path="preview/search.jpg">
+	        <param name="hotSearch" type="category" default_value="" desc="热门搜索">
+        </param>
+	         <param name="backgroundImg" type="image" default_value="" desc="背景图">
+        </param>
+	  	</template>
+     <template name="legalSystemIndex" type="index" desc="法治首页模板" template_path="legalSystemIndex.jsp" preview_path="/privew/legalSystemIndex,jpg">
+	        <param name="menuCategoryCode" type="category" default_value="" desc="菜单栏目">
+        </param>
+	         <param name="leftPicCategoryCode" type="category" default_value="" desc="左侧推荐大图">
+        </param>
+	         <param name="leftCategoryCode" type="category" default_value="" desc="左侧文字推荐">
+        </param>
+	         <param name="rightCategoryCode" type="category" default_value="" desc="内容栏目">
+        </param>
+	         <param name="backgroundImg" type="image" default_value="" desc="背景大图">
+        </param>
+	  	</template>
+     <template name="operaIndex" type="index" desc="戏曲首页模板" template_path="operaIndex.jsp" preview_path="preview/operaIndex.jpg">
+	        <param name="backgroundImg" type="image" default_value="" desc="背景大图">
+        </param>
+	         <param name="rightCategoryCode" type="category" default_value="" desc="内容栏目">
+        </param>
+	  	</template>
+     <template name="series_detail_explore" type="detail" desc="探索详情页模板" template_path="series_detail_explore.jsp" preview_path="preview/series_detail_explore.jpg">
+	        <param name="guessCategoryCode" type="category" default_value="" desc="底部推荐">
+        </param>
+	  	</template>
+     <template name="HD_cinemaIndex" type="index" desc="高清影院看吧首页模板" template_path="HD_cinemaIndex.jsp" preview_path="preview/HD_cinemaIndex.jpg">
+	        <param name="backgroundImg" type="image" default_value="" desc="背景大图">
+        </param>
+	         <param name="middleMenuCategoryCode" type="category" default_value="" desc="菜单栏目">
+        </param>
+	         <param name="leftCategoryCode" type="category" default_value="" desc="左侧推荐">
+        </param>
+	         <param name="rightCategoryCode" type="category" default_value="" desc="右侧内容">
+        </param>
+	         <param name="leftPicCategoryCode" type="category" default_value="" desc="左边推荐图">
+        </param>
+	  	</template>
+     <template name="HD_cinemaList" type="list" desc="高清影院看吧列表页模板" template_path="HD_cinemaList.jsp" preview_path="preview/HD_cinemaList.jpg">
+	        <param name="middleMenuCategoryCode" type="category" default_value="" desc="菜单栏目">
+        </param>
+	         <param name="leftCategoryCode" type="category" default_value="" desc="左侧推荐">
+        </param>
+	         <param name="rightCategoryCode" type="category" default_value="" desc="右侧内容">
+        </param>
+	         <param name="leftPicCategoryCode" type="category" default_value="" desc="左边推荐图">
+        </param>
+	         <param name="backgroundImg" type="image" default_value="" desc="背景大图">
+        </param>
+	  	</template>
+     <template name="HD_theaterIndex" type="index" desc="剧场看吧首页模板" template_path="HD_theaterIndex.jsp" preview_path="preview/HD_theaterIndex.jpg">
+	        <param name="leftCategoryCode" type="category" default_value="" desc="左侧推荐">
+        </param>
+	         <param name="middleMenuCategoryCode" type="category" default_value="" desc="菜单分类">
+        </param>
+	         <param name="backgroundImg" type="image" default_value="" desc="背景大图">
+        </param>
+	         <param name="rightCategoryCode" type="category" default_value="" desc="右侧内容">
+        </param>
+	  	</template>
+     <template name="HD_theaterList" type="list" desc="高清剧场看吧列表页模板" template_path="HD_theaterList.jsp" preview_path="preview/HD_theaterList.jpg">
+	        <param name="backgroundImg" type="image" default_value="" desc="背景大图">
+        </param>
+	         <param name="rightCategoryCode" type="category" default_value="" desc="右侧内容">
+        </param>
+	         <param name="leftCategoryCode" type="category" default_value="" desc="左侧推荐">
+        </param>
+	         <param name="middleMenuCategoryCode" type="category" default_value="" desc="菜单分类">
+        </param>
+	  	</template>
+     <template name="HD_entertainmentIndex" type="index" desc="高清娱乐看吧首页模板" template_path="HD_entertainmentIndex.jsp" preview_path="preview/HD_entertainmentIndex.jpg">
+	        <param name="backgroundImg" type="image" default_value="" desc="背景大图">
+        </param>
+	         <param name="rightCategoryCode" type="category" default_value="" desc="右侧内容">
+        </param>
+	         <param name="leftCategoryCode" type="category" default_value="" desc="左侧推荐">
+        </param>
+	         <param name="middleMenuCategoryCode" type="category" default_value="" desc="菜单内容">
+        </param>
+	  	</template>
+     <template name="HD_entertainmentList" type="list" desc="高清娱乐看吧列表页模板" template_path="HD_entertainmentList.jsp" preview_path="preview/HD_entertainmentList.jpg">
+	        <param name="rightCategoryCode" type="category" default_value="" desc="右侧内容">
+        </param>
+	         <param name="backgroundImg" type="image" default_value="" desc="背景大图">
+        </param>
+	         <param name="leftCategoryCode" type="category" default_value="" desc="左侧推荐">
+        </param>
+	         <param name="middleMenuCategoryCode" type="category" default_value="" desc="菜单内容">
+        </param>
+	  	</template>
+     <template name="HD_SD_series_detail" type="detail" desc="高标混排多集详情页" template_path="HD_SD_series_detail.jsp" preview_path="preview/HD_SD_series_detail.jpg">
+	 	</template>
+     <template name="buyRecords" type="index" desc="栖霞1280订购记录首页模板" template_path="buyRecords.jsp" preview_path="buyRecords.jsp">
+	        <param name="rightUpRecommend" type="category" default_value="" desc="右上推荐栏目分类">
+        </param>
+	  	</template>
+  </TemplatePackage>

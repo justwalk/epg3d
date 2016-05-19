@@ -1,0 +1,143 @@
+<project name="EPG_Tags" basedir="../" default="compile">
+	<property file="build/build.properties" />
+	<tstamp prefix="build">
+		<format property="date" pattern="yyyyMMdd" />
+	</tstamp>
+
+	<path id="project.class.path">
+		<fileset dir="${webapp.dir}/WEB-INF/lib">
+			<include name="**/*.jar" />
+		</fileset>
+		<fileset dir="${tomcat.home}/lib">
+			<include name="*.jar" />
+		</fileset>
+	</path>
+
+
+	<target name="clean">
+		<delete dir="${build.dir}" quiet="true" />
+	</target>
+
+	<target name="init" depends="clean">
+		<mkdir dir="${build.dir}" />
+	</target>
+
+	<target name="compile" depends="clean,init">
+		<javac srcdir="${entity.dir}:${business.dir}:${web.dir}:${zhangjiagang.dir}:${common.dir}" source="1.5" destdir="${build.dir}" debug="on" encoding="UTF-8">
+			<classpath refid="project.class.path" />
+		</javac>
+	</target>
+
+	<target name="jar" depends="compile">
+		<jar destfile="${build.dir}/${jar.name}.jar">
+			<fileset dir="${build.dir}"/>
+			<manifest>
+				<attribute name="Built-By" value="Chenxx,Zhangxs" />
+				<section name="common">
+					<attribute name="Specification-Title" value="Chances EPG tags ${build.date}" />
+					<attribute name="Specification-Version" value="${version}" />
+					<attribute name="Specification-Vendor" value="SiTV Co,. Ltd." />
+					<attribute name="Implementation-Title" value="Chances EPG tags" />
+					<attribute name="Implementation-Version" value="${version}" />
+					<attribute name="Implementation-Vendor" value="SiTV Co,. Ltd." />
+				</section>
+			</manifest>
+		</jar>
+	</target>
+
+
+	<target name="deploy" depends="jar">
+		<mkdir dir="${build.dir}/webapp" />
+		<mkdir dir="${build.dir}/webapp/WEB-INF/lib" />
+		<mkdir dir="${build.dir}/webapp/WEB-INF/classes" />
+		<mkdir dir="${build.dir}/webapp/WEB-INF/ibatis" />
+		<mkdir dir="${build.dir}/webapp/WEB-INF/templates" />
+		<mkdir dir="${build.dir}/webapp/common/" />
+
+		<copy todir="${build.dir}/webapp/WEB-INF/lib">
+			<fileset dir="${build.dir}">
+				<include name="${jar.name}.jar" />
+			</fileset>
+		</copy>
+
+		<copy todir="${build.dir}/webapp/common">
+			<fileset dir="${webapp.dir}/common">
+				<exclude name="**/.svn/*" />
+			</fileset>
+		</copy>
+		
+		<copy todir="${build.dir}/webapp/js">
+			<fileset dir="${webapp.dir}/js">
+				<exclude name="**/.svn/*" />
+			</fileset>
+		</copy>
+
+		<copy todir="${build.dir}/webapp/WEB-INF">
+			<fileset dir="${webapp.dir}/WEB-INF">
+				<include name="web.xml"/>
+				<include name="epg-context.xml"/>
+				<include name="epg-servlet.xml"/>
+			</fileset>
+		</copy>
+		
+		<copy todir="${build.dir}/webapp/WEB-INF/classes">
+			<fileset dir="${webapp.dir}/WEB-INF/classes">
+				<include name="log4j.properties"/>
+			</fileset>
+		</copy>
+		<copy todir="${build.dir}/webapp/WEB-INF/conf">
+			<fileset dir="${webapp.dir}/WEB-INF/conf">
+				<include name="epg.properties"/>
+				<include name="jdbc.properties"/>
+			</fileset>
+		</copy>
+		<copy todir="${build.dir}/webapp/WEB-INF/ibatis">
+			<fileset dir="${webapp.dir}/WEB-INF/ibatis">
+		        <exclude name="**/.svn/*" />
+			</fileset>
+		</copy>
+		<copy todir="${build.dir}/webapp/WEB-INF/lib">
+			<fileset dir="${webapp.dir}/WEB-INF/lib">
+		        <exclude name="**/.svn/*" />
+			</fileset>
+		</copy>
+		<copy todir="${build.dir}/webapp/WEB-INF/templates">
+			<fileset dir="${webapp.dir}/WEB-INF/templates">
+		        <exclude name="**/.svn/*" />
+			</fileset>
+		</copy>
+	</target>
+
+	<target name="war" depends="deploy" >
+		<war destfile="${build.dir}/epg.war" webxml="${webapp.dir}/WEB-INF/web.xml">
+			<fileset dir="${build.dir}/webapp" />
+		</war>
+	</target>
+	
+	<target name="zip" depends="deploy" >
+		<zip destfile="${build.dir}/epg${build.date}.zip"
+			 basedir="${build.dir}/webapp"/>
+	</target>
+
+	<target name="update" depends="deploy">
+		<mkdir dir="${build.dir}/zipwebapp" />
+		<copy todir="${build.dir}/zipwebapp">
+			<fileset dir="${build.dir}/webapp">
+				<exclude name="**/*.jar" />
+				<exclude name="**/conf/*.properties" />
+				<exclude name="**/sqlmap-config.xml" />
+				<exclude name="**/common/index/*.jsp" />
+			</fileset>
+		</copy>
+
+		<copy todir="${build.dir}/zipwebapp/WEB-INF/lib" >
+			<fileset dir="${build.dir}/webapp/WEB-INF/lib">
+				<include name="**/*chances*.jar" />
+			</fileset>
+		</copy>
+
+		<zip destfile="${build.dir}/epg${build.date}.zip"
+		       basedir="${build.dir}/zipwebapp"  />
+	</target>
+
+</project>

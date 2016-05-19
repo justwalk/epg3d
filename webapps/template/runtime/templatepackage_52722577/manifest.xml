@@ -1,0 +1,83 @@
+<?xml version="1.0" encoding="GBK"?>
+<TemplatePackage author="" desc="" label="">
+    <template name="Highlights" type="list" desc="1280版世界杯花絮列表页模版" template_path="Highlights.jsp" preview_path="preview/Highlights.jpg">
+	        <param name="backgroundImg" type="image" default_value="" desc="背景图">
+        </param>
+	         <param name="menuCategoryCode" type="category" default_value="" desc="导航菜单">
+        </param>
+	         <param name="programCategoryCode" type="category" default_value="" desc="内容部分">
+        </param>
+	  	</template>
+     <template name="Guess" type="list" desc="1280版世界杯竞猜列表页模版" template_path="Guess.jsp" preview_path="preview/Guess.jpg">
+	        <param name="leftCategoryCode" type="category" default_value="" desc="左侧推荐位图">
+        </param>
+	         <param name="rightCategoryCode" type="category" default_value="" desc="右侧推荐位图">
+        </param>
+	         <param name="voteCategoryCode" type="category" default_value="" desc="投票栏目">
+        </param>
+	         <param name="voteType" type="string" default_value="" desc="投票类型">
+        </param>
+	  	</template>
+     <template name="WorldCupIndex" type="index" desc="1280版世界杯首页模版" template_path="WorldCupIndex.jsp" preview_path="preview/WorldCupIndex.jpg">
+	        <param name="leftUpRecommandCategory" type="category" default_value="" desc="焦点新闻">
+        </param>
+	         <param name="ScorersCategoryCode" type="category" default_value="" desc="射手榜推荐位图">
+        </param>
+	         <param name="rightDownCategoryCode" type="category" default_value="" desc="右下竞猜图片推荐位">
+        </param>
+	         <param name="ssLiveCategoryCode" type="category" default_value="" desc="赛事直播or回看">
+        </param>
+	         <param name="ssPicCategoryCode" type="category" default_value="" desc="赛事安排时间">
+        </param>
+	         <param name="MiddleCategoryCode" type="category" default_value="" desc="中间推荐位图">
+        </param>
+	         <param name="backgroundImg" type="image" default_value="" desc="背景图">
+        </param>
+	         <param name="menuCategoryCode" type="category" default_value="" desc="导航菜单">
+        </param>
+	         <param name="AssistsCategoryCode" type="category" default_value="" desc="助攻榜推荐位图">
+        </param>
+	  	</template>
+     <template name="News" type="list" desc="1280版世界杯新闻列表页模版" template_path="News.jsp" preview_path="preview/News.jpg">
+	        <param name="menuCategoryCode" type="category" default_value="" desc="导航菜单">
+        </param>
+	         <param name="programCategoryCode" type="category" default_value="" desc="内容部分">
+        </param>
+	         <param name="backgroundImg" type="image" default_value="" desc="背景图">
+        </param>
+	         <param name="rightUpCategoryCode" type="category" default_value="" desc="右上推荐图">
+        </param>
+	         <param name="rightDownCategoryCode" type="category" default_value="" desc="右下推荐图">
+        </param>
+	  	</template>
+     <template name="MatchGroup" type="list" desc="1280版世界杯小组赛列表页模版" template_path="MatchGroup.jsp" preview_path="preview/MatchGroup.jpg">
+	        <param name="scheduleCategoryCode" type="string" default_value="" desc="(1-8)判断小组赛组数">
+        </param>
+	         <param name="ThreemenuCategoryCode" type="category" default_value="" desc="三级菜单导航">
+        </param>
+	         <param name="menuCategoryCode" type="category" default_value="" desc="导航菜单">
+        </param>
+	         <param name="backgroundImg" type="image" default_value="" desc="背景图">
+        </param>
+	         <param name="fullMatchCategoryCode" type="category" default_value="" desc="当前小组全场">
+        </param>
+	         <param name="rightDownCategoryCode" type="category" default_value="" desc="右下推荐位">
+        </param>
+	         <param name="StandingsCategoryCode" type="category" default_value="" desc="积分排行图">
+        </param>
+	         <param name="TwomenuCategoryCode" type="category" default_value="" desc="二级菜单导航">
+        </param>
+	         <param name="highLightsCategoryCode" type="category" default_value="" desc="当前小组集锦">
+        </param>
+	  	</template>
+     <template name="MatchEliminate" type="list" desc="1280版世界杯淘汰赛列表页模版" template_path="MatchEliminate.jsp" preview_path="preview/MatchEliminate.jpg">
+	        <param name="menuCategoryCode" type="category" default_value="" desc="导航菜单">
+        </param>
+	         <param name="TwomenuCategoryCode" type="category" default_value="" desc="二级导航">
+        </param>
+	         <param name="EliminateCategoryCode" type="category" default_value="" desc="淘汰赛图">
+        </param>
+	         <param name="backgroundImg" type="image" default_value="" desc="背景图">
+        </param>
+	  	</template>
+  </TemplatePackage>

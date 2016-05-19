@@ -1,0 +1,40 @@
+#if ($parameters.output)
+	#foreach($txt in $parameters.texts)
+		#if (! $parameters.includeInTable) <div #if($parameters.id) id="$parameters.id" #end align="${parameters.align}"  style="position:absolute;left:${txt.left}px;top:${txt.top}px;width:${txt.width}px;height:${txt.height}px"> #end
+			#if (${parameters.enterFocusId})
+				#if (${parameters.enterFocusId} == ${parameters.id})
+					#if ($parameters.href)		<a href="$parameters.href" #if($parameters.pageop) pageop="$parameters.pageop" #end #if($parameters.keyop) keyop="$parameters.keyop" #end #if($parameters.backstep>0) backstep="$parameters.backstep" #end setfocus="">   #end
+				#else
+					#if ($parameters.href)		<a href="$parameters.href" #if($parameters.pageop) pageop="$parameters.pageop" #end #if($parameters.keyop) keyop="$parameters.keyop" #end #if($parameters.backstep>0) backstep="$parameters.backstep" #end >   #end				
+				#end
+			#else
+					#if ($parameters.href)		<a href="$parameters.href" #if($parameters.pageop) pageop="$parameters.pageop" #end #if($parameters.keyop) keyop="$parameters.keyop" #end #if($parameters.backstep>0) backstep="$parameters.backstep" #end  #if (${parameters.defaultfocus}) setfocus=""  #end>   #end				
+			#end
+				<span #if($parameters.id) id="${parameters.id}_span" #end style="color:$parameters.color;font-size:${parameters.fontSize};#if ($parameters.fontFamily) font-family:$parameters.fontFamily #end"  #if($parameters.classname) class="${parameters.classname}"#end>
+					${txt.content}
+				</span>
+			#if ($parameters.href)		</a>	#end	
+		#if (! $parameters.includeInTable) </div> #end
+	#end
+#end
+#foreach($txt in $parameters.texts)
+	#if ($txt.hotkey)
+  		#if ($txt.hotkey=="EVENT_PAGEDOWN") <script> keyValue.add("EVENT_PAGEDOWN","${txt.href}");  </script> #end
+		#if ($txt.hotkey=="EVENT_RETURN") <script> keyValue.add("EVENT_RETURN","${txt.href}");  </script> #end
+		#if ($txt.hotkey=="EVENT_LEFT") <script> keyValue.add("EVENT_LEFT","${txt.href}");  </script> #end
+		#if ($txt.hotkey=="EVENT_UP") <script> keyValue.add("EVENT_UP","${txt.href}");  </script> #end
+		#if ($txt.hotkey=="EVENT_RIGHT") <script> keyValue.add("EVENT_RIGHT","${txt.href}");  </script> #end
+		#if ($txt.hotkey=="EVENT_DOWN") <script> keyValue.add("EVENT_DOWN","${txt.href}");  </script> #end
+		#if ($txt.hotkey=="EVENT_OK") <script> keyValue.add("EVENT_OK","${txt.href}");  </script> #end
+		#if ($txt.hotkey=="EVENT_NUM0") <script> keyValue.add("EVENT_NUM0","${txt.href}");  </script> #end
+		#if ($txt.hotkey=="EVENT_NUM1") <script> keyValue.add("EVENT_NUM1","${txt.href}");  </script> #end
+		#if ($txt.hotkey=="EVENT_NUM2") <script> keyValue.add("EVENT_NUM2","${txt.href}");  </script> #end
+		#if ($txt.hotkey=="EVENT_NUM3") <script> keyValue.add("EVENT_NUM3","${txt.href}");  </script> #end
+		#if ($txt.hotkey=="EVENT_NUM4") <script> keyValue.add("EVENT_NUM4","${txt.href}");  </script> #end
+		#if ($txt.hotkey=="EVENT_NUM5") <script> keyValue.add("EVENT_NUM5","${txt.href}");  </script> #end
+		#if ($txt.hotkey=="EVENT_NUM6") <script> keyValue.add("EVENT_NUM6","${txt.href}");  </script> #end
+		#if ($txt.hotkey=="EVENT_NUM7") <script> keyValue.add("EVENT_NUM7","${txt.href}");  </script> #end
+		#if ($txt.hotkey=="EVENT_NUM8") <script> keyValue.add("EVENT_NUM8","${txt.href}");  </script> #end
+		#if ($txt.hotkey=="EVENT_NUM9") <script> keyValue.add("EVENT_NUM9","${txt.href}");  </script> #end
+  	#end 
+ #end 

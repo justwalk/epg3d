@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE sqlMap      
+    PUBLIC "-//ibatis.apache.org//DTD SQL Map 2.0//EN"      
+    "http://ibatis.apache.org/dtd/sql-map-2.dtd">
+<sqlMap namespace="EpgUserHistory">
+	<resultMap id="EpgUserHistory-result" class="sitv.epg.entity.user.EpgUserHistory">
+		<result property="id" column="ID" />
+		<result property="userId" column="USER_ID" />
+		<result property="contentName" column="CONTENT_NAME" />
+		<result property="contentType" column="CONTENT_TYPE" />
+		<result property="contentCode" column="CONTENT_CODE" />
+		<result property="createTime" column="CREATE_TIME" />
+		<result property="bizCode" column="BIZ_CODE" />
+		<result property="categoryCode" column="CATEGORY_CODE" />
+		<result property="seriesCode" column="SERIES_CODE" />
+	</resultMap>
+	<resultMap id="EpgUserHistoryNum-result" class="sitv.epg.entity.user.EpgUserHistoryNum">
+		<result property="num" column="NUM" /> 
+	</resultMap>
+
+	<!-- 查询历史数目  -->
+	<statement id="getHistoryNum" resultMap="EpgUserHistoryNum-result">
+		<![CDATA[
+			SELECT COUNT(*) as NUM  FROM EPG_USER_HISTORY WHERE USER_ID=#USER_ID#
+     	]]>
+	</statement>
+	
+	<!-- 根据CONTENT_CODE查找用户历史  -->
+	<statement id="findUserHistoryByContentCode" resultMap="EpgUserHistory-result">
+		<![CDATA[
+			SELECT * FROM EPG_USER_HISTORY WHERE USER_ID=#USER_ID# AND CONTENT_CODE=#CONTENT_CODE#
+     	]]>
+	</statement>
+	
+	<!-- 根据SERIES_CODE查找用户历史  -->
+	<statement id="findUserHistoryBySeriesCode" resultMap="EpgUserHistory-result">
+		<![CDATA[
+			SELECT * FROM EPG_USER_HISTORY WHERE USER_ID=#USER_ID# AND SERIES_CODE=#SERIES_CODE#
+     	]]>
+	</statement>
+	
+	<!-- 查找用户所有历史  -->
+	<statement id="queryUserHistoryByUserId" resultMap="EpgUserHistory-result">
+		<![CDATA[
+			SELECT * FROM EPG_USER_HISTORY WHERE user_id=#USER_ID# ORDER BY CREATE_TIME DESC
+     	]]>
+	</statement>
+
+</sqlMap>

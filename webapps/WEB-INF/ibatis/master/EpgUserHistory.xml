@@ -1,0 +1,70 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE sqlMap      
+    PUBLIC "-//ibatis.apache.org//DTD SQL Map 2.0//EN"      
+    "http://ibatis.apache.org/dtd/sql-map-2.dtd">
+<sqlMap namespace="EpgUserHistory">
+	<resultMap id="EpgUserHistory-result" class="sitv.epg.entity.user.EpgUserHistory">
+		<result property="id" column="ID" />
+		<result property="userId" column="USER_ID" />
+		<result property="contentName" column="CONTENT_NAME" />
+		<result property="contentType" column="CONTENT_TYPE" />
+		<result property="contentCode" column="CONTENT_CODE" />
+		<result property="createTime" column="CREATE_TIME" />
+		<result property="bizCode" column="BIZ_CODE" />
+		<result property="categoryCode" column="CATEGORY_CODE" />
+		<result property="seriesCode" column="SERIES_CODE" />
+	</resultMap>
+
+	<!-- 添加用户历史  -->
+	<statement id="addUserHistory" resultMap="EpgUserHistory-result">
+		<![CDATA[
+           INSERT INTO EPG_USER_HISTORY (USER_ID, CONTENT_NAME, CONTENT_TYPE, CONTENT_CODE, SERIES_CODE, BIZ_CODE,
+           								 CATEGORY_CODE, CREATE_TIME) 
+   		   VALUES (#USER_ID#, #CONTENT_NAME#, #CONTENT_TYPE#, #CONTENT_CODE#, #SERIES_CODE#,
+   		   		   #BIZ_CODE#, #CATEGORY_CODE#, #CREATE_TIME#)
+  		]]>
+	</statement>
+	
+	<!-- 根据时间删除用户历史  -->
+	<statement id="delUserHistoryById" resultMap="EpgUserHistory-result">
+		<!--<![CDATA[
+			DELETE FROM EPG_USER_HISTORY WHERE CREATE_TIME < (
+				select CREATE_TIME from (
+				  select rownum no,CREATE_TIME from (
+						select ID,USER_ID,CREATE_TIME from EPG_USER_HISTORY order by CREATE_TIME desc) 
+							where user_id = #USER_ID# )
+				        		where no=20)
+     	]]>-->
+		<![CDATA[
+			DELETE FROM EPG_USER_HISTORY WHERE USER_ID = #USER_ID# ORDER BY CREATE_TIME LIMIT 1     	
+		]]>
+	</statement>
+	
+	<!-- 删除用户全部历史  -->
+	<statement id="delUserHistoryByUserId" resultMap="EpgUserHistory-result">
+		<![CDATA[
+			DELETE FROM EPG_USER_HISTORY WHERE user_id=#USER_ID#
+     	]]>
+	</statement>
+	
+	<!-- 更新用户历史  -->
+	<statement id="updateHistory" resultMap="EpgUserHistory-result">
+		<![CDATA[
+			UPDATE EPG_USER_HISTORY 
+			SET CONTENT_NAME=#CONTENT_NAME#, SERIES_CODE=#SERIES_CODE#, CREATE_TIME=#CREATE_TIME#, 
+				BIZ_CODE=#BIZ_CODE#, CATEGORY_CODE=#CATEGORY_CODE# 
+			WHERE USER_ID=#USER_ID# AND CONTENT_CODE=#CONTENT_CODE#
+     	]]>
+	</statement>
+	
+	<!-- 根据SERIES_CODE更新用户历史  -->
+	<statement id="updateHistoryByseriesCode" resultMap="EpgUserHistory-result">
+		<![CDATA[
+			UPDATE EPG_USER_HISTORY 
+			SET CONTENT_NAME=#CONTENT_NAME#, CONTENT_CODE=#CONTENT_CODE#, CREATE_TIME=#CREATE_TIME#, 
+				BIZ_CODE=#BIZ_CODE#, CATEGORY_CODE=#CATEGORY_CODE# 
+			WHERE USER_ID=#USER_ID# AND SERIES_CODE=#SERIES_CODE#
+     	]]>
+	</statement>
+
+</sqlMap>

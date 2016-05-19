@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE sqlMap      
+    PUBLIC "-//ibatis.apache.org//DTD SQL Map 2.0//EN"      
+    "http://ibatis.apache.org/dtd/sql-map-2.dtd">
+
+<sqlMap namespace="EpgContentOffering">
+	<resultMap id="EpgContentOffering-result" class="sitv.epg.entity.content.EpgContentOffering">
+		<result property="offeringId" column="OFFERING_ID" />
+		<result property="contentCode" column="CONTENT_CODE" />
+		<result property="serviceType" column="SERVICE_TYPE" />
+		<result property="serviceName" column="SERVICE_NAME" />
+		<result property="serviceCode" column="SERVICE_CODE" />
+		<result property="suggestedPrice" column="SUGGESTED_PRICE" />
+		<result property="price" column="PRICE" />
+		<result property="rentalDuration" column="RENTAL_DURATION" />
+	</resultMap>
+	<!-- 根据contentCode查询offering -->
+
+	<cacheModel id="getContentOffering_CM" type="LRU" readOnly="true"
+		serialize="false">
+		<flushInterval minutes="5" />
+		<property name="cache-size" value="500" />
+	</cacheModel>
+
+	<statement id="getContentOffering" resultMap="EpgContentOffering-result"
+		cacheModel="getContentOffering_CM">
+		<![CDATA[		   
+            select OFFERING_ID,CONTENT_CODE,SERVICE_TYPE,SERVICE_NAME,SERVICE_CODE,IFNULL(SUGGESTED_PRICE,0) as SUGGESTED_PRICE,IFNULL(PRICE,0) as PRICE,IFNULL(RENTAL_DURATION,240) as RENTAL_DURATION from EPG_CONTENT_OFFERING where CONTENT_CODE = #contentCode#
+        ]]>
+	</statement>
+
+</sqlMap>

@@ -1,0 +1,21 @@
+<html>
+<head>
+<meta http-equiv="Content-Language" content="zh-cn">
+<meta http-equiv="Content-Type" content="text/html; charset=gb2312">
+<style>
+a{TEXT-DECORATION:none}
+a:link{color: #000000}
+a:hover{color: #a45900}
+</style>
+<script language="javascript">
+	var focusId = null;
+	function back(){
+		history.back();
+	}
+	
+	//停止播放视频
+	var player = new AVPlayer();
+	var item = "";
+	player.readItem(777, item);
+</script>
+</head>

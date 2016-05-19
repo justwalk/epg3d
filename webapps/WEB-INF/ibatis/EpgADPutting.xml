@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE sqlMap      
+    PUBLIC "-//ibatis.apache.org//DTD SQL Map 2.0//EN"      
+    "http://ibatis.apache.org/dtd/sql-map-2.dtd">
+
+<sqlMap namespace="EpgADPutting">
+	<resultMap id="epgADPutting-result" class="sitv.epg.entity.business.EpgADPutting">
+		<result property="id" column="ID" />
+		<result property="categoryId" column="CATEGORY_ID" />
+		<result property="categoryCode" column="CATEGORY_CODE" />
+		<result property="putting" column="PUTTING" />
+		<result property="property" column="PROPERTY" />
+	</resultMap>
+	<!-- 根据分类code查询是否需要投放广告 -->
+
+	<cacheModel id="getADPuttingByCode_CM" type="LRU" readOnly="true"
+		serialize="false">
+		<flushInterval minutes="5" />
+		<property name="cache-size" value="500" />
+	</cacheModel>
+
+	<statement id="getADPuttingByCode" resultMap="epgADPutting-result"
+		cacheModel="getADPuttingByCode_CM">
+		<![CDATA[		   
+            select * from EPG_AD_PUTTING where CATEGORY_CODE = #catCode#  and PUTTING=1 
+        ]]>
+	</statement>
+
+
+
+	<!-- 根据分类id查询是否需要投放广告 -->
+
+	<cacheModel id="getADPuttingById_CM" type="LRU" readOnly="true"
+		serialize="false">
+		<flushInterval minutes="5" />
+		<property name="cache-size" value="500" />
+	</cacheModel>
+
+	<statement id="getADPuttingById" resultMap="epgADPutting-result"
+		cacheModel="getADPuttingById_CM">
+		<![CDATA[		   
+            select * from EPG_AD_PUTTING where ID = #catId#  and PUTTING=1 
+        ]]>
+	</statement>
+</sqlMap>

@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE sqlMap      
+    PUBLIC "-//ibatis.apache.org//DTD SQL Map 2.0//EN"      
+    "http://ibatis.apache.org/dtd/sql-map-2.dtd">
+
+<sqlMap namespace="MasterEpgSubscriberPPV">
+	<resultMap id="EpgSubscriberPPV-result" class="sitv.epg.entity.user.EpgSubscriberPPV">
+		<result property="userId" column="USER_ACCOUNT" />
+		<result property="userMac" column="USER_MAC" />
+		<result property="bizCode" column="BIZ_CODE" />
+		<result property="categoryCode" column="CATEGORY_CODE" />
+		<result property="categoryName" column="CATEGORY_NAME" />
+		<result property="programCode" column="PROGRAM_CODE" />
+		<result property="programTitle" column="PROGRAM_TITLE" />
+		<result property="offeringId" column="OFFERINGID" />
+		<result property="serviceName" column="SERVICENAME" />
+		<result property="serviceCode" column="SERVICECODE" />
+		<result property="serviceType" column="SERVICETYPE" />
+		<result property="price" column="PRICE" />
+		<result property="orderTime" column="ORDER_TIME" />
+		<result property="validTime" column="VALID_TIME" />
+		<result property="expireTime" column="EXPIRE_TIME" />
+		<result property="programType" column="PROGRAM_TYPE" />
+		<result property="protocolType" column="PROTOCOL_TYPE" />
+		<result property="fileName" column="FILE_NAME" />
+	</resultMap>
+
+	<!-- 添加用户订购信息 -->
+	<statement id="addSubscriberPpv">
+		<![CDATA[		   
+           INSERT INTO EPG_SUBSCRIBER_PPV (USER_ACCOUNT, USER_MAC, BIZ_CODE, CATEGORY_CODE, CATEGORY_NAME, PROGRAM_CODE, PROGRAM_TITLE, OFFERINGID, SERVICENAME, SERVICECODE, SERVICETYPE, PRICE, ORDER_TIME, VALID_TIME, EXPIRE_TIME, PROGRAM_TYPE, PROTOCOL_TYPE, FILE_NAME) VALUES (#USER_ACCOUNT#, #USER_MAC#, #BIZ_CODE#, #CATEGORY_CODE#, #CATEGORY_NAME#, #PROGRAM_CODE#, #PROGRAM_TITLE#, #OFFERINGID#, #SERVICENAME#, #SERVICECODE#, #SERVICETYPE#, #PRICE#, #ORDER_TIME#, #VALID_TIME#, #EXPIRE_TIME#, #PROGRAM_TYPE#, #PROTOCOL_TYPE#, #FILE_NAME#)
+  		]]>
+	</statement>
+
+	<statement id="getEpgSubscriberPPVByMac" resultMap="EpgSubscriberPPV-result">
+		<![CDATA[
+            select * from EPG_SUBSCRIBER_PPV where USER_MAC = #macAddress# and PROGRAM_CODE = #contentCode# and  OFFERINGID = #offeringId# and #nowDate# >= VALID_TIME and #nowDate# <= EXPIRE_TIME
+        ]]>
+	</statement>
+
+	<statement id="getEpgSubscriberPPVByUserAccount" resultMap="EpgSubscriberPPV-result">
+		<![CDATA[
+            select * from EPG_SUBSCRIBER_PPV where USER_ACCOUNT = #userAccount# and PROGRAM_CODE = #contentCode# and  OFFERINGID = #offeringId# and #nowDate# >= VALID_TIME and #nowDate# <= EXPIRE_TIME
+  	  ]]>
+	</statement>
+
+	<statement id="getSubscriberPPVByMacAddressAndOfferingId"
+		resultMap="EpgSubscriberPPV-result">
+		<![CDATA[
+            select * from EPG_SUBSCRIBER_PPV where USER_MAC = #macAddress# and FILE_NAME = #fileName#
+  	  	]]>
+	</statement>
+
+	<statement id="getSubscriberPPVByUserAssets" resultMap="EpgSubscriberPPV-result">
+		<![CDATA[
+            select * from EPG_SUBSCRIBER_PPV where USER_MAC = #stbMac# and FILE_NAME in ( $fileNames$ )
+  	  	]]>
+	</statement>
+
+</sqlMap>

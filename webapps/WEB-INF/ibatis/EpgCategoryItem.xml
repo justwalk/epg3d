@@ -1,0 +1,456 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE sqlMap      
+    PUBLIC "-//ibatis.apache.org//DTD SQL Map 2.0//EN"      
+    "http://ibatis.apache.org/dtd/sql-map-2.dtd">
+
+<sqlMap namespace="EpgCategoryItem">
+	<resultMap id="epgCategoryItem-result" class="sitv.epg.entity.edit.EpgCategoryItem">
+		<result property="id" column="ID" />
+		<result property="categoryCode" column="CATEGORY_CODE" />
+		<result property="itemType" column="ITEM_TYPE" />
+		<result property="itemCode" column="ITEM_CODE" />
+		<result property="title" column="TITLE" />
+		<result property="subTitle" column="SUB_TITLE" />
+		<result property="status" column="STATUS" />
+		<result property="type" column="TYPE" />
+		<result property="showTag" column="SHOW_FLAG" />
+		<result property="itemOrder" column="ITEM_ORDER" />
+		<result property="beginTime" column="BEGIN_TIME" />
+		<result property="endTime" column="END_TIME" />
+		<result property="validTime" column="VALID_TIME" />
+		<result property="expireTime" column="EXPIRE_TIME" />
+		<result property="itemIcon" column="ITEM_ICON" />
+		<result property="createTime" column="CREATE_TIME" />
+	</resultMap>	
+	
+	<resultMap id="epgCategoryItemWithPic-result" class="sitv.epg.entity.edit.EpgCategoryItemWithPic">
+		<result property="categoryCode" column="CATEGORY_CODE" />
+		<result property="itemType" column="ITEM_TYPE" />
+		<result property="itemCode" column="ITEM_CODE" />
+		<result property="title" column="TITLE" />
+		<result property="subTitle" column="SUB_TITLE" />
+		<result property="status" column="STATUS" />
+		<result property="type" column="TYPE" />
+		<result property="showTag" column="SHOW_FLAG" />
+		<result property="itemOrder" column="ITEM_ORDER" />
+		<result property="beginTime" column="BEGIN_TIME" />
+		<result property="endTime" column="END_TIME" />
+		<result property="validTime" column="VALID_TIME" />
+		<result property="expireTime" column="EXPIRE_TIME" />
+		<result property="itemIcon" column="ITEM_ICON" />
+		<result property="createTime" column="CREATE_TIME" />
+		<result property="poster" column="POSTER" />
+		<result property="still" column="STILL" />
+		<result property="icon" column="ICON" />
+		<result property="reserve1" column="RESERVE1" />
+	</resultMap>
+	
+	<resultMap id="epgCategoryItemWithSubjectPic-result" class="sitv.epg.entity.edit.EpgCategoryItemWithPic">
+		<result property="categoryCode" column="CATEGORY_CODE" />
+		<result property="itemType" column="ITEM_TYPE" />
+		<result property="itemCode" column="ITEM_CODE" />
+		<result property="title" column="TITLE" />
+		<result property="subTitle" column="SUB_TITLE" />
+		<result property="status" column="STATUS" />
+		<result property="type" column="TYPE" />
+		<result property="showTag" column="SHOW_FLAG" />
+		<result property="itemOrder" column="ITEM_ORDER" />
+		<result property="beginTime" column="BEGIN_TIME" />
+		<result property="endTime" column="END_TIME" />
+		<result property="validTime" column="VALID_TIME" />
+		<result property="expireTime" column="EXPIRE_TIME" />
+		<result property="itemIcon" column="ITEM_ICON" />
+		<result property="createTime" column="CREATE_TIME" />
+		<result property="poster" column="POSTER" />
+		<result property="still" column="STILL" />
+		<result property="icon" column="ICON" />
+	</resultMap>
+
+<resultMap id="programDetail-result" class="sitv.epg.entity.content.EpgDetailProgram">
+		<result property="contentId" column="CONTENT_ID" />
+		<result property="contentCode" column="CONTENT_CODE" />
+		<result property="title" column="TITLE" />
+		<result property="titleBrief" column="TITLE_BRIEF" />
+		<result property="enableStatus" column="ENABLE_STATUS" />
+		<result property="countryOfOrigin" column="COUNTRY_OF_ORIGIN" />
+		<result property="year" column="YEAR" />
+		<result property="director" column="DIRECTOR" />
+		<result property="actors" column="ACTORS" />
+		<result property="summaryMedium" column="SUMMARY_MEDIUM" />
+		<result property="summaryShort" column="SUMMARY_SHORT" />
+		<result property="keyword" column="KEY_WORD" />
+		<result property="remark" column="REMARK" />
+		<result property="level" column="PROGRAM_LEVEL" />
+		<result property="createDate" column="CREATION_DATE" />
+		<result property="poster" column="POSTER" />
+		<result property="still" column="STILL" />
+		<result property="icon" column="ICON" />
+		<result property="episodeNumber" column="EPISODE_NUMBER" />
+		<result property="runTime" column="RUN_TIME" />
+		<result property="displayRunTime" column="DISPLAY_RUN_TIME" />
+		<result property="contentType" column="CONTENT_TYPE" />
+		<result property="programType" column="PROGRAM_TYPE" />
+		<result property="suggestedPrice" column="SUGGESTED_PRICE" />
+		<result property="reserve1" column="RESERVE1" />
+		<result property="dub" column="VOD_DUB" />
+		<result property="caption" column="VOD_CAPTION" />
+		<result property="tags" column="TAGS" />
+	</resultMap>
+
+	<!-- 取分类下前几个编排项  -->
+	<cacheModel id="getSeverialItems_CM" type="LRU" readOnly="true"
+		serialize="false">
+		<flushInterval minutes="10" />
+		<property name="cache-size" value="10000" />
+	</cacheModel>
+	<statement id="getSeverialItems" resultMap="epgCategoryItem-result"
+		cacheModel="getSeverialItems_CM">
+		<![CDATA[		   
+            select * from EPG_CATEGORY_ITEM where CATEGORY_CODE = #categoryCode#  and status=0 and now()> VALID_TIME and now() < EXPIRE_TIME order by TYPE desc,ITEM_ORDER asc,id desc 
+        ]]>
+	</statement>
+
+	<!-- 取分类下前几个专辑包含海报的编排项  -->
+	<cacheModel id="getSeverialItemsWithSubjectPic_CM" type ="LRU" readOnly="true" serialize="false">  
+    	<flushInterval minutes="10"/> 
+    	<property name="cache-size" value="10000" />    
+	</cacheModel> 
+	<statement id="getSeverialItemsWithSubjectPic" resultMap="epgCategoryItemWithSubjectPic-result"  cacheModel="getSeverialItemsWithSubjectPic_CM">
+		<![CDATA[		   
+            select a.*,b.poster,b.still,b.icon from EPG_CATEGORY_ITEM a left join EPG_SUBJECT_PAGE b on a.item_code = b.subject_code where a.CATEGORY_CODE =  #categoryCode# and b.default_flag=1 and a.status=0 and now()> VALID_TIME and now() < EXPIRE_TIME order by a.TYPE desc,a.ITEM_ORDER asc,a.id desc 
+        ]]>
+	</statement>
+	
+	<!-- 随机取分类下几个编排项 -->
+	<cacheModel id="getSeverialItemsByRandom_CM" type="LRU"
+		readOnly="true" serialize="false">
+		<flushInterval minutes="10" />
+		<property name="cache-size" value="10000" />
+	</cacheModel>
+	<statement id="getSeverialItemsByRandom" resultMap="epgCategoryItem-result"
+		cacheModel="getSeverialItemsByRandom_CM">
+		<![CDATA[
+		 	select * from  ( select * from EPG_CATEGORY_ITEM where CATEGORY_CODE = #categoryCode# and status=0 and now()> VALID_TIME and now() < EXPIRE_TIME order by dbms_random.value )
+        ]]>
+	</statement>
+
+	<!-- 取分类下前几个编排项,包括内容图片  -->
+	<cacheModel id="getSeverialItemsIncludePic_CM" type="LRU"
+		readOnly="true" serialize="false">
+		<flushInterval minutes="10" />
+		<property name="cache-size" value="10000" />
+	</cacheModel>
+	<statement id="getSeverialItemsIncludePic" resultMap="epgCategoryItemWithPic-result"
+		cacheModel="getSeverialItemsIncludePic_CM">
+		<![CDATA[
+           select a.*,b.poster,b.still,b.icon,b.reserve1 from EPG_CATEGORY_ITEM a  left join CONTENT_WITH_PIC b on a.item_code = b.content_code where a.category_code = #categoryCode#  and a.status=0 and now()> a.VALID_TIME and now() < a.EXPIRE_TIME  order by a.TYPE desc,a.ITEM_ORDER asc,a.id desc  
+        ]]>
+	</statement>
+
+	<!-- 分类下随机取几个编排项,包括内容图片 -->
+	<statement id="getSeverialItemsByRandomIncludePic" resultMap="epgCategoryItemWithPic-result">
+		<![CDATA[
+		 select * from ( select a.*,b.poster,b.still,b.icon,b.reserve1 from EPG_CATEGORY_ITEM a  left join CONTENT_WITH_PIC b on a.item_code = b.content_code where a.category_code = #categoryCode# and a.status=0 and now()> a.VALID_TIME and now() < a.EXPIRE_TIME   order by RAND()) as t
+        ]]>
+	</statement>
+	
+	<!-- 
+		猜你喜欢  #tags#：节目tag #selfCode#：自身节目code 用于查询时排除自己 #mainFolder#：查询不足时mainFolder补 
+		这里union前半句取了5条 后满句取了10条 查询后数据总数会小于10条 当union前后数据一致时会出现小于10的情况 为了防止数据少
+		顾union后的查询limit了10条数据
+	-->
+	<statement id="getSeverialItemsByTagsRandomIncludePic" resultMap="programDetail-result">
+		<![CDATA[
+			select * from (
+	            select * from (
+					select distinct a.* from CONTENT_WITH_PIC a, EPG_CATEGORY_ITEM b
+					where a.tags like concat('%',#tags#,'%') 
+					and a.program_type != 'episode' 
+					and a.content_code != #selfCode# 
+					and a.enable_status=1  
+					and b.STATUS=0 
+					and b.ITEM_CODE=a.CONTENT_CODE
+					and a.main_folder = #mainFolder#
+					and a.content_id>
+					(SELECT FLOOR(RAND() * (
+					(SELECT MAX(CONTENT_ID) FROM CONTENT_WITH_PIC)-
+					(SELECT MIN(CONTENT_ID) FROM CONTENT_WITH_PIC))+
+					(SELECT MIN(CONTENT_ID) FROM CONTENT_WITH_PIC)) )
+					limit 5 
+	            ) as t1
+	          union
+	            select * from (
+					select a.* from CONTENT_WITH_PIC a,EPG_CATEGORY_ITEM b 
+					where a.program_type != 'episode' 
+					and a.content_code != #selfCode# 
+					and a.enable_status=1  
+					and b.STATUS=0 
+					and b.ITEM_CODE=a.CONTENT_CODE 
+					and a.main_folder = #mainFolder#
+					limit 10
+	            ) as t2
+			)as t 
+        ]]>
+	</statement>
+	<!-- 
+		猜你喜欢  #tags#：节目tag #selfCode#：自身节目code 用于查询时排除自己 #mainFolder#：查询不足时mainFolder补 
+		这里union前半句取了5条 后满句取了10条 查询后数据总数会小于10条 当union前后数据一致时会出现小于10的情况 为了防止数据少
+		顾union后的查询limit了10条数据
+	-->
+	<statement id="getSeverialItemsByTagsHDRandomIncludePic" resultMap="programDetail-result">
+		<![CDATA[
+			select * from (
+	            select * from (
+	            		select a.* from CONTENT_WITH_PIC a,EPG_CATEGORY_ITEM b 
+	                where a.tags like concat('%',#tags#,'%') 
+	                and a.program_type != 'episode' 
+	                and a.content_code != #selfCode# 
+	                and a.enable_status = 1 
+	                and a.title like 'HD%'
+	                and b.STATUS = 0 
+	                and b.ITEM_CODE = a.CONTENT_CODE
+	                and a.content_id>
+									(SELECT FLOOR(RAND() * (
+									(SELECT MAX(CONTENT_ID) FROM CONTENT_WITH_PIC)-
+									(SELECT MIN(CONTENT_ID) FROM CONTENT_WITH_PIC))+
+									(SELECT MIN(CONTENT_ID) FROM CONTENT_WITH_PIC)) )
+									limit 5
+	            ) as t1
+	          union
+	            select * from (
+	            		select a.* from CONTENT_WITH_PIC a,EPG_CATEGORY_ITEM b 
+	                where a.program_type != 'episode' 
+	                and a.content_code != #selfCode# 
+	                and a.enable_status = 1 
+	                and a.title like 'HD%' 
+	                and b.STATUS = 0
+	                and b.ITEM_CODE = a.CONTENT_CODE 
+	                and a.main_folder = #mainFolder#
+	                limit 10
+	            ) as t2
+			)as t 
+        ]]>
+	</statement>
+	<!-- 
+		猜你喜欢  #tags#：节目tag #selfCode#：自身节目code 用于查询时排除自己 #mainFolder#：查询不足时mainFolder补 
+		这里union前半句取了5条 后满句取了10条 查询后数据总数会小于10条 当union前后数据一致时会出现小于10的情况 为了防止数据少
+		顾union后的查询limit了10条数据
+	-->
+	<statement id="getSeverialItemsByTagsSDRandomIncludePic" resultMap="programDetail-result">
+		<![CDATA[
+			select * from (
+	            select * from (
+	            		select a.* from CONTENT_WITH_PIC a,EPG_CATEGORY_ITEM b 
+	                where a.tags like concat('%',#tags#,'%') 
+	                and a.program_type != 'episode' 
+	                and a.content_code != #selfCode# 
+	                and a.enable_status = 1  
+	                and a.title not like 'HD%'
+	                and b.STATUS = 0 
+	                and b.ITEM_CODE = a.CONTENT_CODE
+	                and a.content_id>
+									(SELECT FLOOR(RAND() * (
+									(SELECT MAX(CONTENT_ID) FROM CONTENT_WITH_PIC)-
+									(SELECT MIN(CONTENT_ID) FROM CONTENT_WITH_PIC))+
+									(SELECT MIN(CONTENT_ID) FROM CONTENT_WITH_PIC)) )
+									limit 5
+	            ) as t1
+	          union
+	            select * from (
+	                select a.* from CONTENT_WITH_PIC a,EPG_CATEGORY_ITEM b 
+	                where a.program_type != 'episode' 
+	                and a.content_code != #selfCode#
+	                and a.enable_status = 1  
+	                and a.title not like 'HD%'
+	                and b.STATUS = 0 
+	                and b.ITEM_CODE = a.CONTENT_CODE 
+	                and a.main_folder = #mainFolder#
+	                limit 10 
+	            ) as t2
+			)as t 
+        ]]>
+	</statement>
+	
+	
+	<!-- 按照内容类别取分类下前几个编排项  -->
+	<cacheModel id="getSeverialItemsByContentType_CM" type="LRU"
+		readOnly="true" serialize="false">
+		<flushInterval minutes="10" />
+		<property name="cache-size" value="10000" />
+	</cacheModel>
+	<statement id="getSeverialItemsByContentType" resultMap="epgCategoryItem-result"
+		cacheModel="getSeverialItemsByContentType_CM">
+		<![CDATA[		   
+            select * from EPG_CATEGORY_ITEM where CATEGORY_CODE = #categoryCode# and ITEM_TYPE=#contentType#  and status=0 and now()> VALID_TIME and now() < EXPIRE_TIME order by TYPE desc,ITEM_ORDER asc,id desc
+        ]]>
+	</statement>
+
+	<!-- 按照内容类别分类下随机取几个编排项 -->
+	<cacheModel id="getSeverialItemsByRandomByContentType_CM"
+		type="LRU" readOnly="true" serialize="false">
+		<flushInterval minutes="10" />
+		<property name="cache-size" value="10000" />
+	</cacheModel>
+	<statement id="getSeverialItemsByRandomByContentType"
+		resultMap="epgCategoryItem-result" cacheModel="getSeverialItemsByRandomByContentType_CM">
+		<![CDATA[
+		 	select * from  ( select * from EPG_CATEGORY_ITEM where CATEGORY_CODE = #categoryCode# and ITEM_TYPE=#contentType#  and status=0 and now()> VALID_TIME and now() < EXPIRE_TIME  order by dbms_random.value ) 
+        ]]>
+	</statement>
+
+	<!-- 按照内容类别分类下取前几个编排项,包括图片 -->
+	<cacheModel id="getSeverialItemsIncludePicByContentType_CM"
+		type="LRU" readOnly="true" serialize="false">
+		<flushInterval minutes="10" />
+		<property name="cache-size" value="10000" />
+	</cacheModel>
+	<statement id="getSeverialItemsIncludePicByContentType"
+		resultMap="epgCategoryItemWithPic-result" cacheModel="getSeverialItemsIncludePicByContentType_CM">
+		<![CDATA[
+           select a.*,b.poster,b.still,b.icon,b.reserve1  from EPG_CATEGORY_ITEM a  left join CONTENT_WITH_PIC b on a.item_code = b.content_code where a.category_code = #categoryCode#  and a.ITEM_TYPE=#contentType# and a.status=0 and now()> a.VALID_TIME and now() < a.EXPIRE_TIME  order by a.TYPE desc,a.ITEM_ORDER asc,a.id desc 
+        ]]>
+	</statement>
+
+	<!-- 按照内容类别分类下随机取几个编排项,包括图片 -->
+	<cacheModel id="getSeverialItemsByRandomAndContentTypeIncludePic_CM"
+		type="LRU" readOnly="true" serialize="false">
+		<flushInterval minutes="10" />
+		<property name="cache-size" value="10000" />
+	</cacheModel>
+	<statement id="getSeverialItemsByRandomAndContentTypeIncludePic"
+		resultMap="epgCategoryItemWithPic-result" cacheModel="getSeverialItemsByRandomAndContentTypeIncludePic_CM">
+		<![CDATA[
+		 select * from ( select a.*,b.poster,b.still,b.icon,b.reserve1  from EPG_CATEGORY_ITEM a  left join CONTENT_WITH_PIC b on a.item_code = b.content_code where a.category_code = #categoryCode# and ITEM_TYPE=#contentType# and a.status=0 and now()> a.VALID_TIME and now() < a.EXPIRE_TIME    order by dbms_random.value) 
+        ]]>
+	</statement>
+
+	<!-- 分类下按页取编排项  -->
+	<cacheModel id="getItemsByPage_CM" type="LRU" readOnly="true"
+		serialize="false">
+		<flushInterval minutes="10" />
+		<property name="cache-size" value="10000" />
+	</cacheModel>
+	<statement id="getItemsByPage" resultMap="epgCategoryItem-result"
+		cacheModel="getItemsByPage_CM">
+		<![CDATA[		   
+            select * from EPG_CATEGORY_ITEM where CATEGORY_CODE = #categoryCode#  and status=0 and now()> VALID_TIME and now() < EXPIRE_TIME  order by TYPE desc,ITEM_ORDER asc,id desc 
+        ]]>
+	</statement>
+
+	<!-- 分类下按页取编排项,包括内容图片  -->
+	<cacheModel id="getItemsIncludePicByPage_CM" type="LRU"
+		readOnly="true" serialize="false">
+		<flushInterval minutes="10" />
+		<property name="cache-size" value="10000" />
+	</cacheModel>
+	<statement id="getItemsIncludePicByPage" resultMap="epgCategoryItemWithPic-result"
+		cacheModel="getItemsIncludePicByPage_CM">
+		<![CDATA[
+           select a.*,b.poster,b.still,b.icon,b.reserve1  from EPG_CATEGORY_ITEM a  left join CONTENT_WITH_PIC b on a.item_code = b.content_code where a.category_code = #categoryCode#  and a.status=0 and now()> a.VALID_TIME and now() < a.EXPIRE_TIME order by a.TYPE desc,a.ITEM_ORDER asc,a.id desc  
+        ]]>
+	</statement>
+
+
+	<!-- 分类下按指定序号取编排项,包括内容图片  -->
+	<statement id="getItemsByIndex" resultMap="epgCategoryItemWithPic-result">
+		<![CDATA[		   
+        	select a.*,b.poster,b.still,b.icon,b.reserve1  from EPG_CATEGORY_ITEM a  left join CONTENT_WITH_PIC b on a.item_code = b.content_code where a.category_code = #categoryCode#  and a.status=0 and now()> a.VALID_TIME and now() < a.EXPIRE_TIME order by a.TYPE desc,a.ITEM_ORDER asc,a.id desc limit #idx#,1
+        ]]>
+	</statement>
+
+
+	<!-- 分类下按指定序号取指定数目的编排项,包括内容图片  -->
+	<statement id="getItemListByIndex" resultMap="epgCategoryItemWithPic-result">
+		<![CDATA[		   
+        	select a.*,b.poster,b.still,b.icon,b.reserve1  from EPG_CATEGORY_ITEM a  left join CONTENT_WITH_PIC b on a.item_code = b.content_code where a.category_code = #categoryCode#  and a.status=0 and now()> a.VALID_TIME and now() < a.EXPIRE_TIME order by a.TYPE desc,a.ITEM_ORDER asc,a.id desc limit #idx#,#count#
+        ]]>
+	</statement>
+
+
+
+
+	<!-- 分类下按页和内容类型取编排项  -->
+	<cacheModel id="getItemByContentTypeAndPage_CM" type="LRU"
+		readOnly="true" serialize="false">
+		<flushInterval minutes="10" />
+		<property name="cache-size" value="10000" />
+	</cacheModel>
+	<statement id="getItemByContentTypeAndPage" resultMap="epgCategoryItem-result"
+		cacheModel="getItemByContentTypeAndPage_CM">
+		<![CDATA[		   
+            select * from EPG_CATEGORY_ITEM where CATEGORY_CODE = #categoryCode# and ITEM_TYPE=#contentType#  and status=0 and now()> VALID_TIME and now() < EXPIRE_TIME  order by TYPE desc,ITEM_ORDER asc,id desc 
+        ]]>
+	</statement>
+
+	<!-- 分类下按页和内容类型取编排项,包括图片 -->
+	<cacheModel id="getItemsIncludePicByContentTypeAndPage_CM"
+		type="LRU" readOnly="true" serialize="false">
+		<flushInterval minutes="10" />
+		<property name="cache-size" value="10000" />
+	</cacheModel>
+	<statement id="getItemsIncludePicByContentTypeAndPage"
+		resultMap="epgCategoryItemWithPic-result" cacheModel="getItemsIncludePicByContentTypeAndPage_CM">
+		<![CDATA[
+           select a.*,b.poster,b.still,b.icon,b.reserve1 from EPG_CATEGORY_ITEM a  left join CONTENT_WITH_PIC b on a.item_code = b.content_code where a.category_code = #categoryCode#  and a.ITEM_TYPE=#contentType#  and a.status=0 and now()> a.VALID_TIME and now() < a.EXPIRE_TIME order by a.TYPE desc,a.ITEM_ORDER asc,a.id desc 
+        ]]>
+	</statement>
+	<!-- 根据itemCode取得图片 -->
+
+
+	<!-- 按照itemCode取item -->
+	<cacheModel id="getItemIconById_CM" type="LRU" readOnly="true"
+		serialize="false">
+		<flushInterval minutes="10" />
+		<property name="cache-size" value="10000" />
+	</cacheModel>
+	<statement id="getItemIconById" resultMap="epgCategoryItem-result"
+		cacheModel="getItemIconById_CM">
+		<![CDATA[
+           select * from EPG_CATEGORY_ITEM where ID = #id#  
+        ]]>
+	</statement>
+
+
+	<!-- 按照itemCode取编排的最新一个栏目,在播放时获取广告信息时如果内容没有分类则默认取所属的最新的一个分类 -->
+	<cacheModel id="getFirstCategoryByItemCode_CM" type="LRU"
+		readOnly="true" serialize="false">
+		<flushInterval minutes="10" />
+		<property name="cache-size" value="10000" />
+	</cacheModel>
+	<statement id="getFirstCategoryByItemCode" resultMap="epgCategoryItem-result"
+		cacheModel="getFirstCategoryByItemCode_CM">
+		<![CDATA[
+           select * from EPG_CATEGORY_ITEM where ITEM_CODE = #itemCode#  and status=0 and now()> VALID_TIME and now() < EXPIRE_TIME  order by TYPE desc,ITEM_ORDER asc,id desc 
+        ]]>
+	</statement>
+	
+	<!-- 按照itemCode取编排的栏目编码 -->
+	<cacheModel id="getCategoryItemsByItemCode_CM" type="LRU"
+		readOnly="true" serialize="false">
+		<flushInterval minutes="10" />
+		<property name="cache-size" value="10000" />
+	</cacheModel>
+	<statement id="getCategoryItemsByItemCode" resultMap="epgCategoryItem-result"
+		cacheModel="getCategoryItemsByItemCode_CM">
+		<![CDATA[
+           select * from EPG_CATEGORY_ITEM where ITEM_CODE = #itemCode# and status = 0 and now() > VALID_TIME and now() < EXPIRE_TIME
+        ]]>
+	</statement>
+	
+	<!-- 取三个分类下前几个编排项,包括内容图片  by wangkai 2014-4-16 -->
+	<cacheModel id="getOldestItemsIncludePic_CM" type="LRU"
+		readOnly="true" serialize="false">
+		<flushInterval minutes="10" />
+		<property name="cache-size" value="10000" />
+	</cacheModel>
+	<statement id="getOldestItemsIncludePic" resultMap="epgCategoryItemWithPic-result"
+		cacheModel="getOldestItemsIncludePic_CM">
+        <![CDATA[
+			select a.*,b.poster,b.still,b.icon,b.reserve1 from EPG_CATEGORY_ITEM a  left join CONTENT_WITH_PIC b on a.item_code = b.content_code 
+			where a.category_code in (#category1# , #category2# , #category3#)  
+			and a.status=0 and now()> a.VALID_TIME and now() < a.EXPIRE_TIME  and (to_days(EXPIRE_TIME) - to_days(now()) <= 14)
+			order by a.TYPE desc,a.ITEM_ORDER asc,a.id desc 
+		]]>
+	</statement>
+
+</sqlMap>

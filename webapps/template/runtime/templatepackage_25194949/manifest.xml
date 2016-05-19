@@ -1,0 +1,79 @@
+<?xml version="1.0" encoding="GBK"?>
+<TemplatePackage author="" desc="" label="">
+     <template name="sd_theaterIndex" type="index" desc="标清剧乐部看吧首页模板" template_path="sd_theaterIndex.jsp" preview_path="preview/sd_theaterIndex.jpg">
+	        <param name="leftUpCategoryCode" type="category" default_value="" desc="左上推荐">
+        </param>
+	         <param name="menuCategoryCode" type="category" default_value="" desc="导航">
+        </param>
+	         <param name="leftDownCategoryCode" type="category" default_value="" desc="左下推荐">
+        </param>
+	         <param name="middleCategoryCode" type="category" default_value="" desc="中间推荐">
+        </param>
+	         <param name="rightBigCategoryCode" type="category" default_value="" desc="右上大图推荐">
+        </param>
+	         <param name="rightSmallCategoryCode" type="category" default_value="" desc="右上小图推荐">
+        </param>
+	         <param name="rightDownCategoryCode" type="category" default_value="" desc="右下推荐">
+        </param>
+	         <param name="backgroundImg" type="image" default_value="" desc="背景大图">
+        </param>
+	  	</template>
+     <template name="sd_theaterList_dz" type="list" desc="剧乐部谍战模板" template_path="sd_theaterList_dz.jsp" preview_path="preview/sd_theaterList_dz.jpg">
+	        <param name="menuCategoryCode" type="category" default_value="" desc="导航栏目">
+        </param>
+	         <param name="leftUpCategoryCode" type="category" default_value="" desc="左上图推荐">
+        </param>
+	         <param name="leftCenterCategoryCode" type="category" default_value="" desc="左中文字推荐">
+        </param>
+	         <param name="leftDownCategoryCode" type="category" default_value="" desc="左下文字热荐">
+        </param>
+	         <param name="programCategoryCode" type="category" default_value="" desc="内容栏目">
+        </param>
+	  	</template>
+     <template name="sd_theaterList_gz_qg" type="list" desc="剧乐部古装、情感模板" template_path="sd_theaterList_gz_qg.jsp" preview_path="preview/sd_theaterList_gz_qg.jpg">
+	        <param name="menuCategoryCode" type="category" default_value="" desc="导航栏目">
+        </param>
+	         <param name="programCategoryCode" type="category" default_value="" desc="内容栏目">
+        </param>
+	         <param name="bgImg" type="image" default_value="" desc="背景大图">
+        </param>
+	  	</template>
+     <template name="sd_theaterList_sbo" type="list" desc="标清剧乐部首播列表页模板" template_path="sd_theaterList_sbo.jsp" preview_path="preview/sd_theaterList_sbo.jpg">
+	        <param name="menuCategoryCode" type="category" default_value="" desc="菜单栏目">
+        </param>
+	         <param name="leftCategoryCode" type="category" default_value="" desc="左侧推荐">
+        </param>
+	         <param name="trailerCategoryCode" type="category" default_value="" desc="预告片推荐">
+        </param>
+	         <param name="backgroundImg" type="image" default_value="" desc="背景大图">
+        </param>
+	         <param name="programCategoryCode" type="category" default_value="" desc="列表内容">
+        </param>
+	  	</template>
+     <template name="sd_theaterList_jk" type="list" desc="剧乐部剧库模板" template_path="sd_theaterList_jk.jsp" preview_path="preview/sd_theaterList_jk.jpg">
+	        <param name="menuCategoryCode" type="category" default_value="" desc="导航栏目">
+        </param>
+	         <param name="programCategoryCode" type="category" default_value="" desc="内容栏目">
+        </param>
+	  	</template>
+     <template name="europeCausus" type="list" desc="剧乐部欧美模板" template_path="europeCausus.jsp" preview_path="preview/europeCausus.jpg">
+	        <param name="leftRecommend" type="category" default_value="" desc="左侧栏目">
+        </param>
+	         <param name="programCategoryCode" type="category" default_value="" desc="内容栏目">
+        </param>
+	         <param name="backgroundImg" type="image" default_value="" desc="背景大图">
+        </param>
+	  	</template>
+     <template name="koreaPremiere" type="list" desc="剧乐部韩剧模板" template_path="koreaPremiere.jsp" preview_path="preview/koreaPremiere.jpg">
+	        <param name="leftRecommend" type="category" default_value="" desc="左侧栏目">
+        </param>
+	         <param name="trailerCategoryCode" type="category" default_value="" desc="预告片">
+        </param>
+	         <param name="programCategoryCode" type="category" default_value="" desc="内容栏目">
+        </param>
+	         <param name="backgroundImg" type="category" default_value="" desc="背景大图">
+        </param>
+	  	</template>
+   
+   
+  </TemplatePackage>

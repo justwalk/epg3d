@@ -1,0 +1,137 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<web-app xmlns="http://java.sun.com/xml/ns/j2ee"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://java.sun.com/xml/ns/j2ee http://java.sun.com/xml/ns/j2ee/web-app_2_4.xsd"
+	version="2.4">
+	<display-name>SITV EPG </display-name>
+	<description></description>
+	 
+	<context-param>
+		<param-name>contextConfigLocation</param-name>
+		<param-value>/WEB-INF/epg-context*.xml</param-value>
+	</context-param>
+	 
+	<context-param>
+		<param-name>webAppRootKey</param-name>
+		<param-value>sitv_3d</param-value>
+	</context-param>
+	
+	<context-param>
+		<param-name>epgConfigLocation</param-name>
+		<param-value>/WEB-INF/conf/epg.properties</param-value>
+	</context-param>
+		
+	<listener>
+		<listener-class>
+			org.springframework.web.context.ContextLoaderListener
+		</listener-class>
+	</listener>	
+	 
+	<listener>
+		<listener-class>
+			org.springframework.web.util.Log4jConfigListener
+		</listener-class>
+	</listener>
+	
+	<listener>
+		<listener-class>
+			chances.epg.web.UserSessionListener
+		</listener-class>
+	</listener>
+	
+	<servlet>
+		<servlet-name>epgConfig</servlet-name>
+		<servlet-class>
+			sitv.epg.config.EpgStartupServlet
+		</servlet-class>
+		<load-on-startup>1</load-on-startup>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>epgConfig</servlet-name>
+		<url-pattern>/config</url-pattern>
+	</servlet-mapping>
+	
+	<servlet>
+		<servlet-name>epg</servlet-name>
+		<servlet-class>
+			org.springframework.web.servlet.DispatcherServlet
+		</servlet-class>
+		<load-on-startup>2</load-on-startup>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>epg</servlet-name>
+		<url-pattern>*.do</url-pattern>
+	</servlet-mapping>
+
+	<filter>
+		<filter-name>bufferSizeFilter</filter-name>
+		<filter-class>
+			sitv.epg.web.filter.BufferSizeFilter
+		</filter-class>
+		<init-param>
+		    <param-name>bufferSize</param-name>
+		    <param-value>102400</param-value>
+		</init-param>
+	</filter>
+	
+	<filter-mapping>
+		<filter-name>bufferSizeFilter</filter-name>
+		<url-pattern>*.do</url-pattern>
+	</filter-mapping>
+	 
+	<filter>
+		<filter-name>imageNotFoundFilter</filter-name>
+		<filter-class>
+			sitv.epg.web.filter.FileNotFoundFilter
+		</filter-class>
+		<init-param>
+		    <param-name>forward</param-name>
+		    <param-value>/common/images/default/110-161.jpg</param-value>
+		</init-param>
+	</filter>
+
+	<filter-mapping>
+		<filter-name>imageNotFoundFilter</filter-name>
+		<url-pattern>*.jpg</url-pattern>
+		<url-pattern>*.png</url-pattern>
+	</filter-mapping>
+	 
+	<filter>
+		<filter-name>checkLoginFilter</filter-name>
+		<filter-class>
+			org.springframework.web.filter.DelegatingFilterProxy
+		</filter-class>
+		<!-- <init-param>
+		    <param-name>loginRedirectUrl</param-name>
+		    <param-value>/common/login/login.jsp</param-value>
+		</init-param>
+		<init-param>
+		    <param-name>loginSkipPattern</param-name>
+		    <param-value>/login|login1|playErrorLog|playExitLog/</param-value>
+		</init-param> -->
+	</filter>
+
+	<filter-mapping>
+		<filter-name>checkLoginFilter</filter-name>
+		<url-pattern>*.do</url-pattern>
+	</filter-mapping>
+
+	 <session-config>   
+		<session-timeout>150</session-timeout>   
+	</session-config> 	 
+	
+	<welcome-file-list>
+		<welcome-file>main.do</welcome-file>
+	</welcome-file-list>
+	
+	<error-page>
+	  <error-code>404</error-code>
+	  <location>/common/base/404.jsp</location>
+	</error-page>
+	
+	<error-page>
+	  <error-code>500</error-code>
+	  <location>/common/base/500.jsp</location>
+	</error-page>
+
+</web-app>

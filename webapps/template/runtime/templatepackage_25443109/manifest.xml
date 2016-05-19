@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="GBK"?>
+<TemplatePackage author="" desc="" label="">
+    <template name="index_sports" type="index" desc="体育看吧首页模板" template_path="index_sports.jsp" preview_path="/preview/index_sports.jpg">
+	        <param name="bgImg" type="image" default_value="" desc="背景大图">
+        </param>
+	         <param name="menuCategoryCode" type="category" default_value="" desc="导航栏目">
+        </param>
+	         <param name="currentCategoryCode" type="category" default_value="" desc="当前栏目分类">
+        </param>
+	  	</template>
+     <template name="list_sports" type="list" desc="标清体育看吧列表模板" template_path="index_sports.jsp" preview_path="/preview/index_sports.jpg">
+	        <param name="currentCategoryCode" type="category" default_value="" desc="当前栏目分类">
+        </param>
+	         <param name="bgImg" type="image" default_value="" desc="背景大图">
+        </param>
+	         <param name="menuCategoryCode" type="category" default_value="" desc="导航栏目">
+        </param>
+	  	</template>
+     <template name="list_sports2" type="list" desc="劲爆体育赛事、新闻、专题栏目模板" template_path="list_sports2.jsp" preview_path="preview/list_sports2.jpg">
+	        <param name="bgImg" type="image" default_value="" desc="背景大图">
+        </param>
+	         <param name="menuCategoryCode" type="category" default_value="" desc="菜单栏目">
+        </param>
+	         <param name="currentCategoryCode" type="category" default_value="" desc="当前栏目">
+        </param>
+	         <param name="homeCategoryCode" type="category" default_value="" desc="首页菜单栏目">
+        </param>
+	         <param name="numCategoryCode" type="string" default_value="" desc="判断首页菜单(0-3)">
+        </param>
+	  	</template>
+  </TemplatePackage>

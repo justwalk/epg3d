@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE sqlMap      
+    PUBLIC "-//ibatis.apache.org//DTD SQL Map 2.0//EN"      
+    "http://ibatis.apache.org/dtd/sql-map-2.dtd">
+    
+<sqlMap namespace="EpgUserSeriesmark">	
+  <resultMap id="EpgUserSeriesmark-result" class="sitv.epg.entity.user.EpgUserSeriesmark">
+  	<result property="id" column="ID" />
+  	<result property="userId" column="USER_ID" />
+  	<result property="contentCode" column="CONTENT_CODE" />
+  	<result property="episodeIndex" column="EPISODE_INDEX"/>
+  </resultMap>
+ 
+	<!-- 取得用户最新收看过的剧集 -->
+	<statement id="getSevrialSeriesmarkByUserId" resultMap="EpgUserSeriesmark-result">
+		<![CDATA[		   
+           select * from EPG_USER_SERIESMARK where USER_ID=#USER_ID#
+        ]]>
+	</statement>
+	
+	<!-- 用户是否可以保存该剧集集数 -->
+	<statement id="userCouldMarkSeries" resultMap="EpgUserSeriesmark-result">
+		<![CDATA[		   
+        	SELECT * FROM EPG_USER_SERIESMARK WHERE USER_ID=#USER_ID# AND CONTENT_CODE=#CONTENT_CODE#
+        ]]>
+	</statement>
+	
+	<!-- 添加观看过的剧集集数信息
+	<statement id="addUserSeriesmark" resultMap="EpgUserSeriesmark-result">
+		<![CDATA[		   
+           INSERT INTO EPG_USER_SERIESMARK (USER_ID, CONTENT_CODE, EPISODE_INDEX) VALUES (#USER_ID#, #CONTENT_CODE#, #EPISODE_INDEX#)
+  		]]>
+	</statement>
+	  -->
+	<!-- 更新观看过的剧集集数信息
+	<statement id="updateUserSeriesmark" resultMap="EpgUserSeriesmark-result">
+		<![CDATA[		   
+           UPDATE EPG_USER_SERIESMARK SET EPISODE_INDEX=#EPISODE_INDEX# WHERE ID=#ID#
+  		]]>
+	</statement>	
+		  -->
+		<!-- 用户是否可以保存该剧集集数 -->
+	<statement id="getSeriesmarkById" resultMap="EpgUserSeriesmark-result">
+		<![CDATA[		   
+        	SELECT * FROM EPG_USER_SERIESMARK WHERE ID=#ID#
+        ]]>
+	</statement>
+	
+	<!-- 删除剧集集数信息 -->
+	<statement id="delUserSeriesmarkById" resultMap="EpgUserSeriesmark-result">
+		<![CDATA[
+			DELETE FROM EPG_USER_SERIESMARK WHERE ID=#ID#
+     	]]>
+	</statement>
+</sqlMap>
